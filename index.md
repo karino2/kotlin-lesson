@@ -39,8 +39,8 @@ kotlin的にはどう書くか、みたいなのを教えていけると思っ�
 - 言語はkotlinでやります。
 - [公式の初めてのアプリの作成](https://developer.android.com/training/basics/firstapp) くらいはやってある事を前提とする。
     - [colabのBuild Your First Android App in Kotlin](https://codelabs.developers.google.com/codelabs/build-your-first-android-app-kotlin/index.html)でもいいです。
-- kotlinは[公式のリファレンス](https://kotlinlang.org/docs/reference/)をOtherまで読んでいれば理想ですが、うろおぼえだけど何か書いてみたい、くらいの段階まで言っていればコード見ながら指導はします。
-- githubはPR出来るのが望ましいが、分からない人は、せめて「github 初めてのPR」とかでググって読むくらいはやっておいて欲しい
+- kotlinは[公式のリファレンス](https://kotlinlang.org/docs/reference/)をOtherまで読んでいれば理想ですが、うろおぼえだけど何か書いてみたい、くらいの段階まで言っていればコード見ながら指導します。
+- githubはPR出来るのが望ましいが、分からない人は、せめて「github 初めてのPR」とかでググって読むくらいはやっておいて欲しい。そうしたらやり方を教えます。
 - 辞めるのは自由ですが、辞める時はやめる、と言ってくれると嬉しい（続きを自分が作りたい場合があるので）
 - 自分が直して使いたいので、独自アプリの場合はオープンソースライセンスの何かでお願いします。（わからなければMITライセンスで）
 - 個人的好みのため、Fragmentは一切使いません。
