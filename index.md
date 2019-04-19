@@ -59,5 +59,4 @@ kotlin的にはどう書くか、みたいなのを教えていけると思っ�
 そうしたら詳細を教えます。
 やる前に何か質問したい、とかもご自由にどうぞ。
 
-指導はとりあえずissueでやってみようと思ってますが、もうちょっとリアルタイム性が良いオープンな奴があったらそれにしたい。
-何かオススメ募集。
+指導などは[![kotlin-lesson@gitter](https://badges.gitter.im/karino2_program_lesson/kotlin-lesson.svg)](https://gitter.im/karino2_program_lesson/kotlin-lesson?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)でやってみようと思ってます。
