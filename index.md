@@ -60,3 +60,10 @@ kotlin的にはどう書くか、みたいなのを教えていけると思っ�
 やる前に何か質問したい、とかもご自由にどうぞ。
 
 指導などは[![kotlin-lesson@gitter](https://badges.gitter.im/karino2_program_lesson/kotlin-lesson.svg)](https://gitter.im/karino2_program_lesson/kotlin-lesson?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)でやってみようと思ってます。
+
+
+### PR入門(少し慣れてきた人向け)
+
+githubのPRが全然分からない、という人向けの、とりあえずこれで行きましょう、という提案の運用。
+
+[githubのPR入門](pr_intro.md)
