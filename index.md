@@ -69,3 +69,9 @@ githubのPRが全然分からない、という人向けの、とりあえずこ
 二回くらい試しに簡単なPRを送ってみた後に読んでください。（最初は読まなくていいです）
 
 [githubのPR入門](pr_intro.md)
+
+
+### 参考リンク
+
+- gitに何含めるか？ [JetBrains: How to manage projects under Version Control Systems](https://intellij-support.jetbrains.com/hc/en-us/articles/206544839)
+- [youtube: Anroidのレイアウトとlayout_xxについて](https://youtu.be/IEaROi5sBmE)
