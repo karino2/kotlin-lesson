@@ -71,6 +71,15 @@ githubのPRが全然分からない、という人向けの、とりあえずこ
 [githubのPR入門](pr_intro.md)
 
 
+### オススメライブラリ
+
+httpはFuelを使おう。[github: fuel](https://github.com/kittinunf/fuel)
+
+SQLite回りは自分で書くのが一番、という結論に。
+ItsuNaniのDatabaseHolder.ktを参考にするのが良い（ライブラリ化も考えたがこの位だとコピペの方が楽そう）。
+[https://github.com/karino2/ItsuNani/blob/master/app/src/main/java/io/github/karino2/itsunani/DatabaseHolder.kt](https://github.com/karino2/ItsuNani/blob/master/app/src/main/java/io/github/karino2/itsunani/DatabaseHolder.kt)
+
+
 ### 参考リンク
 
 - gitに何含めるか？ [JetBrains: How to manage projects under Version Control Systems](https://intellij-support.jetbrains.com/hc/en-us/articles/206544839)
