@@ -54,7 +54,7 @@ SourceTreeを推奨します。コマンドラインはかったるいので。
 （TODO: SourceTreeでのやり方を調べてこの解説を直してPRください）
 
 そして「harukawaのローカルのmasterを、定期的にkarino2のgithubのmasterと一致させる」ようにします。
-これは「karino2のgithubのmasterをharukawaのローカルのmasterにpullする」とうい事で行います。
+これは「karino2のgithubのmasterをharukawaのローカルのmasterにpullする」という事で行います。
 
 ### 作業の進め方
 
