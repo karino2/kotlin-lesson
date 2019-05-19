@@ -51,11 +51,8 @@ SourceTreeを推奨します。コマンドラインはかったるいので。
 まず大切な事。harukawaのgithubのmasterには、自分の変更はpushしてはいけません。
 間違ってやってしまわないように、「harukawaのローカルのmaster」のリモートは、「karino2のgithubのmaster」にしておいてください。
 
-進め方
-1.SourceTreeのリポジトリ設定で、リモートリポジトリに「karino2のgithub」を追加します。
-　　追加に成功すると、SourceTreeの項目「リモート」に「karino2のgithub」が表示されます。
-2.項目「ブランチ」にある「harukawaのローカルのmaster」を右クリックして、
-　　「リモートブランチを追跡」から「karino2のgithubのmaster」を選択します。
+1. SourceTreeのリポジトリ設定で、リモートリポジトリに「karino2のgithub」を追加します。追加に成功すると、SourceTreeの項目「リモート」に「karino2のgithub」が表示されます。
+2. 項目「ブランチ」にある「harukawaのローカルのmaster」を右クリックして、「リモートブランチを追跡」から「karino2のgithubのmaster」を選択します。
 
 そして「harukawaのローカルのmasterを、定期的にkarino2のgithubのmasterと一致させる」ようにします。
 これは「karino2のgithubのmasterをharukawaのローカルのmasterにpullする」という事で行います。
@@ -119,8 +116,7 @@ demoap_workから作ったら、だいたい[レビューしやすいコミッ�
 ローカルにPR候補のブランチが出来たら、次にPRを作ります。
 
 1. PR候補のブランチをharukawaのgithubにプッシュ
-2. harukawaのgithubのレポジトリからPull requestsを選び、New pull requestをクリック
-　　　もしくはCompare & pull requestをクリック
+2. harukawaのgithubのレポジトリからPull requestsを選び、New pull requestをクリック。もしくはCompare & pull requestをクリック
 
 これでPRが送れます。
 
