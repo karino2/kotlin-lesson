@@ -103,6 +103,7 @@ class MainActivity : AppCompatActivity() , CoroutineScope {
 
 解説する事をまとめると以下になります。
 
+- なんとなくlaunchでくくればいいや、という理解から卒業する
 - suspend関数を利用者の視点で理解する（仕組みは知らん）
 - suspend関数を自分で書いて公開出来るようにする（ただし中では他のsuspend関数呼ぶだけ）
 - 呼び出し時にどこがどのスレッドで動くかを理解する
