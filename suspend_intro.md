@@ -164,7 +164,7 @@ class MainActivity {
 
 この場合のシーケンス図は以下のようになります。
 
-TODO: postAsyncのシーケンス図
+![postAsyncのシーケンス図](imgs/postAsync_seq.png)
 
 ここで、postAsyncは実行が行われるとすぐ帰ってきて、someFuncBの実行が行われています。
 そしてpostAsyncが実行されると、どこかの別のスレッドで実際のpost処理が行われている様子が見て取れます。
