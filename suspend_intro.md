@@ -99,7 +99,7 @@ class MainActivity : AppCompatActivity() , CoroutineScope {
 あくまで最初に見様見真似で使い始める時に必要な最低限の事だけ書きます。
 ある程度使って慣れてきたら、ちゃんと内部の仕組みを理解するドキュメントに進んでください。
 
-[菊田さんが挙げている文書](https://yoheikikuta.github.io/study_kotlin_coroutine/) でだいたいいいと思います。
+次のステップに進むには、[菊田さんが挙げている文書](https://yoheikikuta.github.io/study_kotlin_coroutine/) でだいたいいいと思います。
 
 解説する事をまとめると以下になります。
 
@@ -143,6 +143,8 @@ class MainActivity {
 
 ここで、postBlockはonCreateの中でその実行を最後まで終える（シーケンスの中でonCreateの箱の中に全部入っている）というのが同期APIの基本です。
 
+funcBを呼ぶ時点では既にサーバーへのポストが終わっている、というのが同期APIの特徴です。
+
 
 ### 非同期なAPIでのシーケンス
 
@@ -171,7 +173,7 @@ class MainActivity {
 まず、postAsyncは呼ぶと、すぐ終わって帰ってくる。これは一瞬です。
 そして実際のサーバーへのpostはここでは行われない。謎の誰かが「別スレッド」で行います。
 
-someFuncBの実行は、実際にサーバーへのpostが行われるよりも前に実行されます。
+funcBの実行は、実際にサーバーへのpostが行われるよりも前に実行されます。
 普通はonCreate自身もサーバーへのpostが行われるよりも前に終わってしまいます。
 
 そして別スレッドで実際にサーバーへのpostが終わると、謎のメカニズムでシステムに通知がいって、
