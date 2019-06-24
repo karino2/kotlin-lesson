@@ -130,16 +130,16 @@ postAsyncが非同期にHTTPのpostを行うAPIで、postBlockが非同期でな
 ```
 class MainActivity {
     fun onCreate() {
-        someFuncA()
+        funcA()
         Http.postBlock(url, some_content)
-        someFuncB()
+        funcB()
     }
 }
 ```
 
 これのシーケンスは以下のようになります。
 
-TODO: 同期の場合のシーケンス図
+![同期の場合のシーケンス図](./imgs/postBlock_seq.png)
 
 ここで、postBlockはonCreateの中でその実行を最後まで終える（シーケンスの中でonCreateの箱の中に全部入っている）というのが同期APIの基本です。
 
@@ -151,13 +151,13 @@ TODO: 同期の場合のシーケンス図
 ```
 class MainActivity {
     fun onCreate() {
-        someFuncA()
+        funcA()
         Http.postAsync(url, some_content, onCallback)
-        someFuncB()
+        funcB()
     }
 
     fun onCallback() {
-        someFuncC()        
+        funcC()        
     }
 }
 ```
@@ -235,7 +235,7 @@ suspend関数は
 - 非同期APIをラップしたものである
 - suspend関数のあるところでコードがブロックに分かれてキューに入れられる
 - 書かれているコードは全て主スレッドで実行される
-
+謎
 という話となります。
 
 ## suspend関数は非同期なAPIをラップしたものである
