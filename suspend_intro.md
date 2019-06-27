@@ -23,6 +23,7 @@ hello worldとかでは無くて、そういうのを動かした後に読む文
 
 詳細はいいとして、putContentInnnerはsuspend関数で中にawaitResponseResultなどを呼んでいる。
 そしてそれをputContentという関数でラップしていて、この中でlaunchが呼ばれている。
+awaitResponseResultというのはsuspend関数です。
 
 ```
 class ContentSender {
@@ -85,6 +86,8 @@ class MainActivity : AppCompatActivity() , CoroutineScope {
 
 これではputContentが全てを送信する前にfinishが呼ばれてしまうのでまずい。
 これがなぜ悪いのか、どう直すべきなのか、を理解する程度の説明をするのがこの文書の目的です。
+
+なお、答えだけなら最後をみればわかると思うので答えだけ知りたい人は説明を飛ばして最後の答えを見て下さい。
 
 ### この文書で解説する事、しない事
 
@@ -390,8 +393,7 @@ suspend fun susFuncA() : Int{
 
 このコードは、3つのブロックに分かれる
 
-
-TODO: 図
+![bodyはブロックに分割される](imgs\body2block.png)
 
 このブロックは、定義により「最後のブロック以外はすべてsuspend関数呼び出しで終わる」というのが重要です。
 
@@ -407,7 +409,7 @@ suspend関数を呼び出すと、このブロックをキューに詰めて、�
 susFuncC()は非同期APIなので、呼ばれるとすぐ返ってくる。
 ただ非同期APIなので、そこで暗黙の別スレッドで、謎の処理が走り始めます。
 
-TODO: 図
+![suspend関数は非同期APIなので暗黙の処理と別スレッドがある](imgs/suspend_as_async.png)
 
 susFuncA()の呼び出しはfuncB()とsusFuncC()を呼んだところですぐ終わって戻るのですが、
 やがてsusFuncC()に関連した別スレッドの謎の処理が終わると通知が来て、
