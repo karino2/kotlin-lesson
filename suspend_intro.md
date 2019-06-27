@@ -358,14 +358,14 @@ suspend関数とは、基本的には「非同期な事をやりたい」時に�
 これがプラットフォームから提供されるプリミティブ、という事になります。
 とにかくsuspend関数は別のsuspend関数を呼び出していて、これをずーっとたどっていくと最後にはプリミティブのsuspend関数にいきつきます。
 
-このsuspend関数を自分で書く時に、body部には必ず別のsuspend関数呼び出しがある、というのは重要なポイントです。
+このsuspend関数を自分で書く時に、body部には「必ず別のsuspend関数呼び出しがある」というのは重要なポイントです。
 「そうじゃない場合はどうなの？」とか初心者のうちは考えてはいけません。
 「必ず別のsuspend関数を呼び出す」と強く信じ込むのが大切です。
 良くある正常なケースをちゃんと理解する。まずはこれが大切です。
 
 ### suspend関数のbody部は、別のsuspend関数呼び出しを区切りにブロックに分割される
 
-suspend関数が特殊で、知らないと理解出来ない事の一つに、書かれているコードが変形される、という事情があります。
+suspend関数が特殊で、知らないと理解出来ない事の一つに、書かれているコードが変形（コンバート）される、という事情があります。
 これは使うだけの人も理解しておく必要がある。
 
 suspend関数のbodyは、必ず別のsuspend関数を呼び出す、と言いました。
@@ -465,6 +465,15 @@ susFuncA()の最後のブロックの呼び出しが終わったら、そのま�
 
 の2つが実行されます。
 
+つまり最後のブロックというのは、一つ上のブロックに分割された時の次のブロックの前にくっつく、前処理のようなものな訳ですね。
+上の例でいけば、susFuncAの最後のブロックは、susFuncZeroのfunTwoから始まるブロックの前にくっつく。
+
+実は最後のブロックだけじゃなくて最初のブロックも同様に呼び出し元のブロックの最後にくっつきます。
+
+だからイメージとしては、上記の関数は以下のように分けられる訳です。
+
+TODO: 図
+
 
 ### susFuncA()を呼ぶ側の視点で考える
 
@@ -506,9 +515,325 @@ susFuncA()は非同期APIで、コールバックにresより先が呼ばれる�
 
 TODO: 図
 
+### 全部の呼び出しは、展開すると一本のキューに（だいたい）なる
 
+さて、suspend関数のbodyの最初は呼び出し元の前のブロックに、bodyの最後のブロックは呼び出し元の次のブロックにくっつく、という事を踏まえて、もっと深いネストの場合を考えます。
+
+suspend関数からsuspend関数が呼ばれてさらにそこから別のsuspend関数が呼ばれて、、、とつらなっている事を考える。
+
+これも結局はそれぞれがブロックに分けられて、一番最初のブロックは呼び出し元のブロックにくっつく。
+呼び出し元のブロックが最初のブロックなら、さらに呼び出しもとの呼び出しもと、つまり2つ上のブロックにくっつく。
+
+こうして順番に考えていくと、結局suspend関数の呼び出しのツリーは、一本のブロックのリストになります。
+厳密には内部に分岐とかループがあるので一本のリストじゃないのですが、そういうのがなければ一本のリストになるので、気分的には全部ブロックに分けられて一本のキューに詰められる、と思っておけばよろしい。
+
+例えば先程の2つの関数呼び出しを合わせて見ると、
+
+```
+suspend fun susFuncA() : Int{
+    funcB()
+    susFuncC()
+
+    funcD()
+    funcE()
+    susFuncF()
+
+    return funcG()    
+}
+
+suspend fun susFuncZero() : Int {
+   funOne()
+   val res = susFuncA()
+
+   funTwo()
+   funThree()
+   return susFunHi(res)
+
+}
+```
+
+このsusFuncZeroの呼び出しは、以下の図のような一本のキューになります。
+
+TODO: 図
+
+そして各ブロックの最後は必ず非同期APIの呼び出しになっていて、そのコールバックがあとから呼ばれる。
+そのコールバックでは次のブロックが実行される。
+
+そう考えておくと、だいたいのフローは正しく理解出来る事になります。
+
+### suspend関数まとめ
+
+- suspend関数は非同期APIをラップしたものである
+- suspend関数のbodyには、別のsuspend関数の呼び出しがある
+- suspend関数のbodyは、この別のsuspend関数呼び出しで区切られてブロックに分けられる
+- 最初のブロックは呼び出し元のブロックの最後にくっつき、最後のブロックは呼び出し元の次のブロックの頭にくっつく
+- 全ブロックは（気分的には）一本のキューに詰められて順番に実行される
+
+このくらいの理解で十分と思います
+
+# 問題のコードをどう直すか
+
+ここまででsuspend関数の使う上での基本を説明してきました。
+
+以上を踏まえて元のコードをどう直すべきか、という話をしていきます。
 
 ## launchで何が起こるか
 
-## launchの処理が終わったあとに何かをやりたい！という場合
+suspend関数を呼ぶコードを書くと、なんかエラーになって仕方ないので良く分からないけどlaunchでくくる、というのが良くやられる事と思う。
+ただここまでの説明をもとにすればもうちょっとマシな理解は出来ると思うので簡単に説明しておきます。
+
+### launchはキューをセットアップして実行する
+
+launchというのは、ここまで説明したキューをセットアップして、中をブロックに分割してキュ=に詰めて、最初のブロックを実行する、という事をやるものと思うとだいたい正しい。
+launchの中はsuspend関数のbodyと同様のルールでコンバートされます。
+
+launchは別のスレッドを作り「ません」。
+ここは誤解してはいけないところで、呼び出しスレッドと同じスレッドで実行されます。
+
+ただし、その場では（最初のブロックしか）実行されない。
+あとからコールバックで実行されます。
+launchは非同期APIなので、実行すると、1つ目のブロックを実行するだけですぐに返ってきます。
+
+細かい事ですが、何がどこのスレッドで実行されるかは使うだけでも正確に理解している必要がある。
+「launchが別のスレッドを作って内部を別スレッドで実行する」というのは完全に間違っているので、
+これがなぜ間違えているのいかは正確に理解している必要があります。
+
+
+### launchの処理が終わったあとに何かをやりたい！という場合
+
+さて、launchを実行すると、最初のブロックだけ実行して返ってきてしまう。
+
+これは非同期APIなので暗黙の別スレッドがあり、そこでいろいろと実行される。
+いろいろ裏で動いてしばらくたったあとに（最後の）コールバックが呼ばれるのですが、
+このlaunchの最後のコールバックをlaunchを呼び出した人が受け取る方法はありません。
+
+最初に挙げた問題のコードに戻ってみましょう。
+
+
+```
+class MainActivity : AppCompatActivity() , CoroutineScope {
+    // ... 中略 ...
+    fun onClick() {
+        val base64Content = readBase64(fileName)
+        val sender = ContentSender(this)
+        sender.putContent(apiUrl, "master", fileName, base64Content, accessToken)
+        finish()
+    }
+```
+
+このsender.putContentは中にlaunchが書いてあるので、このコードはこう書かれているのと気分的には同じです。
+
+```
+class MainActivity : AppCompatActivity() , CoroutineScope {
+    // ... 中略 ...
+    fun onClick() {
+        val base64Content = readBase64(fileName)
+        launch {
+           funcA()
+           susFuncB(base64Content)
+           funcC()
+           susFuncD()
+        }
+        finish()
+    }
+
+```
+
+このfinish()は、susFuncBの呼び出しが終わったあとに実行されてしまいます。
+susFuncBの暗黙に想定する別スレッドでの処理はまだ終わっていません。もちろんfunCやsusFuncDはまだ呼び出されてもいません。
+
+その事はここまでの説明でわかると思います。launchを呼び出すonClick()の中では、このlaunchの終わりを知る事は出来ない。
+
+「出来ない、といっても、俺はサーバーにpostが終わったあとにActivityをfinishしたいんだよ！どうしたらいいの！？」
+
+というのが良くあるシチュエーションです。
+
+上記のsusFuncCのあとにfinishを実行するには、launchの中に入れるしか無い。
+
+
+```
+class MainActivity : AppCompatActivity() , CoroutineScope {
+    // ... 中略 ...
+    fun onClick() {
+        val base64Content = readBase64(fileName)
+        launch {
+           funcA()
+           susFuncB(base64Content)
+           funcC()
+           susFuncD()
+
+           // NEW!!!
+           finish()
+        }
+    }
+
+```
+
+こうすればこのfinishは、ブロックに分割される最後のブロックに入るので、最後に実行されます。
+つまり、suspend関数のブロックが実行された最後に何かを実行したい場合、このキューに入れるために自身もブロックに入るしか無いのです。
+
+### ではどうやって関数にくくりだすのか？
+
+そうはいっても元のコードのように、ContentSenderのような送信の部分を別のクラスにしたい、という場合はあります。
+こうやってファイルをまたぐ場合、どうやってlaunchの中に入れたらいいんだ？となる。
+
+ここで発想の転換が必要になる。
+
+「ContentSenderのputContentの中にlaunchを入れてはいけない」
+
+launchは一番上の、このメソッドを呼ぶ人がつけるものです。
+なぜならそうでないと、このメソッドを終わったあとに何かをしたい、という処理をブロックに出来ないからです。
+
+でもputContentにlaunchをつけないと、「suspend関数の呼び出しは出来ない」ってコンパイラに怒られるんだよ！と言われそうですが、先に答えを言うと、putContentをsuspend関数にすればコンパイラには怒られませんし、それが正解となります。
+
+その事をもうちょっと詳しく見てみましょう。
+
+まず、元のコードは以下でした。
+
+```
+class ContentSender {
+    // ... 中略 ...
+
+    private suspend fun putContentInner(apiUrl: String, branchName: String, fname: String,
+     base64Content: String, accessToken:String) : Response {
+        val (_, _, result) = "$apiUrl?ref=$branchName".httpGet()
+            .header("Authorization" to "token ${accessToken}")
+            .awaitResponseResult(Content.Deserializer(), Dispatchers.IO)
+
+        val contParam = arrayListOfContentParameter(branchName, fname, base64Content)
+
+        result.fold(
+            { cont -> contParam.add("sha" to cont.sha) },
+            { _ /* err */ -> {} }
+        )
+
+
+        val json = jsonBuilder {
+            val obj = beginObject()
+            contParam.map { (k, v) -> obj.name(k).value(v) }
+        }
+
+        val (_, resp, _) = apiUrl.httpPut()
+            .body(json)
+            .header("Authorization" to "token ${accessToken}")
+            .header("Content-Type" to "application/json")
+            .awaitStringResponseResult(scope = Dispatchers.IO)
+        return resp
+    }
+
+    fun putContent(apiUrl: String, branchName: String, fname: String, base64Content: String, accessToken: String) {
+        job = Job()
+        launch {
+            val resp = putContentInner(apiUrl, branchName, fname, base64Content, accessToken)
+
+            val sendCode: Int = when(resp.statusCode) {
+                200, 201 -> 2
+                else -> 1
+            }
+            prefs.edit().putInt("success_post",sendCode).commit()
+        }
+    }
+}
+```
+
+このputContentが間違えている。
+このputContentは、以下のようにしておくのが正しい。
+
+```
+    suspend fun putContent(apiUrl: String, branchName: String, fname: String, base64Content: String, accessToken: String) {
+        val resp = putContentInner(apiUrl, branchName, fname, base64Content, accessToken)
+
+        val sendCode: Int = when(resp.statusCode) {
+            200, 201 -> 2
+            else -> 1
+        }
+        prefs.edit().putInt("success_post",sendCode).commit()
+    }
+```
+
+違いは2つ。
+
+1. putContentの先頭にsuspendがついている
+2. launchとjobがなくなっている
+
+簡単にまとめておきましょう。
+「終了を待つ必要がある非同期APIを作る場合は、自身をsuspend関数として公開する」これが基本となります。
+
+だから、Activityなどの一番上じゃないところで、
+
+
+```
+   fun someFunc() {
+       launch {
+          ....
+       }
+   }
+```
+
+という感じのコードがあったら、だいたい間違いです。
+launchは使う側にやらせるのが正しい。そうしないと終わったあとを受け取るコードをブロックに出来ないから。
+
+だからこういうコードはだいたいは以下のように直すべき
+
+1. suspendをつける
+2. launchを取る
+
+つまりこうなる。
+
+```
+   suspend fun someFunc() {
+      ....
+   }
+```
+
+### 呼ぶ側のコードの修正
+
+ここまでくれば自分でもわかると思いますが、Activity側のコードの正解も見ておきましょう。
+まずは元のコードは以下でした。
+
+```
+class MainActivity : AppCompatActivity() , CoroutineScope {
+    // ... 中略 ...
+    fun onClick() {
+        val base64Content = readBase64(fileName)
+        val sender = ContentSender(this)
+        sender.putContent(apiUrl, "master", fileName, base64Content, accessToken)
+        finish()
+    }
+```
+
+このputContentがsuspend関数になったので、これはlaunchの中で呼ばないといけない。
+だからこうなる。
+
+```
+class MainActivity : AppCompatActivity() , CoroutineScope {
+    // ... 中略 ...
+    fun onClick() {
+        val base64Content = readBase64(fileName)
+        val sender = ContentSender(this)
+        launch {
+            sender.putContent(apiUrl, "master", fileName, base64Content, accessToken)
+            finish()
+        }
+    }
+```
+
+このように、呼ぶ側がlaunchをつけるようにしておけば、
+そのあとにfinish()をしたい、という場合にも、ただlaunchの中に呼び出したあとにfinish()を置けばいい訳です。
+
+逆にputContentの中にlaunchが置かれてしまうとこのブロックの最後に出す方法はもう無い。
+だからこれは間違い、という事になります。
+
+### 自分でsuspend関数を積極的に書こう！
+
+このシリーズの重要なメッセージとしては、suspend関数をAPIとして積極的に外にだそう、という事です。
+
+suspend関数とか良く分からないので、中でlaunchでラップして、外からはsuspend関数が使われているかどうか分からないようにする、というのはだいたいの場合に間違っています。
+
+suspend関数と外からわかるようになっていてはじめてブロック分割のメカニズムが使い手側にも使えるようになるので、積極的にsuspend関数としてクラスのAPIのは公開するべきです。
+
+そのためにはコード分割のメカニズムやlaunchで何が起こるかをある程度は理解して、
+コンパイラが怒ってきたので適当にlaunchつけました、とせずに、ちゃんと設計しましょう。
+
+
 
