@@ -458,7 +458,6 @@ suspend fun susFuncZero() : Int {
    funTwo()
    funThree()
    return susFunHi(res)
-
 }
 ```
 
@@ -515,7 +514,6 @@ suspend fun susFuncZero() : Int {
    funTwo()
    funThree()
    return susFunHi(res)
-
 }
 ```
 
@@ -537,7 +535,7 @@ suspend関数からsuspend関数が呼ばれてさらにそこから別のsuspen
 こうして順番に考えていくと、結局suspend関数の呼び出しのツリーは、一本のブロックのリストになります。
 厳密には内部に分岐とかループがあるので一本のリストじゃないのですが、そういうのがなければ一本のリストになるので、気分的には全部ブロックに分けられて一本のキューに詰められる、と思っておけばよろしい。
 
-例えば先程の2つの関数呼び出しを合わせて見ると、
+例えば先程の2つの関数呼び出しを合わせて見ると、(説明の都合でローカル変数足しました)
 
 ```
 suspend fun susFuncA() : Int{
@@ -557,8 +555,8 @@ suspend fun susFuncZero() : Int {
 
    funTwo()
    funThree()
-   return susFunHi(res)
-
+   val res2 susFunHi(res)
+   return res2
 }
 ```
 
