@@ -35,6 +35,7 @@ plugins:
 header_pages:
   - index.md
   - pr_intro.md
+  - suspend_intro.md
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
