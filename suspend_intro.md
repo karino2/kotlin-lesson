@@ -879,4 +879,6 @@ suspend関数と外からわかるようになっていてはじめてブロッ�
 コンパイラが怒ってきたので適当にlaunchつけました、とせずに、ちゃんと適切な所にsuspendがつくように設計しましょう。
 
 
+### See Also
 
+- [Google Driveのアクセスをsuspend関数でラップする](https://karino2.github.io/2020/01/21/gdrive_wrap_suspend.html)
