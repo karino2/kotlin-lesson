@@ -24,6 +24,7 @@ github_username:  karino2
 markdown: kramdown
 
 kramdown:
+  syntax_highlighter: rouge
   input: GFM
   hard_wrap: false
   
