@@ -34,6 +34,8 @@ plugins:
 
 header_pages:
   - index.md
+  - what_is_type.md
+  - old_index.md
   - pr_intro.md
   - suspend_intro.md
 
