@@ -60,11 +60,9 @@ RPGとかシミュレーションとか対戦格闘とか、そういうのが�
 こうした型ごとに出来る処理をいろいろ作る事が出来て、
 それは型が同じデータに対してだけ行える。
 
-処理だけじゃなくてデータが入れられるかどうかにも型は重要だ。「カプコンのゲーム」にストIIやエイプレは入れられるが、ガロスペや真サムは入れられない。
-
 以下のような処理を考えてみる。
 
-{% capture cod1 %}
+{% capture code1 %}
 fun main() {
   val a = 1
   val b = 2
@@ -78,7 +76,7 @@ fun main() {
   println("d+eは$f")
 }
 {% endcapture %}
-{% include kotlin_quote.html body=cod1 %}
+{% include kotlin_quote.html body=code1 %}
 
 aとbは数字なので、引き算が出来る。
 
@@ -103,3 +101,19 @@ val b = "abc"
 aはIntという型、bはStringという型になります。
 とりあえずIntとかStringが何か、というのは後述するとして、ここでは全ての変数に型というのが勝手についている、
 という事が大切です。
+
+型があった変数にしかデータは入れられない。
+
+「カプコンのゲーム」にストIIやエイプレは入れられるが、ガロスペや真サムは入れられない。
+同様に、数字の型にしか数字は入れられず、文字列の型に数字を入れようとするとコンパイルエラーとなる。
+
+{% capture code2 %}
+fun main() {
+  var a = 1
+  
+  a = "abc" // コンパイルエラー！
+
+  println(a)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=code2 %}
