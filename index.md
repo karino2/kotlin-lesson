@@ -25,6 +25,11 @@ layout: page
 また、あくまでAndroidのアプリ開発を前提にkotlinを教える。
 サーバーサイドkotlinなどにも通じるように、という事はせずに、Androidを前提にする。
 
+以前[公式のkotlin tour](https://kotlinlang.org/docs/kotlin-tour-welcome.html)をやってもらったところ、さっぱりわからん、
+となったので、これと同じくらいの内容をちゃんと初心者向けに説明していくのを目標とする。
+
+より具体的にはListViewとかでアプリを書くのに必用な程度のkotlin理解を目指す。
+
 ### 昔のトップページ
 
 もう古くなった[以前のトップページ](old_index.md)。一応残しておく。
