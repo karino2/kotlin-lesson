@@ -219,7 +219,7 @@ Stringはprintlnで表示する事が出来る。
 
 {% capture mojiretu %}
 fun main() {
-  let mojiretu = "はろー世界"
+  val mojiretu = "くにへかえるんだな おまえにもかぞくがいるだろう"
   println(mojiretu)
 }
 {% endcapture %}
@@ -234,7 +234,7 @@ Booleanとはtrueとfalseだけの型です。
 
 {% capture bool_code %}
 fun main() {
-  let result = ("ほげ" == "いか")
+  val result = ("ほげ" == "いか")
   println(result)
 }
 {% endcapture %}
