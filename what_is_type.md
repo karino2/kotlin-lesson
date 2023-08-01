@@ -212,7 +212,15 @@ fun main() {
 
 プログラム初心者が割とつまづく概念に文字列がある。
 文字列とはようするに文字の列、つまり単なるテキストなのだけれど、
-こればっかりは慣れるしか無いので、以下見ていきます。
+こればっかりは慣れるしか無いので、以下見ていく。
 
-`"abc"`とか`"ほげほげ"`とか、ダブルクオートで囲んだテキストはString、という型になります。
+`"abc"`とか`"ほげほげ"`とか、ダブルクオートで囲んだテキストはString、という型になる。
 Stringはprintlnで表示する事が出来る。
+
+{% capture mojiretu %}
+fun main() {
+  let mojiretu = "はろー世界"
+  println(mojiretu)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=mojiretu %}
