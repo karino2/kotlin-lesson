@@ -171,7 +171,7 @@ fun main() {
 | Double | 数値のうち、小数も使える型 |
 | String | 文字列 |
 | Boolean | trueとfalseの２つのどちらかだけの型 |
-| TextView, EditBox, CheckBox, Button | 最初にやった奴 |
+| TextView, Button, EditText, CheckBox | 最初にやった奴 |
 
 ### IntとDouble
 
@@ -226,3 +226,28 @@ fun main() {
 {% include kotlin_quote.html body=mojiretu %}
 
 上のコードで、mojiretuはString型となる。
+
+### Boolean型
+
+Booleanとはtrueとfalseだけの型です。
+そんな型なんて大して使わ無さそうに思うけれど、比較などの条件などの結果が全部これになります。
+
+{% capture bool_code %}
+fun main() {
+  let result = ("ほげ" == "いか")
+  println(result)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=bool_code %}
+
+このresultはBoolean型となります。
+`==`の他に`>`とかもBoolean型になります、
+辞書の中に要素があるか、などを調べる関数もBoolean型となります。
+
+関数の話はあとでするので良く分からなくてもいいですが、とにかくif文の条件になるようなものは全部Boolean型になる、という事から、
+Boolean型は結構出てきます。
+
+### TextView, Button, EditTextなどの型
+
+findViewByIdで渡していたこれらは、全て型です。
+現時点では「これらも型だ」という事だけ頭の片隅に入れておけばOKです。
