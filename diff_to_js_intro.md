@@ -99,19 +99,22 @@ fun main() {
 
 kotlinも0から始まる言語ですね。
 
-なお、JavaScriptの配列と違って、型の違うものは入れられない。
-
-{% capture list_error %}
-fun main() {
-  val items = listOf(1, "ふたーつ!", "みっつ！") // コンパイルエラー
-
-  println(items[1])
-}
-{% endcapture %}
-{% include kotlin_quote.html body=list_error %}
-
+要素の追加方法とかは違うが、その辺はあとで真面目に見ていきます。
 
 ## 辞書がMap
 
+kotlinは、辞書をMapと呼びます。同じものです。
+kotlinは辞書を定義するのはJSに比べると少しかったるくて、toのペアを並べてmapOfする。
 
+{% capture map_basic %}
+fun main() {
+  val charaNum = mapOf("ストII" to 8, "ストII'" to 12, "スパII" to 16, "餓狼伝説" to 3)
 
+  println(charaNum["スパII"])
+  println(charaNum["餓狼伝説"])
+  println(charaNum["ストII"])
+}
+{% endcapture %}
+{% include kotlin_quote.html body=map_basic %}
+
+こちらも要素の追加方法などはあとで見ていく。
