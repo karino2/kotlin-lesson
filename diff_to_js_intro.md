@@ -26,6 +26,8 @@ fun main() {
 ```kotlin
 fun main() {
 
+  いつもここに何かコードを書く
+
 }
 ```
 
