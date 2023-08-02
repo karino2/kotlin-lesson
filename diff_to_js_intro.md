@@ -42,6 +42,46 @@ fun main() {
 ## 変数がvalとvar
 
 JS入門ではvarだったが、kotlinにはvalとvarの２つがある。
+valは最初に値を設定すると以後変更出来ない変数。varは一度値を設定した後も、違う値を再セット出来る変数。
+
+{% capture val_error %}
+fun main() {
+  val a = 3
+  a = 4 // コンパイルエラー
+
+  println(a)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=val_error %}
+
+{% capture var_ok %}
+fun main() {
+  var a = 3
+  a = 4 // varなのでOK！
+  
+  println(a)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=var_ok %}
+
+意外と同じ変数に値をもう一度設定したいことは無いので、だいたいvalだけ使ってたまに必要なところだけvarを使う感じになる。
+足し算して和を求める時とかはvarが必要になりがち。
+
+{% capture range_sum %}
+fun main() {
+  val items = listOf(1, 2, 3, 4, 5)
+
+  var sum = 0
+  for(item in items) {
+    sum += item
+  }
+
+  println(sum)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=range_sum %}
+
+
 
 ## 配列がList
 
