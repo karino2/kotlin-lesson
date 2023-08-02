@@ -74,6 +74,8 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=map_basic %}
 
+### 百本ノックを10個くらいやってみよう
+
 ということでMapも[第6.2回: 辞書100本ノック - 算数で挫折した人向けの、Javascript入門](https://karino2.github.io/js-introduction/ch06_2.html)のうち、
 パターン1とパターン2だけ飽きるまでやってみてください。
 パターン3はmutableが出てくるので後回しで。
