@@ -99,6 +99,18 @@ fun main() {
 
 kotlinも0から始まる言語ですね。
 
+なお、JavaScriptの配列と違って、型の違うものは入れられない。
+
+{% capture list_error %}
+fun main() {
+  val items = listOf(1, "ふたーつ!", "みっつ！") // コンパイルエラー
+
+  println(items[1])
+}
+{% endcapture %}
+{% include kotlin_quote.html body=list_error %}
+
+
 ## 辞書がMap
 
 
