@@ -97,6 +97,8 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=list_basic %}
 
+これでitemsの型がListになります。（厳密には`List<String>`になる。これもあとでまじめに見ていく）
+
 kotlinも0から始まる言語ですね。
 
 要素の追加方法とかは違うが、その辺はあとで真面目に見ていきます。
@@ -116,5 +118,9 @@ fun main() {
 }
 {% endcapture %}
 {% include kotlin_quote.html body=map_basic %}
+
+JSに比べるとかったるいね。
+
+これでcharaNumはMap型になる（厳密には`Map<String, Int>`になる、これも後でまじめに見ていく）
 
 こちらも要素の追加方法などはあとで見ていく。
