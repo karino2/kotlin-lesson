@@ -81,9 +81,23 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=range_sum %}
 
-
-
 ## 配列がList
+
+kotlinにも配列があるけれど、あまり使わない。JSの配列に相当するものはListと思っておく方がいい。
+ListについてはあとのCollectionsのところで詳しく扱うが、とりあえず配列の代わりはList。
+
+ListはlistOfで作り、JSと同じ感じにアクセスする。
+
+{% capture list_basic %}
+fun main() {
+  val items = listOf("ひとつ!", "ふたーつ!", "みっつ！")
+
+  println(items[1])
+}
+{% endcapture %}
+{% include kotlin_quote.html body=list_basic %}
+
+kotlinも0から始まる言語ですね。
 
 ## 辞書がMap
 
