@@ -105,3 +105,39 @@ fun main() {
 ```kotlin
 genzainoAtai = findViewById<TextView>(R.id.result).text.toInt()
 ```
+
+## 「+」を押された時に表示は前のままにしておく方法
+
+「+」を押された瞬間にTextViewは"0"にクリアしちゃっていいと思うけれど、
+もうちょっと電卓っぽい挙動にしたいなら、+を押した時点では表示は足した結果を出すのが正しい。
+そうすると次に数字を押された時は特別扱いが必要。
+
+どうやるかというと、Booleanのフラグを持たせる。
+
+以下のコードに
+
+```kotlin
+    var genzainoAtai = 0
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    }
+```
+
+さらにフラグを追加する。
+
+```kotlin
+    var genzainoAtai = 0
+    var isNextClear = false
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    }
+```
+
+次数字を入力された時はクリアしなくてはいけない時は、このisNextClearにtrueを入れておいて、
+各数字のボタンのClickListenerの中でこのフラグを見て処理を変える。
+
+10回繰り返さなくてはいけないのでだるいからここまではやらなくてもいい。関数の話を終えた後にやったらいいかもしれない。
