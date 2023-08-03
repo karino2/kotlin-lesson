@@ -8,6 +8,7 @@ layout: page
 - [「算数で挫折した人向けの、Javascript入門」との差分](diff_to_js_intro.md)
 - [型とは何か？](what_is_type.md)
 - [コレクション入門](collection.md)
+- [簡単な電卓を作ってみよう](simple_calc.md)
 
 ### あらすじ
 

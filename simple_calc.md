@@ -1,0 +1,84 @@
+---
+title: "簡単な電卓を作ってみよう"
+layout: page
+---
+Androidアプリの入門として、足し算とクリアしか無い電卓を作ってみよう。
+簡単な方針を書いておきます。
+
+## レイアウト
+
+一番外側のLinearLayoutに、
+
+1. 現在入力中の数字を表示するTextView
+2. 「9, 8, 7, C」 のボタンを持ったLinearLayout
+3. 「6, 5, 4, +」 のボタンを持ったLinearLayout
+4. 「3, 2, 1, =」 のボタンを持ったLinearLayout
+5. 「0」のボタン
+
+という感じでどうでしょう？
+
+Cはクリアです。クリアを押されるとTextViewは0が入ります。
+
+数字が押されるとTextViewの文字の右隣りに今押された数字が入るのだが、今のテキストが0の時だけ特別扱いする。
+
+全てのボタンにsetOnClickListenerを適当にぶら下げる。例えば9のボタンなら以下。
+
+```kotlin
+findViewById<Button>(R.id.buttonNine).setOnClickListener { findViewById<TextView>(R.id.result).text += "9" }
+```
+
+## 計算結果を覚えておく方法
+
+「+」の処理は難しいので、いくつか必要なヒントを書いておきます。
+
+まず、「+」を押した時点での数字を覚えておいて、そこから先に数字を入れられたらリセットする必要がある。（この辺は実際にその辺の電卓とか電卓アプリ触って見ると分かります）
+
+リセットは手抜きでこの時点で0を入れてしまってもいいけれど、値を覚えておく必要はあります。
+
+最初が以下のようになっているのが、
+
+```kotlin
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    }
+```
+
+このonCreateの外に以下のように変数を用意しておくと覚えられます（この説明はそのうちしますので今はそういうものと思って使ってください）。
+
+```kotlin
+    var genzainoAtai = 0
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    }
+```
+
+このgenzainoAtaiという変数に数字を保存しておく事が出来る。
+
+## 文字列と数字の変換
+
+`findViewById<TextView>(R.id.result).text` で取れるのは文字列なのだけど、保存したり足し算したりする時は数字にしたい。
+
+文字列から数字に変換するのはtoIntというのを使います。
+
+{% capture str_to_int %}
+fun main() {
+  val s = "123"
+  val num = s.toInt()
+
+  // s+4は出来ない。以下のコードのコメントを外して試してみよう。
+  // println(s+4)
+
+  // toInt()で数字にした後は足せる。
+  println(num+4)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=str_to_int %}
+
+つまり保存したくなったら、以下のようにすれば良い。
+
+```kotlin
+genzainoAtai = findViewById<TextView>(R.id.result).text.toInt()
+```
