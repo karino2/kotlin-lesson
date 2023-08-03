@@ -7,7 +7,7 @@ Androidアプリの入門として、足し算とクリアしか無い電卓を�
 
 ## レイアウト
 
-一番外側のLinearLayoutに、
+一番外側のLinearLayoutに、以下のような子供を持たせる。
 
 1. 現在入力中の数字を表示するTextView
 2. 「9, 8, 7, C」 のボタンを持ったLinearLayout
@@ -17,17 +17,38 @@ Androidアプリの入門として、足し算とクリアしか無い電卓を�
 
 という感じでどうでしょう？
 
-Cはクリアです。クリアを押されるとTextViewは0が入ります。
+Cはクリアです。
 
 数字が押されるとTextViewの文字の右隣りに今押された数字が入るのだが、今のテキストが0の時だけ特別扱いする。
 
-全てのボタンにsetOnClickListenerを適当にぶら下げる。例えば9のボタンなら以下。
+## 文字に押された数字を足していく
+
+文字列に数字を足していくのは、イメージとしては以下のような感じで出来ます。
+
+{% capture str_add %}
+fun main() {
+  var s = "0"
+
+  s += "1"
+  s += "2"
+  s += "3"
+
+  println(s)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=str_add %}
+
+
+全てのボタンにsetOnClickListenerを適当にぶら下げる。例えば9のボタンなら以下みたいな感じ。
 
 ```kotlin
 findViewById<Button>(R.id.buttonNine).setOnClickListener { 
   findViewById<TextView>(R.id.result).text += "9"
 }
 ```
+
+これだと数字の一番左に余分な"0"が入っちゃうので、if文で"0"の時はsは無視して直接入れる、みたいな処理を書く必要がある。
+10回も同じ処理書かなくてはいけなくてダルいが頑張る。
 
 ## 計算結果を覚えておく方法
 
