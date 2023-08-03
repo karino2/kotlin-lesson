@@ -24,7 +24,9 @@ Cはクリアです。クリアを押されるとTextViewは0が入ります。
 全てのボタンにsetOnClickListenerを適当にぶら下げる。例えば9のボタンなら以下。
 
 ```kotlin
-findViewById<Button>(R.id.buttonNine).setOnClickListener { findViewById<TextView>(R.id.result).text += "9" }
+findViewById<Button>(R.id.buttonNine).setOnClickListener { 
+  findViewById<TextView>(R.id.result).text += "9"
+}
 ```
 
 ## 計算結果を覚えておく方法
@@ -44,7 +46,7 @@ findViewById<Button>(R.id.buttonNine).setOnClickListener { findViewById<TextView
     }
 ```
 
-このonCreateの外に以下のように変数を用意しておくと覚えられます（この説明はそのうちしますので今はそういうものと思って使ってください）。
+このonCreateの「外に」以下のように変数を用意しておくと値を覚えておけます（この説明はそのうちしますので今はそういうものと思って使ってください）。
 
 ```kotlin
     var genzainoAtai = 0
@@ -68,10 +70,10 @@ fun main() {
   val s = "123"
   val num = s.toInt()
 
-  // s+4は出来ない。以下のコードのコメントを外して試してみよう。
-  // println(s+4)
+  // 文字列と数字を足すと連結になっちゃう。(123+4で127にならない)
+  println(s+4)
 
-  // toInt()で数字にした後は足せる。
+  // toInt()で数字にしたら足し算になる。
   println(num+4)
 }
 {% endcapture %}
