@@ -362,6 +362,153 @@ idと型を指定するのは最初のうちはなんだか無駄に二回同じ
 
 この時点では`<>`の中には型を指定しているらしいぞ、くらいの理解でいいです。
 
+## 文字列と数字をいったりきたりする
+
+突然ですがクイズです。 `"1"+"2"`はいくつでしょうか？
+以下を実行する前に答えを考えてから実行してみてください。
+
+{% capture str_add1 %}
+fun main() {
+  val s = "1"+"2"
+  println(s)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=str_add1 %}
+
+予想通りでしたか？正解は"12"です。"3"じゃありません。
+
+では`1+2`はいくつでしょうか？前とどこが違うか分かりますか？
+
+{% capture int_add1 %}
+fun main() {
+  val s = 1+2
+  println(s)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=int_add1 %}
+
+今度は3になりました。違いは何か、というと、前者はString、後者はIntという事になります。
+
+数字の「+」は足し算を意味しますが、文字列の「+」は連結、つまり二つの文字列をつなげるという意味になります。
+これはJS入門の方でも少し話したとは思いますが、この間を行ったり来たりするのはJavascriptよりkotlinの方が意識的に行う必要があるので、
+ここで少し練習しておきましょう。
+
+### 文字列からIntにするのは.toInt()
+
+String型の変数からIntが欲しい事があります。
+そういう時は.toIntというのを呼びます。
+
+例えばさきほどの文字列の「+」の例で、「+」をしているところで`.toInt()`を呼ぶと以下のようになります。
+
+{% capture str_add2 %}
+fun main() {
+  val s1 = "1"
+  val s2 = "2"
+
+  println(s1.toInt()+s2.toInt())
+}
+{% endcapture %}
+{% include kotlin_quote.html body=str_add2 %}
+
+つまり数字として足す訳ですね。
+以下のようにも出来ます。
+
+{% capture str_add3 %}
+fun main() {
+  val s1 = "1"
+  val s2 = "2"
+
+  // 新しい変数にする
+  val n1 = s1.toInt()
+  val n2 = s2.toInt()
+
+  println(n1+n2)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=str_add3 %}
+
+{% capture str_add4 %}
+fun main() {
+  // ダブルクオートの後に直接.toInt()してs1とs2をIntにしてしまう
+  val s1 = "1".toInt()
+  val s2 = "2".toInt()
+
+  println(s1+s2)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=str_add4 %}
+
+以下、少し自分でも同じように書いてみましょう。
+
+**以下のTODO以下の二行を変更して3になるようにせよ**
+
+{% capture str_add5 %}
+fun main() {
+  val s1 = "1"
+  val s2 = "2"
+
+  // TODO:以下の二行を変更
+  val n1 = s1
+  val n2 = s2
+
+
+  println(n1+n2)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=str_add5 %}
+
+
+**以下のTODO以下の二行を変更して3になるようにせよ**
+{% capture str_add6 %}
+val hoge = "1"
+val ika = "2"
+
+fun main() {
+  // TODO:以下の二行を変更
+  val n1 = hoge
+  val n2 = ika
+
+
+  println(n1+n2)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=str_add6 %}
+
+**以下のTODO以下の二行を変更して3になるようにせよ**
+
+ダブルクオートを消す、とかはしないでtoIntを使ってください。
+
+{% capture str_add7 %}
+
+fun main() {
+  // TODO:以下の二行を変更
+  val n1 = "1"
+  val n2 = "2"
+
+
+  println(n1+n2)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=str_add7 %}
+
+### Intから文字列にするのは.toString()
+
+逆方向、つまりIntから文字列にする方は、あとで説明するstring templateという機能があるのであまり出番は無いかもしれませんが、
+一応`.toString()`で出来ます。
+
+{% capture int_add2 %}
+
+fun main() {
+  val n1 = 1
+  val n2 = 2
+
+
+  println(n1.toString()+n2.toString())
+}
+{% endcapture %}
+{% include kotlin_quote.html body=int_add2 %}
+
+
 ## まとめ
 
 型ってのがあって、コレクションのところで必要になるらしい。
