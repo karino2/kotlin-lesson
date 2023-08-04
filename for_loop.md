@@ -53,6 +53,8 @@ fun main() {
 
 **itemsの中身を全部合計した値を求めよ**
 
+sumに要素を足していきます。
+
 {% capture for_basic4 %}
 fun main() {
   val items = listOf(1, 2, 3, 4, 5)
