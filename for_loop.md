@@ -122,53 +122,55 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=for_basic7 %}
 
-### 添字はindicesかwithIndex()
+## Range入門
 
-以下のようなものがあったとします。
+for文のコレクションのところ、
 
-{% capture for_index1 %}
+```
+for(変数名 in コレクション) {
+
+}
+```
+
+には、Rangeというものも指定出来ます。
+Rangeは0から5まで、とかそういうの。
+
+Rangeは以下のように書きます。
+
+{% capture for_range1 %}
 fun main() {
-  val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
-
-  for(a in youbi) {
-    println(a)
+  for(num in 0..5) {
+    println(num)
   }
 }
 {% endcapture %}
-{% include kotlin_quote.html body=for_index1 %}
+{% include kotlin_quote.html body=for_range1 %}
 
-ここで、この出力を「月曜、水曜、金曜、日曜」と一日おきにするにはどうしたらいいかを考えます。
+この`0..5`というのがRangeです。なお、5を含めたくない場合は`..<`というのが使えます。
 
-もちろんここまでの知識を使って、Booleanのフラグを使って以下のように書けば書けそうですが
-
-{% capture for_index2 %}
+{% capture for_range2 %}
 fun main() {
-  val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
-  var toggle = true
-
-  for(a in youbi) {
-    if(toggle)
-      println(a)
-    toggle = !toggle
+  for(num in 0..<5) {
+    println(num)
   }
 }
 {% endcapture %}
-{% include kotlin_quote.html body=for_index2 %}
+{% include kotlin_quote.html body=for_range2 %}
 
-これはちょっとややこしい。
-あれ？「!toggle」は初めてかな？ビックリマークは反転させる、という機能で、trueがfalse、falseがtrueになります。
-まぁいい。
+そんなの`0..4`と書けば一緒じゃない？というのは一緒なんですが、コレクションのcountとかと組み合わせる時に便利なので、
+そんなのあるんだ、とおぼえておくと良いです。
 
-それよりも、こういうのは添字の一覧を回せると良いです。それはindicesというのを使います。
-以下のコードを実行してみてください。
+別にこのnumは使わなくてもいい。同じ事を三回出力する、みたいな時は以下のように書きます。
 
-{% capture for_index3 %}
+{% capture for_range3 %}
 fun main() {
-  val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
-
-  for(a in youbi.indices) { // ここがNew!
-    println(a)
+  for(_ in 1..3) {
+    println("大事な事なので3回言いました")
   }
 }
 {% endcapture %}
-{% include kotlin_quote.html body=for_index3 %}
+{% include kotlin_quote.html body=for_range3 %}
+
+この`_`は、「この変数は使いません」という意味です。
+
+
