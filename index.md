@@ -9,6 +9,7 @@ layout: page
 - [型とは何か？](what_is_type.md)
 - [コレクション入門](collection.md)
 - [簡単な電卓を作ってみよう](simple_calc.md)
+- [forループ入門](for_loop.md)
 
 ### あらすじ
 

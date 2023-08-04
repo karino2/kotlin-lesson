@@ -39,6 +39,7 @@ header_pages:
   - what_is_type.md
   - collection.md
   - simple_calc.md
+  - for_loop.md
   - old_index.md
   - pr_intro.md
   - suspend_intro.md
