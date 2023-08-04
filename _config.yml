@@ -35,6 +35,7 @@ plugins:
 
 header_pages:
   - index.md
+  - intro.md
   - diff_to_js_intro.md
   - what_is_type.md
   - collection.md
