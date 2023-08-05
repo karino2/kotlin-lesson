@@ -17,7 +17,48 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=count_code %}
 
+個数は7だけど、`youbi[7]`は最後「の次」の要素にアクセスしようとしてエラーになるので中止。`youbi[6]`までしかアクセス出来ない。
+つまりcountの結果をアクセスするのはエラー。
 
+{% capture count_code2 %}
+fun main() {
+  val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
+
+  // エラー
+  val hoge = youbi[youbi.count()]
+  println(hoge)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=count_code2 %}
+
+`youbi.count()`は7なので、`youbi[youbi.count()]`は`youbi[7]`になってしまって、範囲外アクセスとなってしまう。
+最後の要素は`yougi[6]`なので、1を引く以下のコードは動く。
+
+{% capture count_code3 %}
+fun main() {
+  val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
+
+  // これはオーケー。最後の要素。
+  val hoge = youbi[youbi.count()-1]
+  println(hoge)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=count_code3 %}
+
+ややこしいですね。
+なお、最後の要素を取り出すのに1を引くのを忘れるのが良くあるので、最後の要素を取る、`.last()`というのがあります。
+
+{% capture count_code4 %}
+fun main() {
+  val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
+
+  val hoge = youbi.last()
+  println(hoge)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=count_code4 %}
+
+こちらの方がミスは少ないね。
 
 ## 添字はindicesかwithIndex()
 
