@@ -94,7 +94,7 @@ fun main() {
 {% include kotlin_quote.html body=index_code2 %}
 
 これはちょっとややこしい。
-あれ？「!toggle」は初めてかな？ビックリマークは反転させる、という機能で、trueがfalse、falseがtrueになります。
+あれ？`!toggle`は初めてかな？ビックリマークは反転させる、という機能で、trueがfalse、falseがtrueになります。
 まぁいい。
 
 それよりも、こういうのは添字の一覧を回せると良いです。それはindicesというのを使います。
@@ -129,9 +129,44 @@ fun main() {
 
 このように添え字を`youbi[a]`とすれば要素になる訳ですね。
 
-これだけだと前と一緒ですが、例えば逆順に出力するなら以下になります。
+そしてこれを一つ飛ばしにするなら、[forループ入門](for_loop.md)でやったように`%`を使うのが良さそう。
 
 {% capture index_code5 %}
+fun main() {
+  val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
+
+  for(a in youbi.indices) {
+    if(a%2 == 0)
+      println(youbi[a])
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=index_code5 %}
+
+これで一つ飛ばしに出力出来ました。
+
+**以下のコードを変更し、曜日を2個飛ばしに出力せよ**
+
+曜日を二つ飛ばし、つまり月曜、木曜、日曜と出力されるようにしてください。
+
+{% capture index_code6 %}
+fun main() {
+  val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
+
+  for(a in youbi.indices) {
+    // TODO: 以下を変更
+    println(youbi[a])
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=index_code6 %}
+
+
+### 逆順にしてみる
+
+インデックスの一覧を回すのを応用すると、逆順に出力したりも出来ます。
+
+{% capture revindex_code1 %}
 fun main() {
   val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
 
@@ -140,13 +175,13 @@ fun main() {
   }
 }
 {% endcapture %}
-{% include kotlin_quote.html body=index_code5 %}
+{% include kotlin_quote.html body=revindex_code1 %}
 
 6から引けばいい。6というのはyoubiの個数-1です。なんで1引くかというと0から始まるから。
 
 リストの個数はcountで取れるので、以下のようにも書ける。
 
-{% capture index_code6 %}
+{% capture revindex_code2 %}
 fun main() {
   val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
 
@@ -155,11 +190,11 @@ fun main() {
   }
 }
 {% endcapture %}
-{% include kotlin_quote.html body=index_code6 %}
+{% include kotlin_quote.html body=revindex_code2 %}
 
 少し読みにくいので変数を作ってもいいかもしれない。
 
-{% capture index_code7 %}
+{% capture revindex_code3 %}
 fun main() {
   val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
 
@@ -169,7 +204,7 @@ fun main() {
   }
 }
 {% endcapture %}
-{% include kotlin_quote.html body=index_code7 %}
+{% include kotlin_quote.html body=revindex_code3 %}
 
 少し練習問題をやってみましょう。
 
@@ -178,7 +213,7 @@ fun main() {
 以下のコードを変更して、逆順でさらに一つ飛ばしになるようにしてみましょう。
 一つ飛ばしは[forループ入門](for_loop.md)を参考に。
 
-{% capture index_code8 %}
+{% capture revindex_code4 %}
 fun main() {
   val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
 
@@ -188,4 +223,4 @@ fun main() {
   }
 }
 {% endcapture %}
-{% include kotlin_quote.html body=index_code8 %}
+{% include kotlin_quote.html body=revindex_code4 %}
