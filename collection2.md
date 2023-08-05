@@ -17,8 +17,8 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=count_code %}
 
-個数は7だけど、`youbi[7]`は最後「の次」の要素にアクセスしようとしてエラーになるので中止。`youbi[6]`までしかアクセス出来ない。
-つまりcountの結果をアクセスするのはエラー。
+個数は7だけど、`youbi[7]`は最後「の次」の要素にアクセスしようとしてエラーになるので注意。`youbi[6]`までしかアクセス出来ない。
+つまり以下のようなコードはエラー。
 
 {% capture count_code2 %}
 fun main() {
@@ -32,7 +32,7 @@ fun main() {
 {% include kotlin_quote.html body=count_code2 %}
 
 `youbi.count()`は7なので、`youbi[youbi.count()]`は`youbi[7]`になってしまって、範囲外アクセスとなってしまう。
-最後の要素は`yougi[6]`なので、1を引く以下のコードは動く。
+youbiの最後の要素は`yougi[6]`なので、1を引く以下のコードは動く。
 
 {% capture count_code3 %}
 fun main() {
@@ -46,7 +46,7 @@ fun main() {
 {% include kotlin_quote.html body=count_code3 %}
 
 ややこしいですね。
-なお、最後の要素を取り出すのに1を引くのを忘れるのが良くあるので、最後の要素を取る、`.last()`というのがあります。
+なお、最後の要素を取り出すのに1を引くのを忘れるバグが良くあるので、最後の要素を取る専用の手段、`.last()`というのがあります。
 
 {% capture count_code4 %}
 fun main() {
