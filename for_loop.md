@@ -308,3 +308,36 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=for_modulo2 %}
 
+`$i`に関しては[文字列入門](string_intro.md)の「String template」を参照。
+2で割った余りが0というのは偶数という意味ですが、ようするに0, 2, 4, 6, 8と進むという事です。
+
+もうひとつ例を見てみましょう。
+月曜から日曜までのリストがあったとして、一日飛ばしに、「月曜、水曜、金曜、日曜」をプリントしたいとします。
+すると、以下のようになります。
+
+{% capture for_modulo3 %}
+fun main() {
+  val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
+
+  for(a in 0..6) {
+    if (a % 2 == 0)
+    println(youbi[a])
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=for_modulo3 %}
+
+
+さらに2つ飛ばしなら以下。
+
+{% capture for_modulo4 %}
+fun main() {
+  val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
+
+  for(a in 0..6) {
+    if (a % 3 == 0)
+    println(youbi[a])
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=for_modulo4 %}
