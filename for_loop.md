@@ -271,3 +271,40 @@ fun main() {
 }
 {% endcapture %}
 {% include kotlin_quote.html body=for_range10 %}
+
+### 一つ飛ばしで辿るのはパーセント（%）を使う
+
+唐突ですがkotlinには、通常の足し算、引き算、掛け算、割り算 の他に、剰余と言われるものがあります。
+これは割り算の「あまり」を求めるもので、`%`を使います。
+
+以下例を見てみましょう。
+
+{% capture for_modulo2 %}
+fun main() {
+  // これは割り算
+  println(5/3)
+
+  // これは剰余
+  println(5%3)
+
+  // いろいろな余り
+  println(4%2)
+  println(3%2)
+  println(10%7)
+  println(1234%7)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=for_modulo1 %}
+
+これだけだと何に使うんだ？って感じですが、一つ飛ばしとか3回に一回とかをやりたい時に便利です。
+
+{% capture for_modulo2 %}
+fun main() {
+  for(i in 0..10) {
+    if (i%2 == 0)
+      println("$i は偶数です")
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=for_modulo2 %}
+
