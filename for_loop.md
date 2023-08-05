@@ -327,10 +327,23 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=for_modulo3 %}
 
+火木土にしたいなら、いくつかやり方はありますが、以下とかどうでしょう？
+
+{% capture for_modulo4 %}
+fun main() {
+  val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
+
+  for(a in 0..6) {
+    if ((a+1) % 2 == 0)
+      println(youbi[a])
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=for_modulo4 %}
 
 さらに2つ飛ばしなら以下。
 
-{% capture for_modulo4 %}
+{% capture for_modulo5 %}
 fun main() {
   val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
 
@@ -340,4 +353,7 @@ fun main() {
   }
 }
 {% endcapture %}
-{% include kotlin_quote.html body=for_modulo4 %}
+{% include kotlin_quote.html body=for_modulo5 %}
+
+こういう風に、一つずつ交互に何かしたい、みたいな時には剰余、つまり`%`を良く使います。
+これは使う時が来たら思い出してここ見直すのがいいでしょう。
