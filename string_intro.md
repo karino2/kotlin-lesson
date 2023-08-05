@@ -88,6 +88,8 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=strtemplate_code1 %}
 
+変数の切れ目がkotlin側に分かるように空白など（カンマとかでも平気）が必要になる場合があります。（上の例で空白を削除して実行してみよう）
+
 空白を開けたくないときやもっと複雑な式を入れたいときは中括弧でくくります。
 
 {% capture strtemplate_code2 %}
