@@ -63,7 +63,7 @@ fun main() {
 {% capture rawstr_code1 %}
 fun main() {
   val s = """
-改行も使える。
+複数行がこうやって書ける。
 ダブルクオートも使える。"文字列"みたいに。
 いろいろテキストをそのまま書けて便利。
 """
@@ -77,14 +77,25 @@ fun main() {
 ## String template
 
 文字列の中にドルと変数名でString templateです。
-また、中括弧で式を入れられます。
 
 {% capture strtemplate_code1 %}
 fun main() {
   val counter = 1234
-  val s = "あなたは$counter人目の来場者です"
+  val s = "あなたは$counter 人目の来場者です"
 
   println(s)
 }
 {% endcapture %}
 {% include kotlin_quote.html body=strtemplate_code1 %}
+
+空白を開けたくないときやもっと複雑な式を入れたいときは中括弧でくくります。
+
+{% capture strtemplate_code2 %}
+fun main() {
+  val counter = 1234
+  val s = "あなたは${counter}人目の来場者です"
+
+  println(s)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=strtemplate_code2 %}
