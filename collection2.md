@@ -170,3 +170,22 @@ fun main() {
 }
 {% endcapture %}
 {% include kotlin_quote.html body=index_code7 %}
+
+少し練習問題をやってみましょう。
+
+**日曜、金曜、水曜...と逆順の一つ飛ばしでprintlnせよ**
+
+以下のコードを変更して、逆順でさらに一つ飛ばしになるようにしてみましょう。
+一つ飛ばしは[forループ入門](for_loop.md)を参考に。
+
+{% capture index_code8 %}
+fun main() {
+  val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
+
+  for(a in youbi.indices) {
+    // TODO: 以下を修正せよ
+    println(a)
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=index_code8 %}
