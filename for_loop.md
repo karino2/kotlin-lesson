@@ -321,7 +321,7 @@ fun main() {
 
   for(a in 0..6) {
     if (a % 2 == 0)
-    println(youbi[a])
+      println(youbi[a])
   }
 }
 {% endcapture %}
@@ -336,7 +336,7 @@ fun main() {
 
   for(a in 0..6) {
     if (a % 3 == 0)
-    println(youbi[a])
+      println(youbi[a])
   }
 }
 {% endcapture %}
