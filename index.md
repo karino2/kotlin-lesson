@@ -14,7 +14,7 @@ layout: page
 - [コレクション概要](collection.md)
 - [簡単な電卓を作ってみよう](simple_calc.md) 中ボス
 - [forループ入門](for_loop.md)
-- [List入門](collection2.md)
+- [List入門](list_intro.md)
 
 ### 昔のトップページ
 
