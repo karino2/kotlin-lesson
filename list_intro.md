@@ -147,7 +147,10 @@ fun main() {
 
 このように添え字を`youbi[a]`とすれば要素になる訳ですね。
 
-そしてこれを一つ飛ばしにするなら、[forループ入門](for_loop.md)でやったように`%`を使うのが良さそう。
+なお、youbi.indicesは、前に見たRangeとcountを使うと、`0..<youbi.count()`でも同じ結果になります。
+どちらでも良いのですが、添字の間違いはちょこちょこあるのでindicesを使う方がいいかもしれません。
+
+さて、これを一つ飛ばしにするなら、[forループ入門](for_loop.md)でやったように`%`を使うのが良さそう。
 
 {% capture index_code5 %}
 fun main() {
@@ -178,7 +181,6 @@ fun main() {
 }
 {% endcapture %}
 {% include kotlin_quote.html body=index_code6 %}
-
 
 ### 逆順にしてみる
 
