@@ -43,7 +43,7 @@ fun main() {
 
 {% capture renketu_code1 %}
 fun main() {
-  val s1 = "ついに念願の"
+  val s1 = "ついにねんがんの"
   val s2 = "アイスソードを"
   val s3 = "てにいれたぞ"
 
@@ -54,7 +54,97 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=renketu_code1 %}
 
-`+=`の話もこの辺に書く。
+こんな感じでつなげる事が出来ます。`"1"+"2"`は3では無く`"12"`になる事に注意しましょう。
+
+
+{% capture renketu_code2 %}
+fun main() {
+  println("1"+"2")
+}
+{% endcapture %}
+{% include kotlin_quote.html body=renketu_code2 %}
+
+### varと+=で連結
+
+kotlinには`+=`というのもあります。
+少しややこしいですが、
+
+```kotlin
+a += b
+```
+
+は、以下と同じ意味です。
+
+```kotlin
+a = a + b
+```
+
+慣れないうちはいつも頭の中で下になおして考えましょう。
+そしてこの`+=`は変更した結果をまた同じ変数に代入するので、いつも`var`になります。
+`+=`を使う時は`var`、と覚えておくといいかもしれない。
+
+以下例を見てみましょう。`+=`は、複数ある文字列をつなげる時に良く使います。
+
+{% capture plusassign_code1 %}
+fun main() {
+  val s1 = "ついにねんがんの"
+  val s2 = "アイスソードを"
+  val s3 = "てにいれたぞ"
+
+  var s = ""
+  s += s1
+  s += s2
+  s += s3
+
+  println(s)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=plusassign_code1 %}
+
+sが`var`なのに注目。こういう風に`+=`を使う変数は`var`にしないといけない（上のコードをvalに変更してとどうなるか試してみよう）。
+
+これだけだとなんでこんな事するの？って感じですが、Listとかfor文が出てくるともうちょっと意味が分かります。
+以下はコレクションとforループをやるところで説明しますが、こんな感じで使う、という雰囲気を感じ取るべく載せておきます。
+
+{% capture plusassign_code2 %}
+fun main() {
+  val items = listOf("ついにねんがんの", "アイスソードを", "てにいれたぞ")
+  var s = ""
+
+  for(item in items) {
+    s += item
+  }
+
+  println(s)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=plusassign_code2 %}
+
+こんな感じで、リストの文字列を全部つなげたい、みたいな時に`+=`を使うと便利です。
+
+なお、別に上のコードの`+=`のところを、以下のように書いても構いません。
+
+```kotlin
+s = s + item
+```
+
+つまりこんな感じ。
+
+{% capture plusassign_code3 %}
+fun main() {
+  val items = listOf("ついにねんがんの", "アイスソードを", "てにいれたぞ")
+  var s = ""
+
+  for(item in items) {
+    s = s + item
+  }
+
+  println(s)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=plusassign_code3 %}
+
+いいんだけど、普通は`+=`で書くかな。
 
 ## Raw string
 
