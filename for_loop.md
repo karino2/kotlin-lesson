@@ -135,7 +135,7 @@ for(変数名 in コレクション) {
 には、Rangeというものも指定出来ます。
 Rangeは0から5まで、とかそういうの。
 
-Rangeは以下のように書きます。
+Rangeは`0..5`のように書きます。例えば以下。
 
 {% capture for_range1 %}
 fun main() {
@@ -193,3 +193,81 @@ fun main() {
 }
 {% endcapture %}
 {% include kotlin_quote.html body=for_range5 %}
+
+リストを逆順に出力したい時にも使えない事も無い（後編でindicesなども説明するけれど）
+
+{% capture for_range6 %}
+fun main() {
+  val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
+
+  for(a in 0..6) {
+    println(youbi[6-a])
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=for_range6 %}
+
+こういう時に6なのか7なのかとかはややこしいね。
+
+いくつか自分で書いてみましょう。
+
+**1から10までprintlnせよ**
+
+1から10までのrangeをfor文で回してprintlnします。
+
+{% capture for_range7 %}
+fun main() {
+}
+{% endcapture %}
+{% include kotlin_quote.html body=for_range7 %}
+
+
+**1から10まで足した結果を求めよ**
+
+1から10まで足すといくつになるか、高校生で等差数列の和の公式というのを習いますが、
+プログラマは何も考えずにコンピュータに足させます。
+
+{% capture for_range7 %}
+fun main() {
+  var sum = 0
+
+  // TODO: 以下で1から10まで足す
+
+  println(sum)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=for_range7 %}
+
+**1から100まで足した結果を求めよ**
+
+一緒やん、と思うかもしれんけど、100まで足した結果も求めておこう。
+変数sumも自分で作って。
+
+{% capture for_range8 %}
+fun main() {
+}
+{% endcapture %}
+{% include kotlin_quote.html body=for_range8 %}
+
+**itemsを逆順に取り出してprintlnせよ**
+
+{% capture for_range9 %}
+fun main() {
+  val items = listOf("ころしてでもうばいとる", "そうかんけいないね", "ついにねんがんのアイスソードをてにいれたぞ")
+}
+{% endcapture %}
+{% include kotlin_quote.html body=for_range9 %}
+
+**itemsを逆順につなげてprintlnせよ**
+
+{% capture for_range10 %}
+fun main() {
+  val items = listOf("ころしてでもうばいとる", "そうかんけいないね", "ついにねんがんのアイスソードをてにいれたぞ")
+  var concated = ""
+  // TODO: itemsの中を逆順にとりだしてつなげて、conctedに入れる
+
+  println(concated)
+
+}
+{% endcapture %}
+{% include kotlin_quote.html body=for_range10 %}
