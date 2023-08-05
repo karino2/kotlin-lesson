@@ -95,20 +95,22 @@ fun main() {
   val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
 
   for(a in youbi.indices) {
-    println(youbi[7-a])
+    println(youbi[6-a])
   }
 }
 {% endcapture %}
 {% include kotlin_quote.html body=index_code5 %}
 
-7から引けばいい。7というのはyoubiの個数です。リストの個数はcountで取れるので、以下のようにも書ける。
+6から引けばいい。6というのはyoubiの個数-1です。なんで1引くかというと0から始まるから。
+
+リストの個数はcountで取れるので、以下のようにも書ける。
 
 {% capture index_code6 %}
 fun main() {
   val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
 
   for(a in youbi.indices) {
-    println(youbi[youbi.count()-a])
+    println(youbi[youbi.count()-1-a])
   }
 }
 {% endcapture %}
@@ -121,7 +123,7 @@ fun main() {
   val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
 
   for(a in youbi.indices) {
-    val revIndex = youbi.count()-a 
+    val revIndex = youbi.count()-1-a 
     println(youbi[revIndex])
   }
 }
