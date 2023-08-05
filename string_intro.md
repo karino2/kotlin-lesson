@@ -19,7 +19,10 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=str_code1 %}
 
-また、文字列の中に改行を入れる事が出来ます。改行はバックスラッシュとnで書きます。Windowsだと半角の￥記号とnです。
+## 改行は＼n（Windowsだと￥n）
+
+文字列の中に改行を入れる事が出来ます。改行はバックスラッシュとnで書きます。Windowsだと半角の￥記号とnです。
+（バックスラッシュはホームページ上でトラブルを生みがちなので説明では全角で書いています）
 
 改行ってなんやねん？と思う人もいると思うので、見てみるのがいいです。
 
@@ -31,3 +34,57 @@ fun main() {
 }
 {% endcapture %}
 {% include kotlin_quote.html body=kaigyou_code %}
+
+このバックスラッシュとnというのを入れると、次の行に行く感じです。
+
+## 文字列の連結は「+」
+
+文字列をつなぎ合わせるのはプラス記号（`+`）です。
+
+{% capture renketu_code1 %}
+fun main() {
+  val s1 = "ついに念願の"
+  val s2 = "アイスソードを"
+  val s3 = "てにいれたぞ"
+
+  val s = s1+s2+s3
+
+  println(s)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=renketu_code1 %}
+
+`+=`の話もこの辺に書く。
+
+## Raw string
+
+ダブルクオート三つでraw stringです。
+
+{% capture rawstr_code1 %}
+fun main() {
+  val s = """
+改行も使える。
+ダブルクオートも使える。"文字列"みたいに。
+いろいろテキストをそのまま書けて便利。
+"""
+
+  println(s)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=rawstr_code1 %}
+
+
+## String template
+
+文字列の中にドルと変数名でString templateです。
+また、中括弧で式を入れられます。
+
+{% capture strtemplate_code1 %}
+fun main() {
+  val counter = 1234
+  val s = "あなたは$counter人目の来場者です"
+
+  println(s)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=strtemplate_code1 %}
