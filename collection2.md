@@ -60,7 +60,7 @@ fun main() {
 
 こちらの方がミスは少ないね。
 
-## 添字はindicesかwithIndex()
+## 添字はindices
 
 以下のようなものがあったとします。
 
@@ -224,3 +224,6 @@ fun main() {
 }
 {% endcapture %}
 {% include kotlin_quote.html body=revindex_code4 %}
+
+## 添字と要素を同時に取る、withIndex()
+
