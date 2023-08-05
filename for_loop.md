@@ -164,13 +164,32 @@ fun main() {
 
 {% capture for_range3 %}
 fun main() {
-  for(_ in 1..3) {
+  for(num in 1..3) {
     println("大事な事なので3回言いました")
   }
 }
 {% endcapture %}
 {% include kotlin_quote.html body=for_range3 %}
 
-この`_`は、「この変数は使いません」という意味です。
+カウントダウンのような事をしたければ引き算で良いでしょう。
 
+{% capture for_range4 %}
+fun main() {
+  for(num in 0..3) {
+    println(num-3)
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=for_range4 %}
 
+一旦変数にいれてもいいです。
+
+{% capture for_range5 %}
+fun main() {
+  for(num in 0..3) {
+    val num2 = num-3
+    println(num2)
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=for_range5 %}
