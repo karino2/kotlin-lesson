@@ -110,3 +110,8 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=map_create %}
 
+## 続きはforループをやってから
+
+forループをやってからでないと具体例を示しづらいので、続きはforループをやったあとに後編でやります。
+
+[forループ入門](for_loop.md)
