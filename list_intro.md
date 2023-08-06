@@ -276,6 +276,8 @@ for((変数1, 変数2) in コレクション) {
 
 **課題: withIndex()を使って偶数の曜日だけprintlnせよ**
 
+月、水、金、日曜が出力されれば正解です。
+
 {% capture withindex_code2 %}
 fun main() {
   val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
@@ -283,3 +285,27 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=withindex_code2 %}
 
+### 電卓の課題をfor文化出来ないか考えてみる
+
+[簡単な電卓を作ってみよう](simple_calc.md)では、ボタンの0から9までが、ほとんど同じ処理になると思います。
+違うのは数字とボタンのidだけ。
+
+こういうのはうまい事for文に出来そうです。
+
+ようするに以下のようなのがあれば、
+
+```kotlin
+val labels = listOf(R.id.button0, R.id.button1, R.id.button2, R.id.button3, R.id.button4, R.id.button5, R.id.button6, R.id.button7, R.id.button8, R.id.button9)
+```
+
+これをwithIndexを使って、何番目のボタンか、という事と合わせてどうにかなりそう？
+
+```kotlin
+for((num, buttonId) in labels.withIndex()) {
+  findViewById<Button>(buttonId).setOnClickListener { 
+    findViewById<TextView>(R.id.result).text += num.ToString()
+  }
+}
+```
+
+ちょと動くか自信無いので試して動いたら教えてください。
