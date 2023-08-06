@@ -64,14 +64,25 @@ val adapter = object: ArrayAdapter<String>(this, R.layout.list_item, listData) {
 
 なお、getViewをoverrideするので本当はコンストラクタのR.layout.list_itemはなんでも良い（使わないので）。
 
+## showMessageを作る
+
+以下はListViewとは関係ないのですが、今後もちょくちょく使うのでshowMessageを作っておきます。
+JS入門のMessageBox.showと似たものです。
+
+関数の説明をするところまで来たら詳細を説明するので、今はコピペしておいてください。
+
+```kotlin
+fun showMessage(msg: String) { Toast.makeText(this, msg, Toast.LENGTH_LONG).show() }
+```
+
 ## onCreateでListViewにadapterをセットしてitemのクリックリスナーを作る
+
+ListViewをfindVewByIdで取り出して、adapterとsetOnItemClickListenerをセットします。
 
 ```kotlin
 findViewById<ListView>(R.id.listView).adapter = adapter
 findViewById<ListView>(R.id.listView).setOnItemClickListener { parent, view, position, id ->
     val selectedText = view.findViewById<TextView>(R.id.itemLabel).text
-    Toast.makeTex(this@MainActivity, "${selectedText}が選ばれました", Toast.LENGTH_SHORT).show()
+    showMessage("${selectedText}が選ばれました")
 }
 ```
-
-Toastのところはとりあえずテスト用に何か表示したいだけなのでここでは説明はしません。
