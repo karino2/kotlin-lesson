@@ -279,7 +279,7 @@ fun main() {
 
 以下例を見てみましょう。
 
-{% capture for_modulo2 %}
+{% capture for_modulo1 %}
 fun main() {
   // これは割り算
   println(5/3)
