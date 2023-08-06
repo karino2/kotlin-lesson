@@ -40,7 +40,6 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=hello_world_code %}
 
-
 ## 変数がvalとvar
 
 JS入門ではvarだったが、kotlinにはvalとvarの２つがある。
@@ -82,6 +81,34 @@ fun main() {
 }
 {% endcapture %}
 {% include kotlin_quote.html body=range_sum %}
+
+## ifの後などの中括弧が一文ならいらない
+
+これはJSでもそうなのだけれど、JSはセミコロンオートインサーションという特殊事情があっていろいろ説明が面倒なのでなるべく中括弧をつけるのを推奨していた。
+けれどkotlinはそういう事は無いので中括弧無しでも構わない。
+
+{% capture if_else_code %}
+fun main() {
+  val isYes = true
+
+  println("ついにねんがんのアイスソードを手に入れたぞ")
+  if(isYes)
+    println("そうかんけいないね")
+  else
+    println("ころしてでもうばいとる")
+}
+{% endcapture %}
+{% include kotlin_quote.html body=if_else_code %}
+
+ちなみに、もちろん中括弧つけてもいい。
+
+```kotlin
+  if(isYes) {
+    println("そうかんけいないね")
+  } else {
+    println("ころしてでもうばいとる")
+  }
+```
 
 ## 配列がList
 
