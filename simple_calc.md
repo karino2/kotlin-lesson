@@ -196,7 +196,7 @@ findViewById<Button>(R.id.buttonAdd).setOnClickListener {
 ### 「=」の処理を書く
 
 最後にイコールの処理を書きます。
-イコールが押されたら、genzainoAtaiをTextViewの値を足してTextViewに入れます。
+イコールが押されたら、genzainoAtaiとTextViewの値を足してTextViewに入れます。
 また、この時にgenzainoAtaiを0にしておくと良いでしょう。
 
 ### CボタンでもgenzainoAtaiをクリアする
