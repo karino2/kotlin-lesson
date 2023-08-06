@@ -5,6 +5,8 @@ layout: page
 
 「プログラム素人向けkotlin入門」のトップページです。
 
+プログラムをやった事が無い人は、[算数で挫折した人向けのJavaScript入門 - 算数で挫折した人向けの、Javascript入門](https://karino2.github.io/js-introduction/)を6.3まで進めた後に以下を読んでください。
+
 ## メインコンテンツ
 
 - [あらすじ](intro.md)
