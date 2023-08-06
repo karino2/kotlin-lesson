@@ -376,14 +376,28 @@ fun main() {
 fun main() {
   val mlist = mutableListOf("ついにねんがんのアイスソードをてにいれたぞ", "そうかんけいないね", "ころしてでもうばいとる")
 
+  println("クリアする前:")
   println(mlist)
 
   mlist.clear()
+  println("")
   println("クリアしたあと：")
   println(mlist)
 }
 {% endcapture %}
 {% include kotlin_quote.html body=mlist_code2 %}
 
+### MutableListはユーザーからの入力を追加していくようなアプリで使う
+
+ユーザーにテキストを入力していくとリストに追加されていくようなアプリ、例えば[てきすとでっき - Google Play のアプリ](https://play.google.com/store/apps/details?id=io.github.karino2.textdeck&hl=ja)みたいなアプリを作る時には、
+MutableListを使う事になる。
+
+この後にListViewを使う時にはMutableListの事も思い出してあげてください。
+
+## 公式ドキュメントへのリンク
+
+英語だけど公式ドキュメントへのリンクも貼っておく。（主に自分用）
+
+- [List - Kotlin Programming Language](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/)
 - [MutableList - Kotlin Programming Language](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/)
 - [mutableListOf - Kotlin Programming Language](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/mutable-list-of.html)
