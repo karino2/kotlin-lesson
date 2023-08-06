@@ -261,3 +261,25 @@ fun main() {
 }
 {% endcapture %}
 {% include kotlin_quote.html body=withindex_code1 %}
+
+for文で二つのものを受け取る例はこれが初めてですね。少し注意してみてみましょう。
+
+二つのものを受け取る場合はカッコでくくってカンマで区切ります。
+
+```
+for((変数1, 変数2) in コレクション) {
+
+}
+```
+
+二つのものを返すコレクションはwithIndex()以外にもあるので、とりあえず上のように覚えておくと良いでしょう。
+
+**課題: withIndex()を使って偶数の曜日だけprintlnせよ**
+
+{% capture withindex_code2 %}
+fun main() {
+  val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
+}
+{% endcapture %}
+{% include kotlin_quote.html body=withindex_code2 %}
+
