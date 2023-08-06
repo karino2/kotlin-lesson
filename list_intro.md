@@ -118,7 +118,7 @@ fun main() {
 
 こういうのはそれよりも、添字で回す方が素直に書けます。
 
-[forループ入門](for_loop.md)でやったRangeとsizeを使えば以下のようにも書けます。
+[forループ入門](for_loop.md)でやったRangeとsizeを使えば以下のように書けます。
 
 {% capture index_code2_1 %}
 fun main() {
@@ -135,7 +135,26 @@ fun main() {
 `..<`は、大きい方の境界を含まない、というrangeでした。これで0, 1, 2, 3, 4, 5, 6が順番にaに入ります。
 
 これと同じ事をするindicesというのもありますが、入門時は覚える事を少なくして知っているものを組み合わせる練習をした方がいいと思うのでここでは扱いません。
-という事で、
+という事で、いくつか課題をやってみましょう。
+
+**課題: 何番目の要素の値がいくつか、と出力せよ**
+
+以下のように出力せよ
+
+- 0番目の要素は「月曜」
+- 1番目の要素は「火曜」
+
+...
+
+{% capture index_code3 %}
+fun main() {
+  val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
+
+  // TODO: 以下を書け
+}
+{% endcapture %}
+{% include kotlin_quote.html body=index_code3 %}
+
 
 **課題: 以下のコードを変更し、曜日を2個飛ばしに出力せよ**
 
@@ -145,10 +164,7 @@ fun main() {
 fun main() {
   val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
 
-  for(a in 0..<youbi.size) {
-    // TODO: 以下を変更
-    println(youbi[a])
-  }
+  // TODO: 以下を変更
 }
 {% endcapture %}
 {% include kotlin_quote.html body=index_code6 %}
@@ -161,7 +177,7 @@ fun main() {
 fun main() {
   val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
 
-  for(a in youbi.indices) {
+  for(a in 0..<youbi.size) {
     println(youbi[6-a])
   }
 }
@@ -176,7 +192,7 @@ fun main() {
 fun main() {
   val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
 
-  for(a in youbi.indices) {
+  for(a in  0..<youbi.size) {
     println(youbi[youbi.size-1-a])
   }
 }
@@ -189,7 +205,7 @@ fun main() {
 fun main() {
   val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
 
-  for(a in youbi.indices) {
+  for(a in  0..<youbi.size) {
     val revIndex = youbi.size-1-a 
     println(youbi[revIndex])
   }
@@ -208,7 +224,7 @@ fun main() {
 fun main() {
   val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
 
-  for(a in youbi.indices) {
+  for(a in  0..<youbi.size) {
     // TODO: 以下を修正せよ
     println(a)
   }
@@ -220,7 +236,7 @@ fun main() {
 
 添字を取る時はだいたい要素も使うので、最初から両方渡ってくる方が便利な事が多い。
 ということで両方渡ってくる`withIndex()`というのはなかなか便利です。
-というかindicesは滅多に使わないでだいたい`withIndex()`使う。
+というかsizeでrangeを手書きする機会はほとんどなく、だいたい`withIndex()`を使う。
 
 {% capture withindex_code1 %}
 fun main() {
