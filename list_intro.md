@@ -328,3 +328,7 @@ for((index, buttonId) in labels.withIndex()) {
 ```
 
 idと対応するのが数字じゃない時はPairなどを使う必要がありますが、そういうのはもっと先に進んだ後にやります。
+
+## 追加をしたい時はMutableList
+
+MutableListについて書く。
