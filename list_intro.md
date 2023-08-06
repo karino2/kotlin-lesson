@@ -340,4 +340,26 @@ MutableXXは要素の追加や削除などの変更が出来る、というと�
 つまりMutableListは要素の追加と削除が出来る以外はListと同じ。
 
 以下ではMutableListについて見ていく。
+基本的な使い方は以下。
+
+{% capture mlist_code1 %}
+fun main() {
+  val mlist = MutableList<String>()
+  mlist.add("一つ！")
+  mlist.add("二つ！")
+  mlist.add("三つ！")
+
+  for((index, elem) in mlist.withIndex()) {
+    println("${index}番目の要素は「${elem}」です");
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=mlist_code1 %}
+
+主に以下のメソッドなどを軽く見る。
+
+- `mutableListOf()`と`MutableList<T>`
+- `add()`
+- `clear()`
+- `removeAt()`
 
