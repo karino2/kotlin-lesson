@@ -1,8 +1,8 @@
 ---
-title: "「算数で挫折した人向けの、Javascript入門」との差分"
+title: "「算数で挫折した人向けの、JavaScript入門」との差分"
 layout: page
 ---
-[算数で挫折した人向けのJavaScript入門 - 算数で挫折した人向けの、Javascript入門](https://karino2.github.io/js-introduction/)を6.3までやってもらったと思うので、
+[算数で挫折した人向けのJavaScript入門](https://karino2.github.io/js-introduction/)を6.3までやってもらったと思うので、
 この範囲でkotlinは違う、というところを簡単にまとめておく。
 
 ## 細かい話
