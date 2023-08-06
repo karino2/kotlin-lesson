@@ -309,3 +309,22 @@ for((num, buttonId) in labels.withIndex()) {
 ```
 
 ちょと動くか自信無いので試して動いたら教えてください。
+
+これはたまたまボタンが0から始まっていてちょうどインデックスと一致させられるように並べられるからですが、
+ボタン0はちょっと他と違うので特別扱いしたいかもしれない。
+
+そういう風にindexとずれちゃう場合はちょっと小細工がいるかも。
+例えば以下みたいな感じか？
+
+```kotlin
+val labels = listOf(R.id.button1, R.id.button2, R.id.button3, R.id.button4, R.id.button5, R.id.button6, R.id.button7, R.id.button8, R.id.button9)
+
+for((index, buttonId) in labels.withIndex()) {
+  val num = index+1
+  findViewById<Button>(buttonId).setOnClickListener { 
+    findViewById<TextView>(R.id.result).text += num.ToString()
+  }
+}
+```
+
+idと対応するのが数字じゃない時はPairなどを使う必要がありますが、そういうのはもっと先に進んだ後にやります。
