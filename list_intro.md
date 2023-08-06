@@ -247,3 +247,17 @@ fun main() {
 
 ## 添字と要素を同時に取る、withIndex()
 
+添字を取る時はだいたい要素も使うので、最初から両方渡ってくる方が便利な事が多い。
+ということで両方渡ってくる`withIndex()`というのはなかなか便利です。
+というかindicesは滅多に使わないでだいたい`withIndex()`使う。
+
+{% capture withindex_code1 %}
+fun main() {
+  val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
+
+  for((index, elem) in youbi.withIndex()) {
+    println("${index}番目の曜日は${elem}です");
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=withindex_code1 %}
