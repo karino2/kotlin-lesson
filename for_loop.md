@@ -263,10 +263,10 @@ fun main() {
 {% capture for_range10 %}
 fun main() {
   val items = listOf("ころしてでもうばいとる", "そうかんけいないね", "ついにねんがんのアイスソードをてにいれたぞ")
-  var concated = ""
-  // TODO: itemsの中を逆順にとりだしてつなげて、conctedに入れる
+  var concatted = ""
+  // TODO: itemsの中を逆順にとりだしてつなげて、concattedに入れる
 
-  println(concated)
+  println(concatted)
 
 }
 {% endcapture %}
