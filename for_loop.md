@@ -285,10 +285,10 @@ fun main() {
 {% capture for_modulo1 %}
 fun main() {
   // これは割り算
-  println(5/3)
+  println(10/3)
 
   // これは剰余
-  println(5%3)
+  println(10%3)
 
   // いろいろな余り
   println(4%2)
