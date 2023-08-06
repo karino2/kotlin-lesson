@@ -440,7 +440,7 @@ fun main() {
 
 以下、少し自分でも同じように書いてみましょう。
 
-**以下のTODO以下の二行を変更して3になるようにせよ**
+**課題: 以下のTODO以下の二行を変更して3になるようにせよ**
 
 {% capture str_add5 %}
 fun main() {
@@ -458,7 +458,7 @@ fun main() {
 {% include kotlin_quote.html body=str_add5 %}
 
 
-**以下のTODO以下の二行を変更して3になるようにせよ**
+**課題: 以下のTODO以下の二行を変更して3になるようにせよ**
 {% capture str_add6 %}
 val hoge = "1"
 val ika = "2"
@@ -474,7 +474,7 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=str_add6 %}
 
-**以下のTODO以下の二行を変更して3になるようにせよ**
+**課題: 以下のTODO以下の二行を変更して3になるようにせよ**
 
 ダブルクオートを消す、とかはしないでtoIntを使ってください。
 

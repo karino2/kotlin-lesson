@@ -35,7 +35,7 @@ for(変数名 in コレクション) {
 
 こういうのは何度も書いて覚えるのが一番！という事で自分で書いてみましょう。
 
-**itemsを一つずつ取り出してprintlnするコードを書け**
+**課題: itemsを一つずつ取り出してprintlnするコードを書け**
 
 {% capture for_basic2 %}
 fun main() {
@@ -45,7 +45,7 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=for_basic2 %}
 
-**itemsを一つずつ取り出してprintlnするコードを書け**
+**課題: itemsを一つずつ取り出してprintlnするコードを書け**
 {% capture for_basic3 %}
 fun main() {
   val items = listOf("なにぃっ？", "リュウがいない", "いったいどこへ…")
@@ -54,7 +54,7 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=for_basic3 %}
 
-**itemsの中身を全部合計した値を求めよ**
+**課題: itemsの中身を全部合計した値を求めよ**
 
 sumに要素を足していきます。
 
@@ -74,7 +74,7 @@ fun main() {
 {% include kotlin_quote.html body=for_basic4 %}
 
 
-**itemsの中身を全部合計した値を出力せよ**
+**課題: itemsの中身を全部合計した値を出力せよ**
 
 今度は変数も自分で作って、それをprintlnするのも自分で書いてください。
 
@@ -90,7 +90,7 @@ fun main() {
 {% include kotlin_quote.html body=for_basic5 %}
 
 
-**itemsの中身を全部つなげた文字列を作れ**
+**課題: itemsの中身を全部つなげた文字列を作れ**
 
 今度は文字列です。全部をつなげた文字列を作ってください。
 なお、この文字列のつなげかたはあまり良くないのですが、それは終盤でたぶん解説します。
@@ -110,7 +110,7 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=for_basic6 %}
 
-**itemsの中身を全部つなげた文字列を作って出力せよ**
+**課題: itemsの中身を全部つなげた文字列を作って出力せよ**
 
 今度は変数も自分で作って、それをprintlnするのも自分で書いてください。
 
@@ -214,7 +214,7 @@ fun main() {
 
 いくつか自分で書いてみましょう。
 
-**1から10までprintlnせよ**
+**課題: 1から10までprintlnせよ**
 
 1から10までのrangeをfor文で回してprintlnします。
 
@@ -225,7 +225,7 @@ fun main() {
 {% include kotlin_quote.html body=for_range7 %}
 
 
-**1から10まで足した結果を求めよ**
+**課題: 1から10まで足した結果を求めよ**
 
 1から10まで足すといくつになるか、高校生で等差数列の和の公式というのを習いますが、
 プログラマは何も考えずにコンピュータに足させます。
@@ -241,7 +241,7 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=for_range7 %}
 
-**1から100まで足した結果を求めよ**
+**課題: 1から100まで足した結果を求めよ**
 
 一緒やん、と思うかもしれんけど、100まで足した結果も求めておこう。
 変数sumも自分で作って。
@@ -252,7 +252,7 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=for_range8 %}
 
-**itemsを逆順に取り出してprintlnせよ**
+**課題: itemsを逆順に取り出してprintlnせよ**
 
 {% capture for_range9 %}
 fun main() {
@@ -261,7 +261,7 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=for_range9 %}
 
-**itemsを逆順につなげてprintlnせよ**
+**課題: itemsを逆順につなげてprintlnせよ**
 
 {% capture for_range10 %}
 fun main() {
