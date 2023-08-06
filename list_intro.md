@@ -8,7 +8,6 @@ for文が使えるといろいろと出来る事が増えるので、ここでLi
 
 - list.size
 - list.last()
-- list.indices
 - list.withIndex()
 
 また、MutableListにも最後に軽く触れます。
@@ -80,7 +79,7 @@ fun main() {
 
 こちらの方がミスは少ないね。
 
-## 添字はindices
+## 添字をRangeで回す
 
 以下のようなものがあったとします。
 
@@ -117,56 +116,26 @@ fun main() {
 あれ？`!toggle`は初めてかな？ビックリマークは反転させる、という機能で、trueがfalse、falseがtrueになります。
 まぁいい。
 
-それよりも、こういうのは添字の一覧を回せると良いです。それはindicesというのを使います。
-以下のコードを実行してみてください。
+こういうのはそれよりも、添字で回す方が素直に書けます。
 
-{% capture index_code3 %}
+[forループ入門](for_loop.md)でやったRangeとsizeを使えば以下のようにも書けます。
+
+{% capture index_code2_1 %}
 fun main() {
   val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
 
-  for(a in youbi.indices) { // ここがNew!
-    println(a)
-  }
-}
-{% endcapture %}
-{% include kotlin_quote.html body=index_code3 %}
-
-これは何か、というと、itemの添字が順番に出るのです。
-添字というのは大かっこ（つまり`[]`）で指定する奴です。
-
-つまり、以下のようにすれば全要素が出力出来る。
-
-{% capture index_code4 %}
-fun main() {
-  val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
-
-  for(a in youbi.indices) {
-    println(youbi[a])
-  }
-}
-{% endcapture %}
-{% include kotlin_quote.html body=index_code4 %}
-
-このように添え字を`youbi[a]`とすれば要素になる訳ですね。
-
-なお、youbi.indicesは、前に見たRangeとsizeを使うと、`0..<youbi.size`でも同じ結果になります。
-どちらでも良いのですが、添字の間違いはちょこちょこあるのでindicesを使う方がいいかもしれません。
-
-さて、これを一つ飛ばしにするなら、[forループ入門](for_loop.md)でやったように`%`を使うのが良さそう。
-
-{% capture index_code5 %}
-fun main() {
-  val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
-
-  for(a in youbi.indices) {
+  for(a in 0..<youbi.size) {
     if(a%2 == 0)
       println(youbi[a])
   }
 }
 {% endcapture %}
-{% include kotlin_quote.html body=index_code5 %}
+{% include kotlin_quote.html body=index_code2_1 %}
 
-これで一つ飛ばしに出力出来ました。
+`..<`は、大きい方の境界を含まない、というrangeでした。これで0, 1, 2, 3, 4, 5, 6が順番にaに入ります。
+
+これと同じ事をするindicesというのもありますが、入門時は覚える事を少なくして知っているものを組み合わせる練習をした方がいいと思うのでここでは扱いません。
+という事で、
 
 **課題: 以下のコードを変更し、曜日を2個飛ばしに出力せよ**
 
@@ -176,7 +145,7 @@ fun main() {
 fun main() {
   val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
 
-  for(a in youbi.indices) {
+  for(a in 0..<youbi.size) {
     // TODO: 以下を変更
     println(youbi[a])
   }
