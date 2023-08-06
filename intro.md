@@ -10,7 +10,7 @@ layout: page
 それを補う話をちょこちょこ書いていこうと思っているので、
 それをひとまずここに蓄積していって、そのうち入門サイトに仕上げられたらいいな、と思って始めて見る。
 
-とりあえず[算数で挫折した人向けのJavaScript入門 - 算数で挫折した人向けの、Javascript入門](https://karino2.github.io/js-introduction/)を6.3くらいまではやってもらった上で、
+とりあえず[算数で挫折した人向けのJavaScript入門](https://karino2.github.io/js-introduction/)を6.3くらいまではやってもらった上で、
 それを補う感じで書いていく。
 また、これに取り組む前にある程度Android Studioでボタン置いたりTextViewになにか表示したり、
 というのはやったという前提で進める（プログラム言語としてのkotlinの入門の前にある程度Android開発はしておく方がいいと思うので）。
