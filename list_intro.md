@@ -6,7 +6,7 @@ for文が使えるといろいろと出来る事が増えるので、ここでLi
 
 ここでは以下のメソッドなどを見ていきます。
 
-- list.count()
+- list.size
 - list.last()
 - list.indices
 - list.withIndex()
@@ -17,56 +17,56 @@ for文が使えるといろいろと出来る事が増えるので、ここでLi
 ですが、呼び名が無いと説明が出来ないので「メソッド」という名前は出させてもらってます。
 
 何か、というと、`.`をつけた後に呼ぶ奴、くらいに覚えてもらっておくと良いです。
-厳密にはindicesなどはメソッドでは無くてプロパティなのですが、そもそもメソッドとは何かを説明してないので、メソッドじゃないとか言っても知らんがな、って感じと思います。
+厳密にはsizeなどはメソッドでは無くてプロパティなのですが、そもそもメソッドとは何かを説明してないので、メソッドじゃないとか言っても知らんがな、って感じと思います。
 という事でここでは`.`の後に続く呼びだす系のものをふわっと「メソッド」と呼ぶ事にします。
 {% endcapture %}
 {% include myquote.html body=comment1 %}
 
-## 個数は.count()で取る
+## 個数は.sizeで取る
 
-リストの個数は.count()で取れます。
+リストの個数は.sizeで取れます。
 
-{% capture count_code %}
+{% capture size_code %}
 fun main() {
   val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
 
-  println(youbi.count())
+  println(youbi.size)
 }
 {% endcapture %}
-{% include kotlin_quote.html body=count_code %}
+{% include kotlin_quote.html body=size_code %}
 
 個数は7だけど、`youbi[7]`は最後「の次」の要素にアクセスしようとしてエラーになるので注意。`youbi[6]`までしかアクセス出来ない。
 つまり以下のようなコードはエラー。
 
-{% capture count_code2 %}
+{% capture size_code2 %}
 fun main() {
   val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
 
   // エラー
-  val hoge = youbi[youbi.count()]
+  val hoge = youbi[youbi.size]
   println(hoge)
 }
 {% endcapture %}
-{% include kotlin_quote.html body=count_code2 %}
+{% include kotlin_quote.html body=size_code2 %}
 
-`youbi.count()`は7なので、`youbi[youbi.count()]`は`youbi[7]`になってしまって、範囲外アクセスとなってしまう。
+`youbi.size`は7なので、`youbi[youbi.size]`は`youbi[7]`になってしまって、範囲外アクセスとなってしまう。
 youbiの最後の要素は`yougi[6]`なので、1を引く以下のコードは動く。
 
-{% capture count_code3 %}
+{% capture size_code3 %}
 fun main() {
   val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
 
   // これはオーケー。最後の要素。
-  val hoge = youbi[youbi.count()-1]
+  val hoge = youbi[youbi.size-1]
   println(hoge)
 }
 {% endcapture %}
-{% include kotlin_quote.html body=count_code3 %}
+{% include kotlin_quote.html body=size_code3 %}
 
 ややこしいですね。
 なお、最後の要素を取り出すのに1を引くのを忘れるバグが良くあるので、最後の要素を取る専用の手段、`.last()`というのがあります。
 
-{% capture count_code4 %}
+{% capture size_code4 %}
 fun main() {
   val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
 
@@ -74,7 +74,7 @@ fun main() {
   println(hoge)
 }
 {% endcapture %}
-{% include kotlin_quote.html body=count_code4 %}
+{% include kotlin_quote.html body=size_code4 %}
 
 こちらの方がミスは少ないね。
 
@@ -147,7 +147,7 @@ fun main() {
 
 このように添え字を`youbi[a]`とすれば要素になる訳ですね。
 
-なお、youbi.indicesは、前に見たRangeとcountを使うと、`0..<youbi.count()`でも同じ結果になります。
+なお、youbi.indicesは、前に見たRangeとsizeを使うと、`0..<youbi.size`でも同じ結果になります。
 どちらでも良いのですが、添字の間違いはちょこちょこあるのでindicesを使う方がいいかもしれません。
 
 さて、これを一つ飛ばしにするなら、[forループ入門](for_loop.md)でやったように`%`を使うのが良さそう。
@@ -199,14 +199,14 @@ fun main() {
 
 6から引けばいい。6というのはyoubiの個数-1です。なんで1引くかというと0から始まるから。
 
-リストの個数はcountで取れるので、以下のようにも書ける。
+リストの個数はsizeで取れるので、以下のようにも書ける。
 
 {% capture revindex_code2 %}
 fun main() {
   val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
 
   for(a in youbi.indices) {
-    println(youbi[youbi.count()-1-a])
+    println(youbi[youbi.size-1-a])
   }
 }
 {% endcapture %}
@@ -219,7 +219,7 @@ fun main() {
   val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
 
   for(a in youbi.indices) {
-    val revIndex = youbi.count()-1-a 
+    val revIndex = youbi.size-1-a 
     println(youbi[revIndex])
   }
 }
@@ -331,4 +331,13 @@ idと対応するのが数字じゃない時はPairなどを使う必要があ�
 
 ## 追加をしたい時はMutableList
 
-MutableListについて書く。
+kotlinのコレクションは、Mutableなものとそうでないものの二つがある。
+
+- ListとMutableList
+- MapとMutableMap
+
+MutableXXは要素の追加や削除などの変更が出来る、というところ以外はMutableの無いXXと同じ。
+つまりMutableListは要素の追加と削除が出来る以外はListと同じ。
+
+以下ではMutableListについて見ていく。
+
