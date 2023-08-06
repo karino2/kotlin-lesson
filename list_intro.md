@@ -340,11 +340,23 @@ MutableXXは要素の追加や削除などの変更が出来る、というと�
 つまりMutableListは要素の追加と削除が出来る以外はListと同じ。
 
 以下ではMutableListについて見ていく。
-基本的な使い方は以下。
+
+### mutableListOfとaddとclear
+
+MutableListを作るのはmutableListOfで、listOfと同じように、以下のように使える。
+
+```kotlin
+mutableListOf("abc", "def", "ghi")
+```
+
+なのだけれど、わざわざMutableListを使いたいケースの場合、最初に空のリストを作ってそこに追加していく、というケースが多い。
+そして空のmutableListOf呼び出しでは、要素の型を推測しようが無いので、`<>`で指定してやる必要がある。
+
+という事で文字列のListを作って足していく場合は以下のようになる。
 
 {% capture mlist_code1 %}
 fun main() {
-  val mlist = MutableList<String>()
+  val mlist = mutableListOf<String>()
   mlist.add("一つ！")
   mlist.add("二つ！")
   mlist.add("三つ！")
@@ -356,10 +368,22 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=mlist_code1 %}
 
-主に以下のメソッドなどを軽く見る。
+`mutableListOf<String>()`で空のmutableListを作り、そこに`add()`で要素を追加している。
 
-- `mutableListOf()`と`MutableList<T>`
-- `add()`
-- `clear()`
-- `removeAt()`
+なお、中を空にするのはclear。
 
+{% capture mlist_code2 %}
+fun main() {
+  val mlist = mutableListOf("ついにねんがんのアイスソードをてにいれたぞ", "そうかんけいないね", "ころしてでもうばいとる")
+
+  println(mlist)
+
+  mlist.clear()
+  println("クリアしたあと：")
+  println(mlist)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=mlist_code2 %}
+
+- [MutableList - Kotlin Programming Language](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/)
+- [mutableListOf - Kotlin Programming Language](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/mutable-list-of.html)
