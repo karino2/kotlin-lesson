@@ -74,4 +74,4 @@ findViewById<ListView>(R.id.listView).setOnItemClickListener { parent, view, pos
 }
 ```
 
-Toastのところはとりあえずテスト用に何か用事したいだけなのでここでは説明はしません。
+Toastのところはとりあえずテスト用に何か表示したいだけなのでここでは説明はしません。
