@@ -42,13 +42,24 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=str_add %}
 
-こんな感じで、例えば数字の9ボタンを押されたら、以下のような感じにします。
+ただしTextViewのtextは少しString型と違う型（ほとんど同じだけど）なので、足す前にtoString()してやる必要があります。
+例えば数字の9ボタンを押されたら、以下のような感じにします。
+
+```kotlin
+  val s = findViewById<TextView>(R.id.result).text.toString()
+  val s2 = s + "9"
+  findViewById<TextView>(R.id.result).text = s2
+```
+
+これでもいいですし、もう少し短く同じ事を書くと以下みたいになるでしょうか。
 
 ```kotlin
 findViewById<Button>(R.id.buttonNine).setOnClickListener { 
-  findViewById<TextView>(R.id.result).text += "9"
+  findViewById<TextView>(R.id.result).text = findViewById<TextView>(R.id.result).text.toString() + "9"
 }
 ```
+
+少しややこしいね。頑張って解読してくれ。
 
 これだと数字の一番左に余分な"0"が入っちゃいますが、まずはそれでいいでしょう。
 
