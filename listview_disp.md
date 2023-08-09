@@ -53,6 +53,8 @@ val adapter by lazy { object: ArrayAdapter<String>(this, android.R.layout.simple
 
 by lazyじゃないとこのタイミングではまだLayoutInflaterは使えん（getSystemServiceをonCreateの前に呼ぶな）、と言われて落ちる。
 
+[githubのAOSPミラーのsimple_list_item_1.xml](https://github.com/aosp-mirror/platform_frameworks_base/blob/master/core/res/res/layout/simple_list_item_1.xml)
+
 ### showMessageを作る
 
 以下はListViewとは関係ないのですが、今後もちょくちょく使うのでshowMessageを作っておきます。
