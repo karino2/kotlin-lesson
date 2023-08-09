@@ -7,7 +7,11 @@ Android初心者の墓場、またはAndroid開発者かそうでないかを分
 
 ここは直接会って説明するのをメインにするので、覚書程度にしておく。（そのうち動画にしたい）
 
-## メンバ変数の雑な説明と表示するデータ
+## 第一段階： 素のsimple_list_item_1を使って表示する
+
+まずはアイテムのカスタマイズを一切行わない表示から。
+
+### メンバ変数の雑な説明と表示するデータ
 
 最初、新規のプロジェクトを作ると以下のようなコードがあります。
 
@@ -35,36 +39,21 @@ Android初心者の墓場、またはAndroid開発者かそうでないかを分
 
 ここから先はこのlistDataを表示するのを目指します。
 
-## ListViewをレイアウトに置く
+### ListViewをレイアウトに置く
 
 Layout側にListViewを置き、idをlistViewにする
 
 画面いっぱいになるようにする。
 
-## 新しいレイアウトを定義して、以下の要件を満たすようにする
-
-- ファイル名はlist_item.xml
-- トップはLinearLayout
-- TextViewを置く
-- idはitemLabelとする
-
-## メンバ変数にArrayAdapterのgetView差し替えたものを作る
+### メンバ変数にArrayAdapterをlazyで作る
 
 ```kotlin
-val adapter = object: ArrayAdapter<String>(this, R.layout.list_item, listData) {
-            override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-                val view = convertView ?: layoutInflater.inflate(R.layout.list_item, null)
-
-                val data = listData[position]
-                view.findViewById<TextView>(R.id.itemLabel).text = data
-                return view
-            }
-        }
+val adapter by lazy { object: ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listData) }
 ```
 
-なお、getViewをoverrideするので本当はコンストラクタのR.layout.list_itemはなんでも良い（使わないので）。
+by lazyじゃないとこのタイミングではまだLayoutInflaterは使えん（getSystemServiceをonCreateの前に呼ぶな）、と言われて落ちる。
 
-## showMessageを作る
+### showMessageを作る
 
 以下はListViewとは関係ないのですが、今後もちょくちょく使うのでshowMessageを作っておきます。
 JS入門のMessageBox.showと似たものです。
@@ -75,14 +64,57 @@ JS入門のMessageBox.showと似たものです。
 fun showMessage(msg: String) { Toast.makeText(this, msg, Toast.LENGTH_LONG).show() }
 ```
 
-## onCreateでListViewにadapterをセットしてitemのクリックリスナーを作る
+### onCreateでListViewにadapterをセットしてitemのクリックリスナーを作る
 
 ListViewをfindVewByIdで取り出して、adapterとsetOnItemClickListenerをセットします。
 
 ```kotlin
 findViewById<ListView>(R.id.listView).adapter = adapter
+}
+```
+
+### onCreateでListViewにitemのクリックリスナーを作る
+
+```kotlin
 findViewById<ListView>(R.id.listView).setOnItemClickListener { parent, view, position, id ->
-    val selectedText = view.findViewById<TextView>(R.id.itemLabel).text
+    val selectedText = view.findViewById<TextView>(android.id.text1).text.toString()
+    showMessage("${selectedText}が選ばれました")
+}
+```
+
+## 第二段階： 自分のレイアウトを定義する
+
+自分のレイアウトを差し替える方法を学ぶ。
+
+### 新しいレイアウトを定義して、以下の要件を満たすようにする
+
+- ファイル名はlist_item.xml
+- トップはLinearLayout
+- TextViewを置く
+- idはitemLabelとする
+
+### ArrayAdapterのgetViewを差し替える
+
+```kotlin
+val adapter by lazy { object: ArrayAdapter<String>(this, R.layout.list_item, listData) {
+            override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+                val view = convertView ?: layoutInflater.inflate(R.layout.list_item, null)
+
+                val data = listData[position]
+                view.findViewById<TextView>(R.id.itemLabel).text = data
+                return view
+            }
+        }
+    }
+```
+
+なお、getViewをoverrideするので本当はコンストラクタのR.layout.list_itemはなんでも良い（使わないので）。
+
+### setOnClickListenerで自分のTextViewを呼ぶように変える
+
+```kotlin
+findViewById<ListView>(R.id.listView).setOnItemClickListener { parent, view, position, id ->
+    val selectedText = view.findViewById<TextView>(R.id.itemLabel).text.toString()
     showMessage("${selectedText}が選ばれました")
 }
 ```
