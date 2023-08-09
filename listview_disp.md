@@ -72,7 +72,6 @@ ListViewをfindVewByIdで取り出して、adapterとsetOnItemClickListenerを�
 
 ```kotlin
 findViewById<ListView>(R.id.listView).adapter = adapter
-}
 ```
 
 ### onCreateでListViewにitemのクリックリスナーを作る
@@ -92,8 +91,9 @@ findViewById<ListView>(R.id.listView).setOnItemClickListener { parent, view, pos
 
 - ファイル名はlist_item.xml
 - トップはLinearLayout
-- TextViewを置く
-- idはitemLabelとする
+- TextViewを置く、idはitemLabelとする
+- Buttonを置く、idはitemButtonとする、textは"ボタン"とかかな（なんでもいい）
+
 
 ### ArrayAdapterのgetViewを差し替える
 
@@ -120,3 +120,12 @@ findViewById<ListView>(R.id.listView).setOnItemClickListener { parent, view, pos
     showMessage("${selectedText}が選ばれました")
 }
 ```
+
+### ボタンが押された時の処理も書いてみる
+
+getViewの中で、以下みたいな感じで何か書く（showMessageでアイテムの内容を使った何かを表示するのがいいかもしれない）
+
+```
+    view.findViewById<Button>(R.id.itemButton).setOnClickListener = ...
+```
+
