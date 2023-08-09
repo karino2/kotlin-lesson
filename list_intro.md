@@ -377,6 +377,28 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=mlist_code2 %}
 
+**課題: 要素100個のリストをfor文で作れ**
+
+要素が以下の百個のリストを作れ。最初が「0番目」じゃなくて「1番目」なのに注意。
+
+"1番目", "2番目", "3番目", ... , "100番目"
+
+なお、出力は「100番目」になるのが正解。
+
+{% capture mlist_100 %}
+fun main() {
+  // 以下を書き換える
+  val mlist = emptyList<String>()
+
+  // ここでfor文を使って100個の文字列をmlistに入れる。
+
+
+  // 以下はいじらない
+  println(mlist[99])
+}
+{% endcapture %}
+{% include kotlin_quote.html body=mlist_100 %}
+
 ### MutableListはユーザーからの入力を追加していくようなアプリで使う
 
 ユーザーにテキストを入力していくとリストに追加されていくようなアプリ、例えば[てきすとでっき - Google Play のアプリ](https://play.google.com/store/apps/details?id=io.github.karino2.textdeck&hl=ja)みたいなアプリを作る時には、
