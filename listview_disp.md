@@ -48,7 +48,7 @@ Layout側にListViewを置き、idをlistViewにする
 ### メンバ変数にArrayAdapterをlazyで作る
 
 ```kotlin
-val adapter by lazy { object: ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listData) }
+val adapter by lazy { ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listData) }
 ```
 
 by lazyじゃないとこのタイミングではまだLayoutInflaterは使えん（getSystemServiceをonCreateの前に呼ぶな）、と言われて落ちる。
@@ -78,7 +78,7 @@ findViewById<ListView>(R.id.listView).adapter = adapter
 
 ```kotlin
 findViewById<ListView>(R.id.listView).setOnItemClickListener { parent, view, position, id ->
-    val selectedText = view.findViewById<TextView>(android.id.text1).text.toString()
+    val selectedText = view.findViewById<TextView>(android.R.id.text1).text.toString()
     showMessage("${selectedText}が選ばれました")
 }
 ```
