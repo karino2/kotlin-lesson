@@ -103,7 +103,7 @@ findViewById<ListView>(R.id.listView).setOnItemClickListener { parent, view, pos
 ```kotlin
 val adapter by lazy { object: ArrayAdapter<String>(this, R.layout.list_item, listData) {
             override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-                val view = convertView ?: layoutInflater.inflate(R.layout.list_item, null)
+                val view = if(convertView == null) layoutInflater.inflate(R.layout.list_item, null) else convertView
 
                 val data = listData[position]
                 view.findViewById<TextView>(R.id.itemLabel).text = data
