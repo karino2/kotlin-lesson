@@ -47,6 +47,8 @@ Layout側にListViewを置き、idをlistViewにする
 
 ### メンバ変数にArrayAdapterをlazyで作る
 
+adapterをメンバ変数として定義します。ただし、ちょっと特殊な事があるので、以下のコードをそのまま写してください。(場所はメンバ変数のところ)
+
 ```kotlin
 val adapter by lazy { ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listData) }
 ```
@@ -60,7 +62,8 @@ by lazyじゃないとこのタイミングではまだLayoutInflaterは使え�
 以下はListViewとは関係ないのですが、今後もちょくちょく使うのでshowMessageを作っておきます。
 JS入門のMessageBox.showと似たものです。
 
-関数の説明をするところまで来たら詳細を説明するので、今はコピペしておいてください。
+関数の説明をするところまで来たら詳細を説明するので、今は下のコードをコピペしておいてください。
+ただし、onCreateの外にコピペします（メンバ変数と同じあたり）
 
 ```kotlin
 fun showMessage(msg: String) { Toast.makeText(this, msg, Toast.LENGTH_LONG).show() }
