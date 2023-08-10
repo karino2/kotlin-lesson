@@ -17,7 +17,9 @@ layout: page
 - [簡単な電卓を作ってみよう](simple_calc.md) 中ボス
 - [forループ入門](for_loop.md)
 - [List入門](list_intro.md)
+- [コードの置き場所入門](code_location_intro.md)
 - [ListViewに挑む！表示編](listview_disp.md)
+  - [ListViewに挑む！表示編、二回目用](listview_disp_second.md) 二回目以降繰り返したい時の手順はこちら
 - [ListViewに挑む！編集編](listview_edit.md)
 
 ### 昔のトップページ

@@ -86,6 +86,15 @@ findViewById<ListView>(R.id.listView).setOnItemClickListener { parent, view, pos
 }
 ```
 
+### 課題： listDataをMutableListにして100件くらい何か文字列を入れる
+
+ListViewはスクロールする方が何なのか分かりやすいので、
+
+1. listDataをMutableListにする
+2. onCreateの中で100件くらい何か詰める
+
+という事をやりましょう。
+
 ## 第二段階： 自分のレイアウトを定義する
 
 自分のレイアウトを差し替える方法を学ぶ。
