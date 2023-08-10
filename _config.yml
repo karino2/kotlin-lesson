@@ -43,6 +43,7 @@ header_pages:
   - simple_calc.md
   - for_loop.md
   - list_intro.md
+  - code_location_intro.md
   - listview_disp.md
   - listview_disp_second.md
   - listview_edit.md

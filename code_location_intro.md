@@ -274,5 +274,6 @@ class MainActivity : AppCompatActivity() {
 - 3つの区画+4番目の区画がある
 - 1つめの区画は使わない
 - 2つめの区画はメンバ変数とメンバ関数というのを置く
-- 3つめの区画はこれまでコードを置いていたところで、以後「onCreateの中」と呼ぶ、listに最初に値をつめたりはここでやる
+- 3つめの区画はこれまでコードを置いていたところで、以後「onCreateの中」と呼ぶ
+  - listに最初に値をつめたりはここでやる
 - 4つめの区画はsetOnClickListenerとgetViewの中
