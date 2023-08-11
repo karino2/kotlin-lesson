@@ -194,6 +194,8 @@ class MainActivity : AppCompatActivity() {
 }
 ```
 
+3番目の区画はfindViewByIdしたりfor文回したり、いろいろやる場所ですね。
+
 {% capture comment1 %}
 **そのほかにも書けそうな場所あるけど？**  
 さて、三番目の区画には、二行良くわからない行があります。以下の二行です。
