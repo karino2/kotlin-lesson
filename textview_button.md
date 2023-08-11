@@ -3,7 +3,7 @@ title: "最初の一歩、TextViewとButtonを使ってみよう！"
 layout: page
 ---
 さてはじまりました、Android開発の最初の一歩。
-TextViewを置いて、Buttoを置く、という事をやってもらいます。
+TextViewを置いて、Buttonを置く、という事をやってもらいます。
 
 まずはこちらの動画を見てください。
 
