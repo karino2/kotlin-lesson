@@ -137,8 +137,9 @@ fun showMessage(msg: String) { Toast.makeText(this, msg, Toast.LENGTH_LONG).show
 
 これまで3番目の区画しか出てこなかったのであまり意識してなかったところですが、
 いろいろ出てくると「これまでやってたコードはそもそもどこに置いていたんだっけ？」と良くわからなくなる日がやがて来ます。
+そこでこの辺でしっかりと見直しておくといい。
 
-そこでこの辺でしっかりと見直しておくといいのですが、ボタンとかにsetOnClickListenerとかしていたのは「3番目の区画」です。
+これまで、ボタンとかにsetOnClickListenerとかしていたのは「3番目の区画」です。
 
 そしてこれは「onCreateの中」と呼びます。
 
@@ -192,6 +193,57 @@ class MainActivity : AppCompatActivity() {
     }
 }
 ```
+
+{% capture comment1 %}
+**そのほかにも書けそうな場所あるけど？**  
+さて、三番目の区画には、二行良くわからない行があります。以下の二行です。
+
+```kotlin
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    }
+```
+
+この間とかには書かないのか？という疑問が生まれる人もいるかもしれません。
+ようするに以下の二箇所です。
+
+```kotlin
+    override fun onCreate(savedInstanceState: Bundle?) {
+        // 
+        // こことか
+        //
+        super.onCreate(savedInstanceState)
+        //
+        // ここにも書いたりしないの？
+        //
+        setContentView(R.layout.activity_main)
+    }
+```
+
+それぞれここに置いた方がいいシチュエーションも無くは無いのですが、かなりレアだしこのシリーズではたぶんそういうケースは出てこないので、
+この時点では「これらの場所にはコードは書かない」とおぼえてしまって良いでしょう。
+
+また、onCreateの後、具体的には以下には書かないのか？という疑問も出てくるかもしれません。
+
+```kotlin
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    }
+    //
+    // ここ
+    // 
+}
+```
+
+ここはプログラム言語としては2番目の区画と同じ意味になりますが、現時点ではここにも「書かない」と思っておいていいでしょう。
+こちらはこのシリーズの後半では書く事も出てきますが、そこまで行く頃にはもっとこの辺の事情にも詳しくなっているはずなので、混乱する事も無いでしょう。
+
+それまでは、「ここにはコードは書かないもの」とおぼえてしまってOKです。
+{% endcapture %}
+{% include myquote.html body=comment1 %}
 
 ## setOnClickListenerとgetViewの中
 
