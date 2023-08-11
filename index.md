@@ -12,8 +12,15 @@ layout: page
 ## メインコンテンツ
 
 - [あらすじ](intro.md)
+
+### AndroidStudioを触ってみる
+
 - [最初の一歩、TextViewとButtonを使ってみよう！](textview_button.md)
-- この辺で[算数で挫折した人向けのJavaScript入門](https://karino2.github.io/js-introduction/)を6.3までやる
+- [EditText、チェックボックス、スイッチなどを使ってみる](misc_view.md)
+
+### プログラムをkotlinで学ぶ
+
+- [算数で挫折した人向けのJavaScript入門](https://karino2.github.io/js-introduction/)を6.3までやる
 - [「算数で挫折した人向けの、JavaScript入門」との差分](diff_to_js_intro.md)
 - [型とは何か？](what_is_type.md)
 - [文字列入門](string_intro.md)
