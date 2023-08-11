@@ -11,14 +11,18 @@ layout: page
 
 ## メインコンテンツ
 
-- [あらすじ](intro.md)
+- [あらすじ](intro.md) 別に読まなくても良いあらすじ。
 
 ### AndroidStudioを触ってみる
 
 - [最初の一歩、TextViewとButtonを使ってみよう！](textview_button.md)
 - [EditText、チェックボックスなどを使ってみる](misc_view.md)
 
+この辺まで終わったら、プログラム言語の方の勉強を少しする方が良い。
+
 ### プログラムをkotlinで学ぶ、前篇
+
+ここから少しプログラム言語の勉強をする。
 
 - [算数で挫折した人向けのJavaScript入門](https://karino2.github.io/js-introduction/)を6.3までやる
 - [「算数で挫折した人向けの、JavaScript入門」との差分](diff_to_js_intro.md)
@@ -27,7 +31,7 @@ layout: page
 
 **中ボス**
 
-- [簡単な電卓を作ってみよう](simple_calc.md) 中ボス
+- [簡単な電卓を作ってみよう](simple_calc.md) 何か良くわからない説明だった型や変数が、この辺で突然重要になってくる
 
 ### プログラムをkotlinで学ぶ、中編
 
