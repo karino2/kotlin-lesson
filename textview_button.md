@@ -51,7 +51,7 @@ Finishを押す。
 ここでなんか横幅いっぱいになったら、以下のどちらかをしてください。
 
 - layout_weightというのに1が入っていたらこれを削除
-- widthがmatch_parentになっていたらwrap_contentに変更
+- layout_widthがmatch_parentになっていたらwrap_contentに変更
 
 そしてidにbutton1を入れてEnter。何か聞かれたらRefactorというボタンを押す。
 
