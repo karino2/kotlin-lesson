@@ -10,6 +10,7 @@ layout: page
 ## メインコンテンツ
 
 - [あらすじ](intro.md)
+- [最初の一歩、TextViewとButtonを使ってみよう！](textview_button.md)
 - [「算数で挫折した人向けの、JavaScript入門」との差分](diff_to_js_intro.md)
 - [型とは何か？](what_is_type.md)
 - [文字列入門](string_intro.md)

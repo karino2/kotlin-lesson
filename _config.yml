@@ -36,6 +36,7 @@ plugins:
 header_pages:
   - index.md
   - intro.md
+  - textview_button.md
   - diff_to_js_intro.md
   - what_is_type.md
   - string_intro.md
