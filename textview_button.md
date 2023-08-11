@@ -7,9 +7,9 @@ TextViewを置いて、Buttoを置く、という事をやってもらいます�
 
 まずはこちらの動画を見てください。
 
-TODO: リンク
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cAKwRGI9zK8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-動画で述べている、10回繰り返してもらう作業の手順をここに書いておきます。
+この動画で述べている、10回繰り返してもらう作業の手順をここに書いておきます。
 
 ## ステップ1: プロジェクトを新規作成
 
@@ -31,7 +31,8 @@ Finishを押す。
 
 ### 2-1. LinearLayoutにする
 
-レイアウトの右上からCodeを選びxml表示にして、上の方の androidなんちゃら.ConstraintsLayout、みたいなところを消して、Linearくらいまでタイプして、
+レイアウトの右上からCodeを選びxml表示にして、上の方の「`<androidx.constraintlayout.widget.ConstraintLayout`」みたいなところの、「`<`」より後ろを消す。
+そして同じ場所で「Linear」くらいまでタイプして、
 一覧からLinearLayoutを選ぶ。
 
 次に「app:」で始まっているものを全て消す。
@@ -95,3 +96,48 @@ class MainActivity : AppCompatActivity() {
 - 全部タイプせずになるべく一覧から選ぶ（一覧が出ない時は何か間違っている事が多いので早く気付ける）
 - とにかく繰り返す。飽きるまで繰り返す。
 - 最終的には何も見ないでもスラスラ出来るようになるのを目指す（けれど回数が重要なので考え込まずに最初は見ながらひたすら繰り返す）
+
+## 発展課題：ボタンとTextViewの数を増やす
+
+飽きてきたらTextViewを二つ置いてButtonも二つ置いて、それぞれのボタンで違うTextViewの表示を変更したりしてみてください。
+基本的には`R.id.button1`の所と`R.id.label1`の所を変えるだけで他のボタンやTextViewに対して同じ事が出来るはずです。
+
+具体的にはこんな感じ。
+
+```kotlin
+import ...
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        findViewById<Button>(R.id.button1).setOnClickListenr { findViewById<TextView>(R.id.label1).text = "ほげほげ" }
+        findViewById<Button>(R.id.button2).setOnClickListenr { findViewById<TextView>(R.id.label2).text = "いかいか" }
+    }
+}
+```
+
+また、こんな風にするのも試してみて欲しい。
+
+```kotlin
+import ...
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        findViewById<Button>(R.id.button1).setOnClickListenr { 
+          findViewById<TextView>(R.id.label1).text = "１つ目のボタン"
+          findViewById<TextView>(R.id.label2).text = "押された。"
+        }
+        findViewById<Button>(R.id.button2).setOnClickListenr { 
+          findViewById<TextView>(R.id.label1).text = "２つ目のボタン"
+          findViewById<TextView>(R.id.label2).text = "２つ目のテキスト"
+        }
+    }
+}
+```
+
+テキストはいろいろ変えて試してみて欲しい。
