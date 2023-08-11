@@ -285,7 +285,6 @@ class MainActivity : AppCompatActivity() {
           //
           // この中が4番目の区画
           //
-          findViewById<TextView>(R.id.label1).text = "ほげほげ"
         }
     }
 }
