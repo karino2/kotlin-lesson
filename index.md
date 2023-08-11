@@ -18,20 +18,32 @@ layout: page
 - [最初の一歩、TextViewとButtonを使ってみよう！](textview_button.md)
 - [EditText、チェックボックスなどを使ってみる](misc_view.md)
 
-### プログラムをkotlinで学ぶ
+### プログラムをkotlinで学ぶ、前篇
 
 - [算数で挫折した人向けのJavaScript入門](https://karino2.github.io/js-introduction/)を6.3までやる
 - [「算数で挫折した人向けの、JavaScript入門」との差分](diff_to_js_intro.md)
 - [型とは何か？](what_is_type.md)
 - [文字列入門](string_intro.md)
-- [コレクション概要](collection.md)
+
+**中ボス**
+
 - [簡単な電卓を作ってみよう](simple_calc.md) 中ボス
+
+### プログラムをkotlinで学ぶ、中編
+
+ListView目指して頑張る。
+
+- [コレクション概要](collection.md)
 - [forループ入門](for_loop.md)
 - [List入門](list_intro.md)
 - [コードの置き場所入門](code_location_intro.md)
+
+**中ボス（強敵）**
+
 - [ListViewに挑む！表示編](listview_disp.md)
   - [ListViewに挑む！表示編、二回目用](listview_disp_second.md) 二回目以降繰り返したい時の手順はこちら
 - [ListViewに挑む！編集編](listview_edit.md)
+
 
 ### 昔のトップページ
 
