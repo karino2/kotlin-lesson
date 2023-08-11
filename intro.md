@@ -10,10 +10,12 @@ layout: page
 それを補う話をちょこちょこ書いていこうと思っているので、
 それをひとまずここに蓄積していって、そのうち入門サイトに仕上げられたらいいな、と思って始めて見る。
 
-とりあえず[算数で挫折した人向けのJavaScript入門](https://karino2.github.io/js-introduction/)を6.3くらいまではやってもらった上で、
+教えてる内容とだいたい同じような内容の動画をyoutubeに以下のプレイリストで上げる。
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PL3J_mLcl4YCdi2bLHtynt7Ohni1_NQJiF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+また、途中の段階からは、とりあえず[算数で挫折した人向けのJavaScript入門](https://karino2.github.io/js-introduction/)を6.3くらいまではやってもらった上で、
 それを補う感じで書いていく。
-また、これに取り組む前にある程度Android Studioでボタン置いたりTextViewになにか表示したり、
-というのはやったという前提で進める（プログラム言語としてのkotlinの入門の前にある程度Android開発はしておく方がいいと思うので）。
 
 対象はプログラム素人で、kotlinを教えるというよりはkotlinを題材にプログラムを教える、という感じにしたい。
 

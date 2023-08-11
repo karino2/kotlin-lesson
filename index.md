@@ -5,12 +5,15 @@ layout: page
 
 「karino2のあおぞらAndroid開発教室」のトップページです。
 
-プログラムをやった事が無い人は、[算数で挫折した人向けのJavaScript入門](https://karino2.github.io/js-introduction/)を6.3まで進めた後に以下を読んでください。
+以下の再生リストのコンテンツと連動しています。
+<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PL3J_mLcl4YCdi2bLHtynt7Ohni1_NQJiF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 
 ## メインコンテンツ
 
 - [あらすじ](intro.md)
 - [最初の一歩、TextViewとButtonを使ってみよう！](textview_button.md)
+- この辺で[算数で挫折した人向けのJavaScript入門](https://karino2.github.io/js-introduction/)を6.3までやる
 - [「算数で挫折した人向けの、JavaScript入門」との差分](diff_to_js_intro.md)
 - [型とは何か？](what_is_type.md)
 - [文字列入門](string_intro.md)
