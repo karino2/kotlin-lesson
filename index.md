@@ -8,19 +8,16 @@ layout: page
 以下の再生リストのコンテンツと連動しています。
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PL3J_mLcl4YCdi2bLHtynt7Ohni1_NQJiF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-
-## メインコンテンツ
-
 - [あらすじ](intro.md) 別に読まなくても良いあらすじ。
 
-### AndroidStudioを触ってみる
+## AndroidStudioを触ってみる
 
 - [最初の一歩、TextViewとButtonを使ってみよう！](textview_button.md)
 - [EditText、チェックボックスなどを使ってみる](misc_view.md)
 
 この辺まで終わったら、プログラム言語の方の勉強を少しする方が良い。
 
-### プログラムをkotlinで学ぶ、前篇
+## プログラムをkotlinで学ぶ、前篇
 
 ここから少しプログラム言語の勉強をする。
 
@@ -33,7 +30,7 @@ layout: page
 
 - [簡単な電卓を作ってみよう](simple_calc.md) 何か良くわからない説明だった型や変数が、この辺で突然重要になってくる
 
-### プログラムをkotlinで学ぶ、中編
+## プログラムをkotlinで学ぶ、中編
 
 ListView目指して頑張る。
 
