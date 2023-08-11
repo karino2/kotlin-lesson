@@ -14,27 +14,38 @@ layout: page
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PL3J_mLcl4YCdi2bLHtynt7Ohni1_NQJiF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-また、途中の段階からは、とりあえず[算数で挫折した人向けのJavaScript入門](https://karino2.github.io/js-introduction/)を6.3くらいまではやってもらった上で、
-それを補う感じで書いていく。
+また、ある程度AndroidStudioの作業になれた後には、プログラム言語の勉強も並行して進めていく。
+[算数で挫折した人向けのJavaScript入門](https://karino2.github.io/js-introduction/)を6.3くらいまではやってもらった上で、
+それを補う感じで説明していく。
 
 対象はプログラム素人で、kotlinを教えるというよりはkotlinを題材にプログラムを教える、という感じにしたい。
 
 また、あくまでAndroidのアプリ開発を前提にkotlinを教える。
 サーバーサイドkotlinなどにも通じるように、という事はせずに、Androidを前提にする。
 
-以前[公式のkotlin tour](https://kotlinlang.org/docs/kotlin-tour-welcome.html)をやってもらったところ、さっぱりわからん、
-となったので、これと同じくらいの内容をちゃんと初心者向けに説明していくのを目標とする。
+## 自分の作りたいものを作れるようになるのを目指す
 
-より具体的にはListViewとかでアプリを書くのに必用な程度のkotlin理解を目指す。
+Androidの入門を見ていて役に立たないと思うのは、自分のやりたい事をどうやったらやれるようになるのか、
+という事をちゃんと考えた上で内容を組み立てているものが無い事。
+
+サンプルと同じような内容を同じように説明する解説ばかりで、
+それと違う物を作れるようにならない。
+
+この入門は、泥臭くても作りたいものが作れるようになるために必要な事を説明する。
+逆に作れる物が増えない類の説明はなるべく少なくして、
+やる気が続く範囲で何か作り始められるようになるのを目指す。
+
+具体例を挙げるとSQLiteなどは使わずにプレーンテキストを使うなど、
+標準的では無いし簡単でも無いが、より柔軟性に富む選択肢をしっかりと時間をかけて覚え、それをいろいろな事に応用するように作る。
 
 ## 以下ベテラン向けの話
 
 以下はこのコースをやる人というよりは、このテキストを使って教える人向けの話です。
 
-このサイトでの説明は、少ない知識でいろんあアプリを自分で書けるようになる、というのを目標にしています。
+このサイトでの説明は、少ない知識でいろんなアプリを自分で書けるようになる、というのを目標にしています。
 だからもっといい書き方がある時も、より原始的な書き方で同じ事が出来る場合はそうしています。
 
-例えばmapなどを使って簡潔に書ける時もforとvarを使って書くようにしています。
+例えばmapやfilterなどを使って簡潔に書ける時もforとvarを使って書くようにしています。
 また、Null safetyなどの話はしません。
 whenで書ける事もif elseで書いています。
 文字列のListもjoinで済むところをvarで足したりしています。
