@@ -16,7 +16,7 @@ layout: page
 ### AndroidStudioを触ってみる
 
 - [最初の一歩、TextViewとButtonを使ってみよう！](textview_button.md)
-- [EditText、チェックボックス、スイッチなどを使ってみる](misc_view.md)
+- [EditText、チェックボックスなどを使ってみる](misc_view.md)
 
 ### プログラムをkotlinで学ぶ
 
