@@ -144,6 +144,28 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=fun_intro_q5 %}
 
+**課題: 1, 3, 5, ..., 97, 99の要素を持つListを返す関数、oddList関数を作れ**
+
+- ヒント1: 関数の定義で戻りをListとしておくと、MutableListをreturnしてもListになります。
+- ヒント2: Listなどの型は要素の型を`<>`で指定する必要があります
+
+{% capture fun_intro_q6 %}
+
+// TODO: ここにoddList関数を書け
+
+fun main() {
+  // TOOD: 以下のコメントを外して、全てtrueが出力されるのを確認せよ
+  /*
+  val olist = oddList()
+  println(olist.size == 50)
+  println(olist[0] == 1)
+  println(olist[15] == 31)
+  println(olist.sum() == 2500)
+  */
+}
+{% endcapture %}
+{% include kotlin_quote.html body=fun_intro_q6 %}
+
 
 ### returnしない場合は戻りの型は無しで良い
 
