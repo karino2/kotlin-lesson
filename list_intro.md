@@ -417,19 +417,22 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=mlist_remove1 %}
 
-**課題: MutableListから奇数番目の要素だけ消せ**
+**課題: MutableListから1番目と3番目の要素を削除せよ**
 
-mlistには0番目から10番目までのアイテムが入っています。
-ここから、1番目、3番目、5番目、7番目、9番目のアイテムを削除してください。
+mlistには0番目から5番目までのアイテム（つまり6個のアイテム）が入っています。
+ここから、1番目と3番目のアイテムを削除してください。
+
+1番目の要素を削除すると２番目以降の要素が一つずれる事に注意してください。
+結果として「0番目のアイテム」、「2番目のアイテム」「4番目のアイテム」、「5番目のアイテム」が出たら正解です。
 
 {% capture mlist_remove2 %}
 fun main() {
-  val mlist = emptyList<String>()
-  for(i in 0..10) {
+  val mlist = mutableListOf<String>()
+  for(i in 0..5) {
     mlist.add("${i}番目のアイテム")
   }
 
-  // TODO: ここでfor文を使って奇数番目のアイテムを削除せよ
+  // TODO: ここで1番目と3番目の要素を削除せよ
 
 
   // 以下はいじらない
