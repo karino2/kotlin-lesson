@@ -22,8 +22,8 @@ mutable listにedit textの内容をaddしてedit textはクリア、
 
 mutable listのclearを呼び出して、adapterの`notifyDataSetChanged()`を呼ぶ
 
-## 課題: Deleteボタンもつけよう
+## 課題: 「削除」ボタンもつけよう
 
-アイテムごとの方のlayoutにDeleteボタンを追加し、それが押されたらそのアイテムが削除されるようにしよう。
+アイテムごとの方のlayoutに「削除」というボタンを追加し、それが押されたらそのアイテムが削除されるようにしよう。
 
 具体的にはlistDataからその要素をremoveAtで削除してnotifyDataSetChangedを呼べば良い。
