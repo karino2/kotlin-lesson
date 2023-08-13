@@ -5,11 +5,18 @@ layout: page
 Android初心者の墓場、またはAndroid開発者かそうでないかを分ける試金石、ListViewに挑みます。
 二回に分けて作業していきます。前篇のここでは、リストのデータを表示する事にチャレンジ。
 
-ここは直接会って説明するのをメインにするので、覚書程度にしておく。（そのうち動画にしたい）
+
+## ListView概要
+
+さっぱり分からん、と言われたので、登場人物を説明する程度の、概要動画を作った。
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Br83g3isjBU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## 第一段階： 素のsimple_list_item_1を使って表示する
 
 まずはアイテムのカスタマイズを一切行わない表示から。
+
+![ListView一段階目のスクリーンショット](imgs/listview_screenshot1.png)
 
 ### メンバ変数の雑な説明と表示するデータ
 
@@ -98,6 +105,9 @@ ListViewはスクロールする方が何なのか分かりやすいので、
 ## 第二段階： 自分のレイアウトを定義する
 
 自分のレイアウトを差し替える方法を学ぶ。
+
+![ListView二段階目のスクリーンショット](imgs/listview_screenshot2.png)
+
 
 ### 新しいレイアウトを定義して、以下の要件を満たすようにする
 
