@@ -38,6 +38,11 @@ fun sum(a: Int, b:Int) : Int {
 }
 ```
 
+funというキーワードで始まり、関数名が続きます。
+この場合はsum、という名前の関数が定義出来ます。
+
+以下、JSとの違いを中心に見ていきましょう。
+
 ### kotlinの関数は、仮引数とreturnの型を指定する必要がある
 
 JS入門との一番の違いとしては、仮引数とreturnの型を、最初に指定する必要があります。
@@ -62,6 +67,83 @@ fun main() {
 }
 {% endcapture %}
 {% include kotlin_quote.html body=func_intro2 %}
+
+こういうのは自分で書いてみるのが一番なので、いくつか簡単な関数を書いてみよう。
+
+**課題: aとbを掛けるmulという関数を書け**
+
+引数はInt、戻りもIntで。
+
+{% capture func_intro_q1 %}
+
+// TODO: ここにmul関数を書け
+
+
+fun main() {
+  // TOOD: 以下のコメントを外してtrueが出力されるのを確認せよ
+  // println(mul(2, 3) == 6)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=func_intro_q1 %}
+
+**課題: aとbを掛けたあとにcを足す、mulAddという関数を書け**
+
+{% capture fun_intro_q2 %}
+
+// TODO: ここにmulAdd関数を書け
+
+
+fun main() {
+  // TOOD: 以下のコメントを外してtrueが出力されるのを確認せよ
+  // println(mulAdd(2, 3, 4) == 10)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=fun_intro_q2 %}
+
+**課題: 「ダネ〜」とprintlnした後に3を返す、fusigidaneという関数を書け**
+
+{% capture fun_intro_q3 %}
+
+// TODO: ここにfusigidane関数を書け
+
+
+fun main() {
+  // TOOD: 以下のコメントを外して、「ダネ〜」と出力された後にtrueが出力されるのを確認せよ
+  // println(fusigidane() == 3)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=fun_intro_q3 %}
+
+**課題: 1+2+...+99+100した結果を返す、sumTillHundred関数を作れ**
+
+{% capture fun_intro_q4 %}
+
+// TODO: ここにsumTllHundred関数を書け
+
+
+fun main() {
+  // TOOD: 以下のコメントを外して、trueが出力されるのを確認せよ
+  // println(sumTillHundred() == 5050)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=fun_intro_q4 %}
+
+**課題: 1+3+5+...+97+99した結果を返す、sumOdd関数を作れ**
+
+奇数は英語でoddと言います。
+
+{% capture fun_intro_q5 %}
+
+// TODO: ここにsumOdd関数を書け
+
+
+fun main() {
+  // TOOD: 以下のコメントを外して、trueが出力されるのを確認せよ
+  // println(sumOdd() == 2500)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=fun_intro_q5 %}
+
 
 ### returnしない場合は戻りの型は無しで良い
 
@@ -89,12 +171,29 @@ fun printHello() : Unit{
 }
 ```
 
+**課題: 「ほげ」と「いか」の2行をprintlnする、printHogeIkaという関数を書け**
+
+{% capture fun_noreturn_q1 %}
+
+// TODO: ここにprintHogeIka関数を書け
+
+
+fun main() {
+  // TOOD: 以下のコメントを外して、「ほげ」と「いか」が出力されるのを確認せよ
+  // printHogeIka()
+}
+{% endcapture %}
+{% include kotlin_quote.html body=fun_noreturn_q1 %}
+
+
 ### 関数の名前は小文字始まりで単語境界は大文字にする決まり
 
-これは破る事もあるのだけれど、原則関数の名前は小文字で始めて、単語の区切りは大文字にする。
+最後になったけれど、関数の名前は小文字始まりで区切りは大文字にする。
 つまりprintHelloとかsetupDataとか。
 
-これは歩道は左側通行、程度には破られるルール。人があんま居ない時はまぁどこ歩いてもいいでしょう。
+一応そういう風にしましょうね、という事になっているけれど、
+別段そうしないと動かないという訳では無い。
+ご飯を食べる前にいただきますと言いましょう、くらいのルールです。
 
 ## これまでのコードを関数を使ってみよう
 
