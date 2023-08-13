@@ -11,7 +11,7 @@ layout: page
 
 ## メンバ変数のlistをMutableListで定義
 
-listOfのままだったらMutableListに変更してください。リストは空でいいです。
+listOfのままだったらMutableListに変更してください。リストは空でもいいですし、テスト用に最初に2〜3個何か入れておいてもいいです。
 
 ## Submitのonclickの処理を書く
 
