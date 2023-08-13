@@ -8,12 +8,19 @@ layout: page
 以下の再生リストのコンテンツと連動しています。
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PL3J_mLcl4YCdi2bLHtynt7Ohni1_NQJiF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+このコースは、基本的には以下の二つが交互に進む感じになっています。
+
+- Androidの勉強
+- kotlinというプログラム言語の勉強
+
+Androidの方には「Android側」と記述してあります。区別が曖昧なものもありますが、目安にどうぞ。
+
 - [あらすじ](intro.md) 別に読まなくても良いあらすじ。
 
 ## AndroidStudioを触ってみる
 
-- [最初の一歩、TextViewとButtonを使ってみよう！](textview_button.md)
-- [EditText、チェックボックスなどを使ってみる](misc_view.md)
+- Android側 [最初の一歩、TextViewとButtonを使ってみよう！](textview_button.md)
+- Android側 [EditText、チェックボックスなどを使ってみる](misc_view.md)
 
 この辺まで終わったら、プログラム言語の方の勉強を少しする方が良い。
 
@@ -28,7 +35,7 @@ layout: page
 
 **中ボス**
 
-- [簡単な電卓を作ってみよう](simple_calc.md) 何か良くわからない説明だった型や変数が、この辺で突然重要になってくる
+- Android側 [簡単な電卓を作ってみよう](simple_calc.md) 何か良くわからない説明だった型や変数が、この辺で突然重要になってくる
 
 ## プログラムをkotlinで学ぶ、中編
 
@@ -37,13 +44,13 @@ ListView目指して頑張る。
 - [コレクション概要](collection.md)
 - [forループ入門](for_loop.md)
 - [List入門](list_intro.md)
-- [コードの置き場所入門](code_location_intro.md)
+- Android側 [コードの置き場所入門](code_location_intro.md)
 
 **中ボス（強敵）**
 
-- [ListViewに挑む！表示編](listview_disp.md)
-  - [ListViewに挑む！表示編、二回目用](listview_disp_second.md) 二回目以降繰り返したい時の手順はこちら
-- [ListViewに挑む！編集編](listview_edit.md)
+- Android側 [ListViewに挑む！表示編](listview_disp.md)
+  - Android側 [ListViewに挑む！表示編、二回目用](listview_disp_second.md) 二回目以降繰り返したい時の手順はこちら
+- Android側 [ListViewに挑む！編集編](listview_edit.md)
 
 
 ### 昔のトップページ
