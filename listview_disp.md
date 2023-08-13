@@ -138,14 +138,9 @@ val adapter by lazy { object: ArrayAdapter<String>(this, R.layout.list_item, lis
 
 なお、getViewをoverrideするので本当はコンストラクタのR.layout.list_itemはなんでも良い（使わないので）。
 
-### setOnClickListenerで自分のTextViewを呼ぶように変える
+### onCreateの方のsetOnItemClickListenerを消す
 
-```kotlin
-findViewById<ListView>(R.id.listView).setOnItemClickListener { parent, view, position, id ->
-    val selectedText = view.findViewById<TextView>(R.id.itemLabel).text.toString()
-    showMessage("${selectedText}が選ばれました")
-}
-```
+getViewをオーバーライドしたらこちらは不要になるので消します。
 
 ### ボタンが押された時の処理も書いてみる
 
