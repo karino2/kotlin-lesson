@@ -5,13 +5,13 @@ layout: page
 アイテムを追加する。
 表示編の続きでいいです。
 
-## EditTextとボタン二つ置く
+## EditTextとボタン二つとListViewを置く
 
-ボタンは一つはSubmit、一つはクリアとする。
+ボタンは一つはSubmit、一つはクリアとする。ボタン二つは横に並べますか。
 
-## メンバ変数のlistをMutableListに変更
+## メンバ変数のlistをMutableListで定義
 
-listOfをmutableListOfにする
+listOfのままだったらMutableListに変更してください。リストは空でいいです。
 
 ## Submitのonclickの処理を書く
 
@@ -21,3 +21,9 @@ mutable listにedit textの内容をaddしてedit textはクリア、
 ## クリアのonclickの処理を書く
 
 mutable listのclearを呼び出して、adapterの`notifyDataSetChanged()`を呼ぶ
+
+## 課題: Deleteボタンもつけよう
+
+アイテムごとの方のlayoutにDeleteボタンを追加し、それが押されたらそのアイテムが削除されるようにしよう。
+
+具体的にはlistDataからその要素をremoveAtで削除してnotifyDataSetChangedを呼べば良い。
