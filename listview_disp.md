@@ -6,11 +6,15 @@ Android初心者の墓場、またはAndroid開発者かそうでないかを分
 二回に分けて作業していきます。前篇のここでは、リストのデータを表示する事にチャレンジ。
 
 
-## ListView概要
+## 概要動画と作業動画
 
 さっぱり分からん、と言われたので、登場人物を説明する程度の、概要動画を作った。
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Br83g3isjBU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+また、今回の作業を実際にやってみる作業動画を作ったので合わせてどうぞ。
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zO1YikWcbV0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## 第一段階： 素のsimple_list_item_1を使って表示する
 
