@@ -79,7 +79,7 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=func_noreturn %}
 
-なお、戻りの型を書かないと、何も無いを意味するUnit型になります。
+なお、戻りの型を書かないと、何も無いを意味するUnit型というものになります。
 
 つまり、printHelloは以下のように書いても全く同じ意味になります。
 
@@ -88,3 +88,49 @@ fun printHello() : Unit{
   println("Hello World")
 }
 ```
+
+### 関数の名前は小文字始まりで単語境界は大文字にする決まり
+
+これは破る事もあるのだけれど、原則関数の名前は小文字で始めて、単語の区切りは大文字にする。
+つまりprintHelloとかsetupDataとか。
+
+これは歩道は左側通行、程度には破られるルール。人があんま居ない時はまぁどこ歩いてもいいでしょう。
+
+## これまでのコードを関数を使ってみよう
+
+関数を学ぶには使ってみるのが一番。けれどなんか人工的な例を出すのは盛り上がりに欠けるので、これまで書いたコードを関数を使って直してみよう。
+
+なお、以下では関数にしてくくりだせ、と言ったら、基本的には「メンバ関数」というものにします。
+置き場所としては[コードの置き場所入門](code_location_intro.md)で言う所の「2番目の区画」になります。
+
+### ListViewの表示編のfor文を関数にする
+
+[ListView表示編の二回目以降](listview_disp_second.md)では、以下のようなコードがあったと思います。
+
+```kotlin
+    val listData = mutableListOf()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        for(i in 1..100) {
+          listData.add("${i}番目の項目です")
+        }
+
+        findViewById<ListView>(R.id.listView1).adapter = adapter
+    }
+```
+
+このうち、以下の部分をsetupDataという関数にして、それを呼び出すように変えてください。
+
+```kotlin
+  for(i in 1..100) {
+    listData.add("${i}番目の項目です")
+  }
+```
+
+### 簡易電卓のonClickListenerの処理を関数にする
+
+[簡単な電卓を作ってみよう](simple_calc.md)で、9個のボタンの処理がほとんど同じになっていたと思う。
+これを関数にして共通化してみよう。
