@@ -62,3 +62,29 @@ fun main() {
 }
 {% endcapture %}
 {% include kotlin_quote.html body=func_intro2 %}
+
+### returnしない場合は戻りの型は無しで良い
+
+printlnだけする関数など、returnするものが無い関数では、戻りの型は書かなくても良いです。
+
+{% capture func_noreturn %}
+
+fun printHello() {
+  println("Hello World")
+}
+
+fun main() {
+  printHello()
+}
+{% endcapture %}
+{% include kotlin_quote.html body=func_noreturn %}
+
+なお、戻りの型を書かないと、何も無いを意味するUnit型になります。
+
+つまり、printHelloは以下のように書いても全く同じ意味になります。
+
+```kotlin
+fun printHello() : Unit{
+  println("Hello World")
+}
+```
