@@ -399,6 +399,49 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=mlist_100 %}
 
+### removeAtで特定のアイテムを消す
+
+MutableListから特定のアイテムを削除するのはremoveAtを使います。
+以下のコードでは２つ目のアイテムが消える事になります。
+
+{% capture mlist_remove1 %}
+fun main() {
+  val mlist = mutableListOf("一つ！", "二つ！", "三つ！")
+
+  mlist.removeAt(1)
+
+  for((index, elem) in mlist.withIndex()) {
+    println("${index}番目の要素は「${elem}」です");
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=mlist_remove1 %}
+
+**課題: MutableListから奇数番目の要素だけ消せ**
+
+mlistには0番目から10番目までのアイテムが入っています。
+ここから、1番目、3番目、5番目、7番目、9番目のアイテムを削除してください。
+
+{% capture mlist_remove2 %}
+fun main() {
+  val mlist = emptyList<String>()
+  for(i in 0..10) {
+    mlist.add("${i}番目のアイテム")
+  }
+
+  // TODO: ここでfor文を使って奇数番目のアイテムを削除せよ
+
+
+  // 以下はいじらない
+  for((index, elem) in mlist.withIndex()) {
+    println("${index}番目の要素は「${elem}」です");
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=mlist_remove2 %}
+
+
+
 ### MutableListはユーザーからの入力を追加していくようなアプリで使う
 
 ユーザーにテキストを入力していくとリストに追加されていくようなアプリ、例えば[てきすとでっき - Google Play のアプリ](https://play.google.com/store/apps/details?id=io.github.karino2.textdeck&hl=ja)みたいなアプリを作る時には、
