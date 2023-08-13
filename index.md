@@ -52,6 +52,12 @@ ListView目指して頑張る。
   - Android側 [ListViewに挑む！表示編、二回目用](listview_disp_second.md) 二回目以降繰り返したい時の手順はこちら
 - Android側 [ListViewに挑む！編集編](listview_edit.md)
 
+## プログラムをkotlinで学ぶ、後編
+
+関数とかdata classとか。
+
+- [関数入門](function_intro.md)
+
 
 ### 昔のトップページ
 
