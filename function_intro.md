@@ -116,6 +116,8 @@ fun main() {
 
 **課題: 1+2+...+99+100した結果を返す、sumTillHundred関数を作れ**
 
+till hundredは百まで、って意味です。
+
 {% capture fun_intro_q4 %}
 
 // TODO: ここにsumTllHundred関数を書け
