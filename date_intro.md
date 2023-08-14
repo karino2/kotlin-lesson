@@ -5,6 +5,8 @@ layout: page
 時間を競うタイピング練習ソフトや投稿の日付など、時間や日時を扱う事はちょくちょくあります。
 AndroidではDateというものを使います。importはjava.util.Dateです。
 
+Dateは日付、って意味の英単語です。
+
 ## Dateの最初の例
 
 このweb上のplayground（下の奴）では、自分でimportを手書きしないといけないので、最初に`import java.util.Date`と書くようにしてください（これはコピペでいいです）。

@@ -79,8 +79,8 @@ fun main() {
   val user1 = User("ほげいか", 95)
   val user2 = User("karino2", 72)
 
-  println("${user1.name}の点数は${user1.score}です")
-  println("${user2.name}の点数は${user2.score}です")
+  println("${user1.name}のスコアは${user1.score}点です")
+  println("${user2.name}のスコアは${user2.score}点です")
 }
 {% endcapture %}
 {% include kotlin_quote.html body=dataclass_intro2 %}
@@ -97,7 +97,7 @@ fun main() {
   mlist.add(User("karino2", 72))
 
   for(user in mlist) {
-    println("${user.name}の点数は${user.score}です")
+    println("${user.name}のスコアは${user.score}点です")
   }
 }
 {% endcapture %}
