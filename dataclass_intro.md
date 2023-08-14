@@ -175,7 +175,7 @@ fun main() {
 // TODO: ここにItemBoxを作る
 
 fun main() {
-  val box1 = ItemBox("ドラクエのアイテムボックス", listOf("薬草", "毒消し草", "布の服", ”ひのきの棒"))
+  val box1 = ItemBox("ドラクエのアイテムボックス", listOf("薬草", "毒消し草", "布の服", "ひのきの棒"))
   val box2 = ItemBox("FFのアイテムボックス", listOf("ポーション", "エーテル", "ミスリルソード"))
 
   for(box in listOf(box1, box2)) {
@@ -183,6 +183,7 @@ fun main() {
     for(item in box.items) {
       println("  ${item}")
     }
+    println("")
   }
 }
 {% endcapture %}
