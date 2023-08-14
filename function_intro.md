@@ -68,6 +68,8 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=func_intro2 %}
 
+sum2の閉じカッコの後のコロンの後がIntからStringに変わっているのに注意してください。
+
 こういうのは自分で書いてみるのが一番なので、いくつか簡単な関数を書いてみよう。
 
 **課題: aとbを掛けるmulという関数を書け**
