@@ -103,6 +103,27 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=dataclass_intro3 %}
 
+次に「ListViewに挑む！編集編」で、入力されたテキストが追加された時間をDateで保存するような場合を考える。
+Dateなのでimport文を追加して、以下のような感じになる。
+
+{% capture dataclass_intro4 %}
+import java.util.Date
+
+data class Post(val item: String, val date: Date)
+
+fun main() {
+  val mlist = mutableListOf<Post>()
+
+  mlist.add(User("これは一番目の項目です", Date()))
+  mlist.add(User("これは二番目の項目です", Date()))
+
+  for(post in mlist) {
+    println("${post.item}は${post.date}に追加されました")
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=dataclass_intro4 %}
+
 
 ## クラスの用語いろいろ
 
