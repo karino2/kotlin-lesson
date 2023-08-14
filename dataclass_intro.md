@@ -124,6 +124,71 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=dataclass_intro4 %}
 
+では自分でも幾つか作ってみましょう。
+
+**課題: ユーザー名と投稿数を持つ、SNSUserを作れ**
+
+ユーザー名はname, 投稿数はpostNumとしましょう。
+
+{% capture dataclass_intro_q1 %}
+
+// TODO: ここにSNSUserを作る
+
+fun main() {
+  val user1 = SNSUser("karino2", 920)
+  val user2 = SNSUser("ほげいか", 312)
+
+  println(user1.name)
+  println(user1.postNum)
+
+  println(user2.name)
+  println(user2.postNum)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=dataclass_intro_q1 %}
+
+**課題: 名前と攻撃力と防御力を持つCharacterを作れ**
+
+名前はname, 攻撃力はattack、防御力はdefenseとしますか。
+
+{% capture dataclass_intro_q2 %}
+
+// TODO: ここにCharacterを作る
+
+fun main() {
+  val chara1 = Character("メタルスライム", 10, 999)
+  val chara2 = Character("紙装甲", 999, 20)
+
+  for(chara in listOf(chara1, chara2)) {
+    println("${chara.name} の攻撃力は${chara.attack}、防御力は${chara.defense}です")
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=dataclass_intro_q2 %}
+
+**課題: アイテムをたくさん持つアイテムボックスのdata classを作れ**
+
+アイテムボックスは名前がnameであって、Stringのアイテムをたくさん持つとします。とりあす`List<String>`でitemsという名前でいいでしょう。
+
+{% capture dataclass_intro_q3 %}
+
+// TODO: ここにItemBoxを作る
+
+fun main() {
+  val box1 = ItemBox("ドラクエのアイテムボックス", listOf("薬草", "毒消し草", "布の服", ”ひのきの棒"))
+  val box2 = ItemBox("FFのアイテムボックス", listOf("ポーション", "エーテル", "ミスリルソード"))
+
+  for(box in listOf(box1, box2)) {
+    println("${box.name}：")
+    for(item in box.items) {
+      println("  ${item}")
+    }
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=dataclass_intro_q3 %}
+
+
 
 ## クラスの用語いろいろ
 
