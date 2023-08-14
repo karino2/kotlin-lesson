@@ -114,11 +114,11 @@ data class Post(val item: String, val date: Date)
 fun main() {
   val mlist = mutableListOf<Post>()
 
-  mlist.add(User("これは一番目の項目です", Date()))
-  mlist.add(User("これは二番目の項目です", Date()))
+  mlist.add(Post("これは一番目の項目です", Date()))
+  mlist.add(Post("これは二番目の項目です", Date()))
 
   for(post in mlist) {
-    println("${post.item}は${post.date}に追加されました")
+    println("「${post.item}」は${post.date}に追加されました")
   }
 }
 {% endcapture %}
