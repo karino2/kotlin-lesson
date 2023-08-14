@@ -57,6 +57,7 @@ ListView目指して頑張る。
 関数とかdata classとか。
 
 - [関数入門](function_intro.md)
+- Android側 [日付を扱う、Date入門](date_intro.md)
 
 
 ### 昔のトップページ
