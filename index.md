@@ -54,7 +54,7 @@ ListView目指して頑張る。
 
 ## プログラムをkotlinで学ぶ、後編
 
-関数とかdata classとか。
+そろそろ関数を真面目にやる。
 
 - [関数入門](function_intro.md)
 
