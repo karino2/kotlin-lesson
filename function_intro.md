@@ -202,9 +202,9 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=fun_intro_q6 %}
 
-**課題: リストの奇数番目だけを含んだ新しいリストを返す、oddOnly関数を書け**
+**課題: Stringのリストの奇数番目だけを含んだ新しいリストを返す、oddOnly関数を書け**
 
-渡されたリストから、1番目、3番目、5番目、7番目…と奇数番目だけの要素を持った新しいリストを作って返す、oddOnlyを作れ。
+渡されたStringのリストから、1番目、3番目、5番目、7番目…と奇数番目だけの要素を持った新しいリストを作って返す、oddOnlyを作れ。
 0番目から数える事にする（以下のprintlnが全部trueになるように考えてくれ）
 
 {% capture fun_intro_q7 %}
