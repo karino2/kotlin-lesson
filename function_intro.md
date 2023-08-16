@@ -84,7 +84,7 @@ fun sum(a: Int, b:Int) : Int {
 }
 ```
 
-中括弧の前のIntがreturnの型です。
+一番最後のInt（中括弧の直前のInt）がreturnの型です。
 return文を見なくても、funの行だけで引数とreturnの型が分かるようになっているのが特徴です。
 
 全部Intだとわかりにくいので、returnの型を変えてみましょう。
@@ -241,6 +241,8 @@ fun main() {
 }
 {% endcapture %}
 {% include kotlin_quote.html body=func_noreturn %}
+
+コロンも無くなっている事に注目してください。
 
 なお、戻りの型を書かないと、何も無いを意味するUnit型というものになります。
 
