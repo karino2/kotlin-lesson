@@ -1,13 +1,17 @@
 ---
-title: "ファイル入門"
+title: "ファイルをとりあえず使うだけの入門"
 layout: page
 ---
-とりあえずdeprecatedでもgetExternalStoragePublicDirectoryを使う手順を示しておく。
-詳細は後回しにして、とりあえずアプリで読み書き出来るようになる手順だけでも。
+テキストファイルに読み書きします。
+けれどAndroidのファイル周りは複雑なので、まずは私が書いたコードを使う事にし、あとでStorage Access Frameworkを使う所までいったら真面目に学ぶ事にします。
+
+という事で私の書いたTextFileLibを使う手順を。
+
+なお、TextFileLibはgetExternalStoragePublicDirectoryを使っていて、これは非推奨なので将来のスマホでは動かないかもしれません。
 
 ## TextFileLibを使う手順
 
-とりあえず手順
+とりあえず手順を書いておくので、何も考えずに何度もやって覚えてください。
 
 ### AndroidManifest.xmlに以下を書く
 
@@ -107,9 +111,10 @@ object TextFileLib {
   }
 ```
 
-この時点ではwriteTextは失敗して何も書けないはずです。
+Android 10以上のスマホならこれで動くはずです。
+Android 9以下だとこれでは、writeTextが失敗して何も書けないはずです。
 
-### 権限を付与
+### 権限を付与(Android９以下のスマホ)
 
 インストールされてるアプリをランチャーから長押しして、情報＞権限 を選び、ストレージのスイッチをオンにする
 

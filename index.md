@@ -63,6 +63,10 @@ ListView目指して頑張る。
 - Android側 [日付を扱う、Date入門](date_intro.md)
 - [data class入門](dataclass_intro.md)
 
+ファイルとテキスト処理
+
+- Android側 [ファイルをとりあえず使うだけの入門](file_intro.md)
+
 
 ### 昔のトップページ
 
