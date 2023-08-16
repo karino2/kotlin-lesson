@@ -460,10 +460,10 @@ fun main() {
 
 **課題: 以下のTODO以下の二行を変更して3になるようにせよ**
 {% capture str_add6 %}
-val hoge = "1"
-val ika = "2"
-
 fun main() {
+  val hoge = "1"
+  val ika = "2"
+
   // TODO:以下の二行を変更
   val n1 = hoge
   val n2 = ika
