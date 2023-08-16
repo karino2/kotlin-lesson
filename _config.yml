@@ -52,7 +52,7 @@ header_pages:
   - function_intro.md
   - date_intro.md
   - dataclass_intro.md
-  - file_intro.md
+  - textfilelib_intro.md
   - old_index.md
   - pr_intro.md
   - suspend_intro.md

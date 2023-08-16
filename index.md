@@ -65,7 +65,7 @@ ListView目指して頑張る。
 
 ファイルとテキスト処理
 
-- Android側 [ファイルをとりあえず使うだけの入門](file_intro.md)
+- Android側 [ファイルをとりあえず使うだけの入門](textfilelib_intro.md)
 
 
 ### 昔のトップページ
