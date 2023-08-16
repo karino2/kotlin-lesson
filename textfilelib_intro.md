@@ -3,15 +3,15 @@ title: "ファイルをとりあえず使うだけの入門"
 layout: page
 ---
 テキストファイルに読み書きします。
-けれどAndroidのファイル周りは複雑なので、まずは私が書いたコードを使う事にし、あとでStorage Access Frameworkを使う所までいったら真面目に学ぶ事にします。
+けれどAndroidのファイル周りは複雑なので、まずは私が書いたコード（TextFileLibと呼ぶ）を使う事にし、あとでStorage Access Frameworkを使う所までいったら真面目に学ぶ事にします。
+
+## TextFileLibを使う手順
 
 という事で私の書いたTextFileLibを使う手順を。
 
 なお、TextFileLibはgetExternalStoragePublicDirectoryを使っていて、これは非推奨なので将来のスマホでは動かないかもしれません。
 
-## TextFileLibを使う手順
-
-とりあえず手順を書いておくので、何も考えずに何度もやって覚えてください。
+これは意味を理解するというよりは手順を覚える事が大半なので、まずは手順を覚えてください。
 
 ### AndroidManifest.xmlに以下を書く
 
@@ -125,6 +125,8 @@ Android 9以下だとこれでは、writeTextが失敗して何も書けない�
 適当なファイルマネージャーでDocumentsの下にファイルが作られているのを確認。
 
 ## TextFileLibの簡単な説明
+
+手順を覚えたら、使い方を見ていきます。
 
 TextFileLibはテキストファイルを読み書きするための簡易的なライブラリです。
 ライブラリとは「みんな」が使いそうなコードを集めたものです。
