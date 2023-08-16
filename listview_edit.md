@@ -26,4 +26,44 @@ mutable listのclearを呼び出して、adapterの`notifyDataSetChanged()`を�
 
 アイテムごとの方のlayoutに「削除」というボタンを追加し、それが押されたらそのアイテムが削除されるようにしよう。
 
-具体的にはlistDataからその要素をremoveAtで削除してnotifyDataSetChangedを呼べば良い。
+具体的にはlistDataからその要素をremoveAtで削除してnotifyDataSetChangedを呼べば良い…のだけど、getViewの中からadapterを触ろうとするとエラーになります。
+
+### adapterの型解決の問題を解決する
+
+adapterのgetViewの中からadapterを触るとエラーになる。
+これは少しややこしい事が理由なので説明は難しいのだけれど、解決策は簡単です。
+
+こんな感じのコードがあったとして、
+
+```kotlin
+    val adapter by lazy { object: ArrayAdapter<String>(this, R.layout.list_item, listData) {
+        override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+            val view = if(convertView == null) layoutInflater.inflate(R.layout.list_item, null) else convertView
+            val data = listData[position]
+
+
+            view.findViewById<TextView>(R.id.itemLabel).text = data
+            view.findViewById<Button>(R.id.itemButton).setOnClickListener {
+                listData.removeAt(position)
+                adapter.notifyDataSetChanged()
+            }
+            return view
+        }
+      }
+    }
+
+```
+
+この1行目の最初、
+
+```kotlin
+    val adapter by lazy { object: ArrayAdapter<String>(this, R.layout.list_item, listData) {...}}
+```
+
+このadapterに、型をつけてやればよい。型は`ArrayAdapter<String>`です。つまり、以下のよううに、adapterの後にコロンで`ArrayAdapter<String>`を足せば良い。
+
+```kotlin
+    val adapter : ArrayAdapter<String> by lazy { object: ArrayAdapter<String>(this, R.layout.list_item, listData) { ... } }
+```
+
+これで動きます。
