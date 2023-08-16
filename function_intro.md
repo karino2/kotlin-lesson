@@ -82,8 +82,8 @@ sum2の閉じカッコの後のコロンの後がIntからStringに変わって�
 
 
 fun main() {
-  // TOOD: 以下のコメントを外してtrueが出力されるのを確認せよ
-  // println(mul(2, 3) == 6)
+  // TOOD: 以下でtrueが出力されるのを確認せよ
+  println(mul(2, 3) == 6)
 }
 {% endcapture %}
 {% include kotlin_quote.html body=func_intro_q1 %}
@@ -96,8 +96,8 @@ fun main() {
 
 
 fun main() {
-  // TOOD: 以下のコメントを外してtrueが出力されるのを確認せよ
-  // println(mulAdd(2, 3, 4) == 10)
+  // 以下がtrueが出力されるのを確認せよ
+  println(mulAdd(2, 3, 4) == 10)
 }
 {% endcapture %}
 {% include kotlin_quote.html body=fun_intro_q2 %}
@@ -110,8 +110,8 @@ fun main() {
 
 
 fun main() {
-  // TOOD: 以下のコメントを外して、「ダネ〜」と出力された後にtrueが出力されるのを確認せよ
-  // println(fusigidane() == 3)
+  // 以下で「ダネ〜」と出力された後にtrueが出力されるのを確認せよ
+  println(fusigidane() == 3)
 }
 {% endcapture %}
 {% include kotlin_quote.html body=fun_intro_q3 %}
@@ -126,8 +126,8 @@ till hundredは百まで、って意味です。
 
 
 fun main() {
-  // TOOD: 以下のコメントを外して、trueが出力されるのを確認せよ
-  // println(sumTillHundred() == 5050)
+  // 以下がtrueが出力されるのを確認せよ
+  println(sumTillHundred() == 5050)
 }
 {% endcapture %}
 {% include kotlin_quote.html body=fun_intro_q4 %}
@@ -142,8 +142,8 @@ fun main() {
 
 
 fun main() {
-  // TOOD: 以下のコメントを外して、trueが出力されるのを確認せよ
-  // println(sumOdd() == 2500)
+  // 以下がtrueが出力されるのを確認せよ
+  println(sumOdd() == 2500)
 }
 {% endcapture %}
 {% include kotlin_quote.html body=fun_intro_q5 %}
@@ -158,17 +158,36 @@ fun main() {
 // TODO: ここにoddList関数を書け
 
 fun main() {
-  // TOOD: 以下のコメントを外して、全てtrueが出力されるのを確認せよ
-  /*
+  // 以下が全てtrueが出力されるのを確認せよ
   val olist = oddList()
   println(olist.size == 50)
   println(olist[0] == 1)
   println(olist[15] == 31)
   println(olist.sum() == 2500)
-  */
 }
 {% endcapture %}
 {% include kotlin_quote.html body=fun_intro_q6 %}
+
+**課題: リストの奇数番目だけを含んだ新しいリストを返す、oddOnly関数を書け**
+
+渡されたリストから、1番目、3番目、5番目、7番目…と奇数番目だけの要素を持った新しいリストを作って返す、oddOnlyを作れ。
+0番目から数える事にする（以下のprintlnが全部trueになるように考えてくれ）
+
+{% capture fun_intro_q7 %}
+
+// TODO: ここにoddOnly関数を書け
+
+fun main() {
+
+  val list = listOf("0番目",  "1番目", "2番目", "3番目", "4番目", "5番目")
+
+  val olist = oddOnly(list)
+  // 以下が全てtrueなのを確認せよ。 
+  println(olist.size == 3)
+  println(olist[1] == "3番目")
+}
+{% endcapture %}
+{% include kotlin_quote.html body=fun_intro_q7 %}
 
 
 ### returnしない場合は戻りの型は無しで良い
