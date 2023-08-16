@@ -182,9 +182,28 @@ readTextで指定したファイルの文字列を読み込んで、文字列と
 ファイルが存在しなかったり権限が足りなかったりテキストファイルでは無いファイルを開くと「""」を返します。
 読めなかったのか空のファイルなのか、この関数では区別出来ないけれど、入門の段階ではだいたい読めるのでいいでしょう。
 
-## 入力された文字をファイルに書き込むアプリを作ろう
+## 課題: 入力された文字をファイルに書き込むアプリを作ろう
 
 ファイル名とテキスト入力の二つのEditTextとSaveというボタンを持ったレイアウトを作って、
 処理を書こう。
 
 これは何回か繰り返してください。あとで手順動画も作ります。
+
+### レイアウト
+
+- ファイル名の Plain TextからDnDしたEditText
+- メモの内容を入れるMultiline TextからDnDしたEditText
+- 保存用のButton
+
+真ん中のMultilineのEditTextのlayout_weightを1にする。
+
+### 上の「TextFileLibを使う手順」の、以下の二つの手順を行う
+
+1. AndroidManifest.xmlにuses-permissionを書く
+2. TextFileLib.ktを作ってコピペする
+
+### onCreateでButtonにonClickListenerをぶら下げて処理を書く
+
+Plain Textの方のEditTextをファイル名として、Multilineの方のEditTextを保存するテキストとしてTextFileLib.writeTextを呼び出す。
+
+結果が成功したかはshowMessageしておく方がいいかも。
