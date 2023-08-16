@@ -148,7 +148,7 @@ fun main() {
 
 ## Raw string
 
-ダブルクオート三つでraw stringです。
+ダブルクオート三つでraw stringと呼ばれるもになります。
 
 {% capture rawstr_code1 %}
 fun main() {
@@ -162,6 +162,8 @@ fun main() {
 }
 {% endcapture %}
 {% include kotlin_quote.html body=rawstr_code1 %}
+
+こういう風に複数行をバックスラッシュnとかいっぱい入れずに書けてちょっと便利という機能ですが、たまにしか使いません。
 
 
 ## String template
@@ -191,3 +193,5 @@ fun main() {
 }
 {% endcapture %}
 {% include kotlin_quote.html body=strtemplate_code2 %}
+
+結構便利なので良く使います。
