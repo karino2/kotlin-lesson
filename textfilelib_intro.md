@@ -9,9 +9,9 @@ layout: page
 
 という事で私の書いたTextFileLibを使う手順を。
 
-なお、TextFileLibはgetExternalStoragePublicDirectoryを使っていて、これは非推奨なので将来のスマホでは動かないかもしれません。
+なお、TextFileLibはgetExternalStoragePublicDirectoryを使っていて、これは将来廃止予定と言われているので将来のスマホでは動かないかもしれません。（なおAndroidでは良くある事なので廃止されるまでは気にせず使うしか無い事も良くあるし、現時点ではあまり気にしなくていい）
 
-これは意味を理解するというよりは手順を覚える事が大半なので、まずは手順を覚えてください。
+この手順は、意味を理解するというよりは手順を覚える事が重要です。まずは手順を覚えてください。
 
 ### AndroidManifest.xmlに以下を書く
 
