@@ -54,37 +54,18 @@ adapterのgetViewの中からadapterを触るとエラーになる。
 
 ```
 
-この1行目の最初、
+この1行目の最初の以下の部分を、
 
 ```kotlin
-    val adapter by lazy { object: ArrayAdapter<String>(this, R.layout.list_item, listData) {...}}
+    val adapter by lazy 
 ```
 
 このadapterに、型をつけてやればよい。型は`ArrayAdapter<String>`です。つまり、以下のよううに、adapterの後にコロンで`ArrayAdapter<String>`を足せば良い。
 
 ```kotlin
-    val adapter : ArrayAdapter<String> by lazy { object: ArrayAdapter<String>(this, R.layout.list_item, listData) { ... } }
+    val adapter : ArrayAdapter<String> by lazy 
 ```
 
 これで動きます。
 
-つまり、こんな感じでいい。
-
-```kotlin
-    val adapter : ArrayAdapter<String> by lazy { object: ArrayAdapter<String>(this, R.layout.list_item, listData) {
-        override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-            val view = if(convertView == null) layoutInflater.inflate(R.layout.list_item, null) else convertView
-            val data = listData[position]
-
-
-            view.findViewById<TextView>(R.id.itemLabel).text = data
-            view.findViewById<Button>(R.id.itemButton).setOnClickListener {
-                listData.removeAt(position)
-                adapter.notifyDataSetChanged()
-            }
-            return view
-        }
-      }
-    }
-
-```
+これはかなりややこしい話なので、「getViewでadapterを使いたい時はこうしないといけない」と丸暗記してください。
