@@ -67,3 +67,24 @@ adapterのgetViewの中からadapterを触るとエラーになる。
 ```
 
 これで動きます。
+
+つまり、こんな感じでいい。
+
+```kotlin
+    val adapter : ArrayAdapter<String> by lazy { object: ArrayAdapter<String>(this, R.layout.list_item, listData) {
+        override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+            val view = if(convertView == null) layoutInflater.inflate(R.layout.list_item, null) else convertView
+            val data = listData[position]
+
+
+            view.findViewById<TextView>(R.id.itemLabel).text = data
+            view.findViewById<Button>(R.id.itemButton).setOnClickListener {
+                listData.removeAt(position)
+                adapter.notifyDataSetChanged()
+            }
+            return view
+        }
+      }
+    }
+
+```
