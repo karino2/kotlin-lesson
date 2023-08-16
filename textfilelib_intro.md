@@ -13,6 +13,12 @@ layout: page
 
 この手順は、意味を理解するというよりは手順を覚える事が重要です。まずは手順を覚えてください。
 
+なお、このページの後半にある課題とほとんどの作業は同じなので、分からない所があったら、以下の課題の手順動画も参考になるかもしれません。
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7iWGlRfmMsI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+
 ### AndroidManifest.xmlに以下を書く
 
 ```
@@ -187,7 +193,9 @@ readTextで指定したファイルの文字列を読み込んで、文字列と
 ファイル名とテキスト入力の二つのEditTextとSaveというボタンを持ったレイアウトを作って、
 処理を書こう。
 
-これは何回か繰り返してください。あとで手順動画も作ります。
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7iWGlRfmMsI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+これは何回か繰り返してください。
 
 ### レイアウト
 
