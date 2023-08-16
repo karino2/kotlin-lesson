@@ -28,7 +28,7 @@ app＞java＞自分のパッケージ を開いてい、右クリックして Ne
 
 ### 以下をTextFileLibにコピペする
 
-生成されたコードを削除して、以下をコピペする。
+生成されたコードを削除して（一番上のpackageの行だけ残す）、以下をコピペする。
 
 ```kotlin
 import android.os.Environment
@@ -123,3 +123,64 @@ Android 9以下だとこれでは、writeTextが失敗して何も書けない�
 ### 生成されたファイルを確認
 
 適当なファイルマネージャーでDocumentsの下にファイルが作られているのを確認。
+
+## TextFileLibの簡単な説明
+
+TextFileLibはテキストファイルを読み書きするための簡易的なライブラリです。
+ライブラリとは「みんな」が使いそうなコードを集めたものです。
+「みんな」が誰を指すかは状況によって、その会社内だったらそのプロジェクト内だったり世界中の多くの人だったりします。
+
+ライブラリは、最初のうちはコードの中身は気にせず使い方だけ調べて使っていくものです。
+
+以下ではTextFileLibの使い方を簡単に見ていきます。
+
+TextFileLibには三つの関数があります。
+
+- `fun isFileExist(fileName: String) : Boolean`
+- `fun writeText(fileName: String, body: String) : Boolean`
+- `fun readText(fileName: String) : String`
+
+それぞれを簡単に見ていきます。
+
+### isFileExistでファイルが存在するかを調べる
+
+isFileExistはある名前のファイルが存在するかを調べます。
+以下のように使います
+
+```kotlin
+val v = TextFileLib.isFileExist("mytextfile.txt")
+```
+
+「mytextfile.txt」というファイルがあればtrueを、無ければfalseを返します。
+
+### writeTextで文字列をファイルに書き込む
+
+writeTextはファイルの名前と書き込む文字列の二つを引数にとります。
+
+`fun writeText(fileName: String, body: String) : Boolean`
+
+たとば以下のようにすると「mytextfile.txt」というファイルに文字列を書き込みます。
+
+```kotlin
+val text = "ほげほげいかいか"
+
+TextFileLib.writeText("mytextfile.txt", text)
+```
+
+なお、ファイルを書き込むのは、権限によっては出来なかったりします。書き込めない時はfalseが返ってきます。
+
+### readTextで指定したファイルの文字列を読み込む
+
+readTextで指定したファイルの文字列を読み込んで、文字列として返します。
+
+`fun readText(fileName: String) : String`
+
+ファイルが存在しなかったり権限が足りなかったりテキストファイルでは無いファイルを開くと「""」を返します。
+読めなかったのか空のファイルなのか、この関数では区別出来ないけれど、入門の段階ではだいたい読めるのでいいでしょう。
+
+## 入力された文字をファイルに書き込むアプリを作ろう
+
+ファイル名とテキスト入力の二つのEditTextとSaveというボタンを持ったレイアウトを作って、
+処理を書こう。
+
+これは何回か繰り返してください。あとで手順動画も作ります。
