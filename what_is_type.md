@@ -225,7 +225,7 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=mojiretu %}
 
-上のコードで、mojiretuはString型となる。
+上のコードで、mojiretu変数はString型となる。
 
 ### Boolean型
 
