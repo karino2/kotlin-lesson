@@ -227,7 +227,7 @@ fun main() {
 という事でdata classについての簡単な説明をしたので、ついにListViewの編集に、アイテム追加時の時間を追加する事にしましょう。
 結構やる事は多いので、最初にやる事をリストアップしておきます。
 
-1. list itemの方のレイアウトに、時刻表示用TextViewと追加
+1. list itemの方のレイアウトに、時刻表示用TextViewを追加（テキストサイズは小さめにしておこう）
 2. Postというdata classを作り、項目名とDateをもたせる
 3. listDataをPostのMutableListにする
 4. getViewで時刻表示用TextViewに時刻をセット
