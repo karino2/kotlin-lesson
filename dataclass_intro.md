@@ -17,21 +17,26 @@ data classは、複数のデータをまとめて持つのに使う機能です�
 
 という事で、まずは使い道から見ていきましょう。
 
-### ListViewに挑む！編集編に、投稿時間もつけたい
+### 前回の日付の所でやった「ListViewに挑む！編集編」に、投稿時間をつける所のリストがいまいち
 
-data classを使いたくなるシチュエーションとして、[ListViewの編集編](listview_edit.md)で作ったものに対し、
-アイテム追加時の時間も表示したい、と考えたとします。
+data classを使いたくなるシチュエーションとして、[日付を扱う、Date入門](date_intro.md)の最後でやった、**課題: 「ListViewに挑む！編集編」に、投稿時間をつける** のリストの所を考えます。
 
-けれど、リストのアイテムは現状、String型となっている。
+上記のリンク先では、以下のようにしました。
 
 ```kotlin
 val listData = mutableListOf<String>()
+val listDt = mutableListOf<Date>()
 ```
 
-ここに、StringとDateの二つを追加していきたい。そういう時に使うのがdata classです。
+でもこの二つは毎回セットでaddされるし、セットで`listData[position]`と`listDt[position]`されます。
+消す時も両方同じ所を消さないといけません。
 
-data classは、リストに二つ以上の項目を同時に追加していきたい時に使います。
-以下、それをどうやって実現するのかを見ていきましょう。
+こういうのはいかにも片方操作し忘れとかがあってバグりやすい。
+
+そこでStringとDateをまとめて一つの要素としてListに追加していくのが良い解決策です。
+それを実現するのがdata classです。
+
+以下data classの具体例を見ていきましょう。
 
 ### data classの簡単な例
 
@@ -222,25 +227,18 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=dataclass_intro_q4 %}
 
-## ListViewに挑む！編集編に、投稿時間をつけよう
+## 前回の日付の入門でやった、「ListViewに挑む！編集編」に、投稿時間をつけたものをdata class化しよう
 
-という事でdata classについての簡単な説明をしたので、ついにListViewの編集に、アイテム追加時の時間を追加する事にしましょう。
-結構やる事は多いので、最初にやる事をリストアップしておきます。
+という事でdata classについての簡単な説明をしたので、ついにListViewの編集に投稿の日付を表示するコードを、data classを使ってもっといい感じにしましょう。
 
-1. list itemの方のレイアウトに、時刻表示用TextViewを追加（テキストサイズは小さめにしておこう）
-2. Postというdata classを作り、項目名とDateをもたせる
-3. listDataをPostのMutableListにする
-4. getViewで時刻表示用TextViewに時刻をセット
-5. アイテムを追加するボタンのsetOnClickListenerで、Postを追加するようにして、その時点でのDate()を持たせる
+1. Postというdata classを作り、項目名とDateをもたせる
+2. listDataをPostのMutableListにする
+3. getViewで時刻表示用TextViewに時刻をセットするあたりを修正
+4. アイテムを追加するボタンのsetOnClickListenerで、Postを追加するようにして、その時点でのDate()を持たせる
 
 以下各ステップを見ていきましょう。
 
-### 1. list itemの方のレイアウトに、時刻表示用TextViewと追加
-
-時刻表示用のTextViewを追加します。少しこちらのTextViewは文字のサイズを小さくして、これまでのitemLabelの文字を大きくしておきましょう。
-idはitemDateとかにしますか。
-
-### 2. Postというdata classを作り、項目名とDateをもたせる
+### 1. Postというdata classを作り、項目名とDateをもたせる
 
 Postというdata classで、StringのitemとDate型のdateを持たせるとしましょう。
 このPostというdata classは、[コードの置き場所入門](code_location_intro.md)の「1番目の区画」に置きます。
@@ -249,25 +247,25 @@ Postというdata classで、StringのitemとDate型のdateを持たせるとし
 
 ここでDateの所が赤くなったら、上にカーソルを移動して、Alt+Enterでimportを追加しましょう。
 
-### 3. listDataをPostのMutableListにする
+### 2. listDataをPostのMutableListにする
 
 これは特に解説の必要は無いですかね。
 
-### 4. getViewで時刻表示用TextViewに時刻をセット
+### 3. getViewで時刻表示用TextViewに時刻をセット
 
 itemLabelにセットしているのと同様に、itemDateにも日付をセットします。toStringでいいでしょう。
 
 日付は、以下のような感じでセットします。
 
 ```kotlin
-val data = listData[position]
+val item = listData[position]
 
-view.findViewById<TextView>(R.id.itemDate).text = data.date.toString()
+view.findViewById<TextView>(R.id.itemDate).text = item.date.toString()
 ```
 
-dataとかdateとかややこしいですね。dataの方の変数名はそろそろ変えた方がいいかもしれない。
+itemLabelの方もこんな感じで変更します。
 
-### 5. アイテムを追加するボタンのsetOnClickListenerで、Postを追加するようにして、その時点でのDate()を持たせる
+### 4. アイテムを追加するボタンのsetOnClickListenerで、Postを追加するようにして、その時点でのDate()を持たせる
 
 setOnClickListenerの中で、以下みたいな感じに書きます。
 
@@ -278,6 +276,8 @@ listData.add(post)
 ```
 
 変数使わなくてもいいですが、このくらいは使った方が読みやすいとは思う。
+
+以上で、二つのリストを同時に追加したり削除したり、という事が不要になりました。やったね！
 
 ## おまけ：クラスの用語いろいろ
 

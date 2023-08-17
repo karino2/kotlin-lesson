@@ -7,6 +7,10 @@ AndroidではDateというものを使います。importはjava.util.Dateです�
 
 Dateは日付、って意味の英単語です。
 
+一応自分のためにJavaのDate型のドキュメントのリンクも貼っておく。
+[Date (Java Platform SE 8 )](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html)
+
+
 ## Dateの最初の例
 
 このweb上のplayground（下の奴）では、自分でimportを手書きしないといけないので、最初に`import java.util.Date`と書くようにしてください（これはコピペでいいです）。
@@ -27,7 +31,22 @@ fun main() {
 {% include kotlin_quote.html body=date_intro1 %}
 
 `Date()`と呼ぶと、呼んだ時点での「Dateオブジェクト」が得られます。型はDate型です。
-そしてDateオブジェクトをそのままprintlnすると、いい感じの文字列として出力されます。（dt.toString()でも同じ文字列が得られる）。
+そしてDateオブジェクトをそのままprintlnすると、いい感じの文字列として出力されます。
+
+これは、dt.toString()でも同じ文字列が得られます。
+
+{% capture date_intro2 %}
+
+import java.util.Date
+
+fun main() {
+  val dt = Date()
+  val v = dt.toString()
+
+  println(v)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=date_intro2 %}
 
 なお、このページ上だとUTCの時間になってしまうので8時間ほど時差があるかもしれませんが、実機だと端末のタイムゾーンの時間になります。
 
@@ -254,6 +273,63 @@ fun main() {
 これを使って、[OffTyping - Google Play のアプリ](https://play.google.com/store/apps/details?id=com.livejournal.karino&hl=ja)のようなアプリを作る事が出来ます。
 （Enter押さないでハンドルするのはまだやってないのでEnterを押さないといけないけれど）
 
+## 課題: 「ListViewに挑む！編集編」に、投稿時間をつける
 
-[Date (Java Platform SE 8 )](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html#getTime--)
+[ListViewの編集編](listview_edit.md)で作ったものに対し、
+アイテム追加時の時間も表示したい、と考えたとします。
+Twitterなどを見ると投稿した時間が下に小さく表示されていますよね。あれと同じです。
 
+まず簡単な手順を書いておきます。
+
+1. itemのレイアウトに時刻表示用のTextViewを追加（文字のサイズは小さめにしておきましょう）
+2. これまでlistDataとして作っていたのと同じ感じで、Dateを保持するリストも作る
+3. getViewの所でDateのリストからも日付を取り出して1で追加したTextViewにセットする
+4. setOnClickListenerでlistDataに追加する所で、1で追加したリストに日付を追加する
+
+以下簡単にヒントを書いていくので自分でやってみてください。
+
+### 日付を保存するリストを作る
+
+リストのアイテムは現状、String型となっている。
+
+```kotlin
+val listData = mutableListOf<String>()
+```
+
+これを、Dateも保持するように以下のように二つにする。
+
+```kotlin
+val listData = mutableListOf<String>()
+val listDt = mutableListOf<Date>()
+```
+
+### getViewで日付をTextViewにセット
+
+getViewの所で以下のような感じにすれば良いでしょう。
+
+```kotlin
+val data = listData[position]
+val dt = listDt[position]
+
+view.findViewById<TextView>(R.id.itemLabel).text = data
+view.findViewById<TextView>(R.id.itemDateLabel).text = dt.toString()
+```
+
+### setOnClickListenerで日付もリストに追加する
+
+これまで、以下みたいになっている所で、
+
+```kotlin
+findViewById<Button>(R.id.buttonSubmit).setOnClickListener { listData.add(findViewById<TextView>(R.id.edit1).text.toString()) }
+```
+
+以下みたいにリストに日付も追加する
+
+```kotlin
+findViewById<Button>(R.id.buttonSubmit).setOnClickListener { 
+  listData.add(findViewById<TextView>(R.id.edit1).text.toString())
+  listDt.add(Date())
+}
+```
+
+これで投稿時間も追加されるようになったはずです。
