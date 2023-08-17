@@ -2,10 +2,29 @@
 title: "「算数で挫折した人向けの、JavaScript入門」との差分"
 layout: page
 ---
-[算数で挫折した人向けのJavaScript入門](https://karino2.github.io/js-introduction/)を6.3までやってもらったと思うので、
-この範囲でkotlinは違う、というところを簡単にまとめておく。
+この辺からプログラム言語の勉強に入ります。
 
-## 細かい話
+## JS入門を6.3までやる
+
+プログラムについて完全にゼロから解説するのは結構たいへんなので、
+以前JavaScriptという別の言語用に作った、以下の入門をやってもらいたい。
+
+[算数で挫折した人向けのJavaScript入門](https://karino2.github.io/js-introduction/)
+
+これを6.3まで進めて欲しい。
+別の言語といっても6.3までの範囲だとkotlinともあまり違いは無いので。ほとんど無駄にはならないはず。
+
+以下はこの入門を6.3までやった後に読んでください。
+
+## JS入門とkotlinで違う所
+
+JS入門は6.3までやりましたか？
+やったと信じて続きを書きます。
+
+6.3までの範囲ならほとんど同じとはいえ、ちょっとは違う所もあるので、
+以下では違う所を中心に補足説明します。
+
+### 細かい話
 
 - セミコロンはいらない
 - MessageBox.show()はprintln()
@@ -19,7 +38,7 @@ fun main() {
 {% include kotlin_quote.html body=hyousyousiki_code %}
 
 
-## mainとかいう奴
+### mainとかいう奴
 
 ここで実験するコードでは、必ず「`fun main() {`」と、その閉じ中カッコで囲む必要がある
 
@@ -40,7 +59,7 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=hello_world_code %}
 
-## 変数がvalとvar
+### 変数がvalとvar
 
 JS入門ではvarだったが、kotlinにはvalとvarの２つがある。
 valは最初に値を設定すると以後変更出来ない変数。varは一度値を設定した後も、違う値を再セット出来る変数。
@@ -82,7 +101,7 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=range_sum %}
 
-## ifの後などの中括弧が一文なら要らない
+### ifの後などの中括弧が一文なら要らない
 
 これはJSでもそうなのだけれど、JSはセミコロンオートインサーションという特殊事情があっていろいろ説明が面倒なのでなるべく中括弧をつけるのを推奨していた。
 けれどkotlinはそういう事は無いので、ifの後の文が1文だけなら中括弧無しでも構わない。
@@ -145,7 +164,7 @@ fun main() {
   }
 ```
 
-## 配列がList
+### 配列がList
 
 kotlinにも配列があるけれど、あまり使わない。JSの配列に相当するものはListと思っておく方がいい。
 ListについてはあとのCollectionsのところで詳しく扱うが、とりあえず配列の代わりはList。
@@ -167,7 +186,7 @@ kotlinも0から始まる言語ですね。
 
 要素の追加方法とかは違うが、その辺はあとで真面目に見ていきます。
 
-## 辞書がMap
+### 辞書がMap
 
 kotlinは、辞書をMapと呼びます。同じものです。
 kotlinは辞書を定義するのはJSに比べると少しかったるくて、toのペアを並べてmapOfする。

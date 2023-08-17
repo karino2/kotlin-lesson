@@ -15,8 +15,6 @@ layout: page
 
 Androidの方には「Android側」と記述してあります。区別が曖昧なものもありますが、目安にどうぞ。
 
-- [あらすじ](intro.md) 別に読まなくても良いあらすじ。
-
 ## AndroidStudioを触ってみる
 
 - Android側 [最初の一歩、TextViewとButtonを使ってみよう！](textview_button.md)
@@ -68,6 +66,10 @@ ListView目指して頑張る。
 - Android側 [ファイルをとりあえず使うだけの入門](textfilelib_intro.md)
 
 
-### 昔のトップページ
+### 古くなったコンテンツ
 
-もう古くなった[以前のトップページ](old_index.md)。一応残しておく。
+[あらすじ](intro.md) このシリーズを開始した時に思っていた事。
+
+もう古くなった[以前のトップページ](old_index.md)。
+サイトを再利用している結果いらなくなったものだけれど、
+一応残しておく。
