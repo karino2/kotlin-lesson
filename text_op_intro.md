@@ -24,11 +24,27 @@ fun main() {
   val list = content.split("\n")
   println(list.size)
   for((index, line) in list.withIndex()) {
-    println("${index}行目の文字列は「${line}」です")
+    println("${index}番目の文字列は「${line}」です")
   }
 }
 {% endcapture %}
 {% include kotlin_quote.html body=code_split1 %}
+
+{% capture code_split2 %}
+val content = """これは一行目です
+これは二行目です
+これは三行目です"""
+
+fun main() {
+  val list = content.split("\n")
+  println(list.size)
+  for((index, line) in list.withIndex()) {
+    println("${index}番目の文字列は「${line}」です")
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=code_split2 %}
+
 
 ## splitの逆はjoinToString
 
