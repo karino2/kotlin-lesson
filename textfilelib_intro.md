@@ -222,3 +222,7 @@ readTextで指定したファイルの文字列を読み込んで、文字列と
 Plain Textの方のEditTextをファイル名として、Multilineの方のEditTextを保存するテキストとしてTextFileLib.writeTextを呼び出す。
 
 結果が成功したかはshowMessageしておく方がいいかも。
+
+### 課題: ロードも書いてみよう
+
+ロードボタンを作り、ファイル名を入力するとそのファイルの中身をマルチラインのEditTextに表示するコードを追加してみよう。
