@@ -10,6 +10,9 @@
 
     .sidebar {
       min-width: 260px;
+      border-right-color: rgb(209, 209, 209);
+      border-right-width: 1px;
+      border-right-style: solid;
     }
     .sidebar li {
       font-size: small;
@@ -27,7 +30,7 @@
         <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>    
       </div>
     </header>
-    
+
     <main class="page-content" aria-label="Content">
       <div class="sidebar">
         {%- include sidebar.html -%}
