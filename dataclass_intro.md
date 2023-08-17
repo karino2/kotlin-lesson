@@ -229,7 +229,8 @@ fun main() {
 
 ## 前回の日付の入門でやった、「ListViewに挑む！編集編」に、投稿時間をつけたものをdata class化しよう
 
-という事でdata classについての簡単な説明をしたので、ついにListViewの編集に投稿の日付を表示するコードを、data classを使ってもっといい感じにしましょう。
+という事でdata classについての簡単な説明をしたので、ついに[日付を扱う、Date入門](date_intro.md)の最後でやった、**課題: 「ListViewに挑む！編集編」に、投稿時間をつける** でリストが二つだった問題を、
+data classを使ってもっといい感じにしましょう。
 
 1. Postというdata classを作り、項目名とDateをもたせる
 2. listDataをPostのMutableListにする
