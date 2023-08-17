@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  {%- include head.html -%}
+
+  <style>
+    .page-content {
+      display: flex;
+    }
+
+    .sidebar {
+      min-width: 260px;
+    }
+    .sidebar li {
+      font-size: small;
+    }
+    .sidebar h3 {
+      font-size: medium;
+    }
+
+  </style>
+    <body>
+
+    <header class="site-header">
+
+      <div class="wrapper">
+        <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>    
+      </div>
+    </header>
+    
+    <main class="page-content" aria-label="Content">
+      <div class="sidebar">
+        {%- include sidebar.html -%}
+      </div>
+      <div class="wrapper">
+          {{ content }}
+      </div>
+    </main>
+
+    {%- include footer.html -%}
+
+  </body>
+
+</html>

@@ -1,0 +1,13 @@
+{% for item in  site.data.navbar.toc %}
+<h3>{{ item.title }}</h3>
+<ul>
+  {% for entry in item.subfolderitems %}
+
+  {%- assign my_page = site.pages | where: "path", entry | first -%}
+  {%- if my_page.title -%}
+  <li><a href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a></li>
+  {%- endif -%}
+
+  {% endfor %}
+</ul>
+{% endfor %}
