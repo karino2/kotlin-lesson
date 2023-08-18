@@ -12,6 +12,10 @@ layout: page
 テキスト処理は一大分野で、世の中には仕事のほとんどがテキスト処理だ、というプログラマもそれなりにいるくらいです。
 ここではとりあえず当面の用が足せるくらいの理解を目指します。
 
+なお、公式ドキュメントにここに載せてないのもあるので、必要になったらそちらも参照したい。
+英語だけど自動翻訳とか使って頑張れ。
+[String - Kotlin Programming Language](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/)
+
 ## 文字で分割するsplit
 
 {% capture code_split0 %}
@@ -145,4 +149,25 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=code_trim1 %}
 
+なお、トリムする文字を指定する事も出来る。
+これはダブルクオートじゃなくてシングルクオート（`"a"`では無く`'a'`とする）なのに注意。
+理由は文字列じゃなくて文字だからなのだけれど、とりあえずtrimの時はシングルクオートと丸暗記しておけばいいです。
 
+splitの例であった、最後が空行が入っているケースも、これを使うと以下のように出来る。
+
+{% capture code_trim2 %}
+val content = """これは一行目です
+これは二行目です
+これは三行目です
+"""
+
+fun main() {
+  val trim = content.trimEnd('\n')
+  val list = trim.split("\n")
+  println(list.size)
+  for((index, line) in list.withIndex()) {
+    println("${index}番目の文字列は「${line}」です")
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=code_trim2 %}
