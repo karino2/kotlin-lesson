@@ -68,7 +68,7 @@ fun main() {
 fun main() {
   val list = listOf("これは一行目です", "これは二行目です", "これは三行目です")
   val content = list.joinToString("\n")
-  println(content)
+  println("「$content」")
 }
 {% endcapture %}
 {% include kotlin_quote.html body=code_join1 %}
@@ -135,9 +135,12 @@ fun main() {
 fun main() {
   val content = "  前後 と中 に空白  "
 
-  println(content.trim())
-  println(content.trimStart()))
-  println(content.trimEnd())
+  val trim = content.trim()
+  val trimStart = content.trimStart()
+  val trimEnd = content.trimEnd()
+  println("「${trim}」")
+  println("「${trimStart}」")
+  println("「${trimEnd}」")
 }
 {% endcapture %}
 {% include kotlin_quote.html body=code_trim1 %}
