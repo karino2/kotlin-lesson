@@ -163,6 +163,9 @@ TextFileLibはテキストファイルを読み書きするための簡易的な
 
 以下ではTextFileLibの使い方を簡単に見ていきます。
 
+TextFileLibはとりあえず次の[テキスト処理入門](text_op_intro.md)をするのに必要な最低限の機能だけを持っています。
+指定された文字列を、テキストファイルとして、Documentsというディレクトリの下に保存します。
+
 TextFileLibには三つの関数があります。
 
 - `fun isFileExist(fileName: String) : Boolean`
