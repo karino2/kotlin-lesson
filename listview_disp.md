@@ -138,6 +138,11 @@ val adapter by lazy { object: ArrayAdapter<String>(this, R.layout.list_item, lis
 
 なお、getViewをoverrideするので本当はコンストラクタのR.layout.list_itemはなんでも良い（使わないので）。
 
+ここは一番意味不明な所だと思うので、解説動画を作りました。
+何回か作業をした後に見てみてください。
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SKfI2QKCwXM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ### onCreateの方のsetOnItemClickListenerを消す
 
 getViewをオーバーライドしたらこちらは不要になるので消します。
