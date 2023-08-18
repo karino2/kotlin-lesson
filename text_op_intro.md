@@ -64,6 +64,19 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=code_split2 %}
 
+splitした結果の要素数の最大回数を指定。`limit=`というこれまでに無い指示方法だけれどそういうものとして覚えておいてくれ。
+あとで行指向のレコードを作る時に使う。
+
+{% capture code_split3 %}
+
+fun main() {
+  val content = "a/ここにも/が"
+  println(content.split("/"))
+  println(content.split("/", limit=2))
+}
+{% endcapture %}
+{% include kotlin_quote.html body=code_split3 %}
+
 
 ## splitの逆はjoinToString
 
