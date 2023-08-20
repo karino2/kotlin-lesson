@@ -444,6 +444,8 @@ fun main() {
 
 名前はconvertTextにしますか。convertは変換するとかそういう意味です。
 
+ヒント: まずは１行を1要素とするListを作って、joinToStringしよう。
+
 {% capture code_tofile0 %}
 import java.util.Date
 
