@@ -192,7 +192,9 @@ writeTextはファイルの名前と書き込む文字列の二つを引数に�
 
 `fun writeText(fileName: String, body: String) : Boolean`
 
-たとば以下のようにすると「mytextfile.txt」というファイルに文字列を書き込みます。
+fileNameという名前のファイルにbodyを書き込みます。
+
+たとば以下のようにすると「mytextfile.txt」というファイルに「ほげほげいかいか」を書き込みます。
 
 ```kotlin
 val text = "ほげほげいかいか"
