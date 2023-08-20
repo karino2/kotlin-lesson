@@ -384,3 +384,55 @@ fun main() {
 
 というのは今後何度もやる事になるでしょう。
 
+## 課題: テキストからPostのリストを作ろう
+
+ファイルから読み込むケースをまずはやってみます。
+以下のような形式のテキストから、
+
+```
+1691126681002,これは一行目のアイテムです
+1691137849935,これは二行目のアイテムです
+1691189379291,これは三行目です。別にどんな文字列でもいいですが、このフォーマットだと改行は入れられない。
+```
+
+Postのリストを作ります。
+
+```kotlin
+data class Post(val content: String, val created: Date)
+```
+
+- ヒント1: "1691126681002"は大きい数字なので数字にするのにtoInt()では無くtoLong()を使う。
+- ヒント2: 1691126681002という数字から対応するDateを作るのはDate(1691126681002)
+
+という事でやってみましょう。
+
+1. 最後の改行を（あれば）trim
+2. 行にsplitでバラす
+3. 各行をさらにカンマでバラす、limitも忘れずに
+4. Post型のオブジェクトを作りリストに追加していく
+
+これを行う関数は、parseTextという名前にしましょう。このように文字列からオブジェクトにする事をパースといいます。
+
+{% capture code_fromfile0 %}
+
+data class Post(val content: String, val created: Date)
+
+// TODO: ここにparseTextを作れ
+
+
+// 以下はいじらない
+
+val content = """1691126681002,これは一行目のアイテムです
+1691137849935,これは,二行目のアイテムです
+1691189379291,これは三行目です。別にどんな文字列でもいいですが、このフォーマットだと改行は入れられない。
+"""
+
+fun main() {
+  val actual = parseText(content)
+
+  println(actual.size == 3)
+  println(actual[1].created == Date(1691137849935))
+  println(actual[1].content == "これは,二行目のアイテムです")
+}
+{% endcapture %}
+{% include kotlin_quote.html body=code_fromfile0 %}
