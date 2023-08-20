@@ -414,6 +414,7 @@ data class Post(val content: String, val created: Date)
 これを行う関数は、parseTextという名前にしましょう。このように文字列からオブジェクトにする事をパースといいます。
 
 {% capture code_fromfile0 %}
+import java.util.Date
 
 data class Post(val content: String, val created: Date)
 
