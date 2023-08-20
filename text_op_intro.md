@@ -442,7 +442,7 @@ fun main() {
 
 今度は逆にファイルに保存する時です。Postのリストからひとつながりの文字列を作ります。フォーマットも先ほどと同じフォーマットにしましょう。
 
-名前はconvertTextにしますか。convertは変換するとかそういう意味です。
+名前はconvertToTextにしますか。convertは変換するとかそういう意味です。
 
 ヒント: まずは１行を1要素とするListを作って、joinToStringしよう。
 
@@ -451,18 +451,18 @@ import java.util.Date
 
 data class Post(val content: String, val created: Date)
 
-// TODO: ここにconvertTextを作れ
+// TODO: ここにconvertToTextを作れ
 
 
 // 以下はいじらない
 
 fun main() {
 
-  val target = lsitOf(Post("これは一行目のアイテムです", Date(1691126681002)),
+  val target = listOf(Post("これは一行目のアイテムです", Date(1691126681002)),
                       Post("これは,二行目のアイテムです", Date(1691137849935)),
                       Post("これは三行目です。別にどんな文字列でもいいですが、このフォーマットだと改行は入れられない。", Date(1691189379291))
                       )
-  val actual = parseText(content)
+  val actual = convertToText(target)
 
 
 val expect = """1691126681002,これは一行目のアイテムです
