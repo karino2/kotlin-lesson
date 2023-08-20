@@ -437,3 +437,38 @@ fun main() {
 }
 {% endcapture %}
 {% include kotlin_quote.html body=code_fromfile0 %}
+
+## 課題: Postのリストからテキストを作ろう
+
+今度は逆にファイルに保存する時です。Postのリストからひとつながりの文字列を作ります。フォーマットも先ほどと同じフォーマットにしましょう。
+
+名前はconvertTextにしますか。convertは変換するとかそういう意味です。
+
+{% capture code_tofile0 %}
+import java.util.Date
+
+data class Post(val content: String, val created: Date)
+
+// TODO: ここにconvertTextを作れ
+
+
+// 以下はいじらない
+
+fun main() {
+
+  val target = lsitOf(Post("これは一行目のアイテムです", Date(1691126681002)),
+                      Post("これは,二行目のアイテムです", Date(1691137849935)),
+                      Post("これは三行目です。別にどんな文字列でもいいですが、このフォーマットだと改行は入れられない。", Date(1691189379291))
+                      )
+  val actual = parseText(content)
+
+
+val expect = """1691126681002,これは一行目のアイテムです
+1691137849935,これは,二行目のアイテムです
+1691189379291,これは三行目です。別にどんな文字列でもいいですが、このフォーマットだと改行は入れられない。"""
+
+  println(actual == expect)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=code_tofile0 %}
+
