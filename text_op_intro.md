@@ -14,7 +14,9 @@ layout: page
 
 なお、公式ドキュメントにここに載せてないのもあるので、必要になったらそちらも参照したい。
 英語だけど自動翻訳とか使って頑張れ。
-[String - Kotlin Programming Language](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/)
+
+- [String - Kotlin Programming Language](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/)
+- [String (Java Platform SE 8 )](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)
 
 以下ではとりあえず使いそうなString型のメソッドを紹介していきます。
 
@@ -254,7 +256,52 @@ fun main() {
 
 例えばファイルの一覧から`.txt`で終わるファイルだけを集めたりする時に使います。
 
-## substring
+**課題: .txtで終わるファイルだけを含んだリストを返す、textFileOnly関数を作れ**
+
+ヒント: `List<String>`を引数にして`List<String>`を返します。mutableListOfのローカル変数を作って、endsWithでチェックしてadd。
+
+{% capture code_startswith3 %}
+// TODO: textFileOnly関数を作れ
+
+
+// 以下はいじらない
+fun main() {
+  val list = listOf("2023_surf.png", "hello.txt", "メモ.txt", "2023_08_20_風景.jpg", "ネタ帳.txt")
+
+  val actual = textFileOnly(list)
+
+  println(actual == listOf("hello.txt", "メモ.txt", "ネタ帳.txt"))
+}
+{% endcapture %}
+{% include kotlin_quote.html body=code_startswith3 %}
+
+## 文字の位置を探すindexOf
+
+文字の中で、指定された文字がどこにあるかを探すのがindexOfメソッドです。
+先頭から何文字目かのインデックスを返します。
+
+見つからないと-1を返します。
+
+{% capture code_indexof1 %}
+fun main() {
+  val content = "これはテストです"
+
+  println(content.indexOf("は"))
+  println(content.indexOf("テス"))
+  println(content.indexOf("で"))
+  println(content.indexOf("ほげ"))
+}
+{% endcapture %}
+{% include kotlin_quote.html body=code_indexof1 %}
+
+次のsubstringと組み合わせるとだいたいなんでも出来ますが、めちゃバグりやすい。
+
+## 一部を取り出すsubstring
+
+文字列の中の一部を文字列として取り出すのはsubstringメソッドです。
+数字一つを指定するとそこより後ろの文字全部を、数字二つを指定すると始まりのインデックスと終わりのインデックスの一つ手前までを（なんで！？って感じだが）返します。
+
+また、rangeを指定する事もできます。以下例を見てみましょう。
 
 {% capture code_substr1 %}
 fun main() {
@@ -267,7 +314,12 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=code_substr1 %}
 
+indexOfとsubstringを使えばたいていの事は出来るけれど、添字のバグが生まれやすいので、10倍界王拳くらいのつもりで使いましょう。
+
 ## 長さはlength
+
+文字の長さはlengthです。これはメソッドでは無くプロパティ（つまり`length()`では無く`length`）です。
+また、substringと組み合わせると後ろの方だけ取る、みたいな事も出来ます。
 
 {% capture code_length1 %}
 fun main() {
@@ -320,3 +372,12 @@ fun main() {
 }
 {% endcapture %}
 {% include kotlin_quote.html body=code_trim2 %}
+
+これは割と基本的なパターンで、
+
+1. ファイルから読む
+2. trimEndで最後の改行を（あれば）取り除く
+3. splitで行ごとにバラす
+
+というのは今後何度もやる事になるでしょう。
+
