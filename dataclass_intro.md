@@ -227,7 +227,7 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=dataclass_intro_q4 %}
 
-## 前回の日付の入門でやった、「ListViewに挑む！編集編」に、投稿時間をつけたものをdata class化しよう
+## 課題： 前回の日付の入門でやった、「ListViewに挑む！編集編」に、投稿時間をつけたものをdata class化しよう
 
 という事でdata classについての簡単な説明をしたので、ついに[日付を扱う、Date入門](date_intro.md)の最後でやった、**課題: 「ListViewに挑む！編集編」に、投稿時間をつける** でリストが二つだった問題を、
 data classを使ってもっといい感じにしましょう。
