@@ -66,6 +66,10 @@ ListView目指して頑張る。
 - Android側 [ファイルをとりあえず使うだけの入門](textfilelib_intro.md)
 - [テキスト処理入門](text_op_intro.md)
 
+ここまでの全部入り課題
+
+- [課題: ListViewに日付に保存](list_edit_save.md)
+
 ### 古くなったコンテンツ
 
 [あらすじ](intro.md) このシリーズを開始した時に思っていた事。
