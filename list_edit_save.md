@@ -46,7 +46,7 @@ data classは以下のPostで。
 data class Post(val content: String, val created: Date)
 ```
 
-保存のフォーマットはここ最近やっていた、以下の形式とします。
+保存のフォーマットは[テキスト処理入門](text_op_intro.md)の最後の方でやっていた、以下の形式とします。
 
 ```
 1691126681002,これは一行目のアイテムです
