@@ -60,11 +60,11 @@ data class Post(val content: String, val created: Date)
 
 onCreateの方にLoadとSubmitのsetOnClickListenerの処理を書く。
 
-Submitの都度"listview_save_data.txt"にメンバ変数のMutableListにPostを追加してnotifyDatasetChangedをしつつ、
-このリストを文字列にしてTextFileLib.writeTextする。
+Submitの都度メンバ変数のMutableListにPostを追加してnotifyDatasetChangedをしつつ、
+このリストを文字列にしてTextFileLib.writeTextする。保存先は"listview_save_data.txt"。
 
-Loadボタンは"listview_save_data.txt"からテキストを読んでMutableListに加え直す。
-ロードの時には一旦リストをクリアするようにしましょう。
+Loadボタンは"listview_save_data.txt"からテキストを読んでMutableListに加える。
+ロードの時には一旦リストをクリアしてから加えるようにしましょう。
 
 getViewの方ではTextViewにPostのcontentを表示して日付のTextViewのcreatedをtoStringしたものをセットする。
 さらに削除ボタンのonClickListenerではリストからアイテムを削除してnotifyDatasetChangedする。
