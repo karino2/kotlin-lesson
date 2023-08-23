@@ -11,6 +11,7 @@ toc:
       - diff_to_js_intro.md
       - string_intro.md
       - what_is_type.md
+      - kotlin_and_android.md
       - simple_calc.md
   - title: プログラムをkotlinで学ぶ、中編
     subfolderitems:
