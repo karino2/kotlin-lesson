@@ -10,6 +10,13 @@ layout: page
 そこでここでは、その両者を組み合わせるとどういう感じか、というのをやってみたいと思います。
 新しい事は出てきません。
 
+## 課題： EditTextとチェックボックスの例をやりなおそう
+
+しばらくJSとkotlin触っていると、意外と忘れているものです。
+という事で、以下のページの二つの繰り返しやった奴を、もう一回ずつやりましょう。
+
+[EditText、チェックボックスなどを使ってみる](misc_view.md)
+
 ## 課題: EditTextと文字列を連結して表示しよう
 
 [EditText、チェックボックスなどを使ってみる](misc_view.md)とほとんど同じ内容ですが、文字列の連結を使ってみましょう。
@@ -23,6 +30,15 @@ layout: page
 ボタンが押されたら、EditTextの内容の前に 「前に追加：」を、内容の後に「：後に追加」を足したものをTextViewに表示しよう。
 
 つまり、EditTextに`ほげほげ`と入力されたら、`"前に追加：ほげほげ：後に追加"`をTextViewに表示します。
+
+ヒント: これまではfindViewByIdしたものをそのままTextViewに入れたりしていましたが、一度変数に入れる練習をするといいかも。また、この辺からは、`.text`はtoStringするようにした方がいいかもしれません。
+つまり以下のような感じ。
+
+```kotlin
+val s = findViewById<TextView>(R.id.edit1).text.toString()
+val s2 = s+"ふがふが"
+findViewById<TextView>(R.id.label1).text = s2
+```
 
 ## 課題: EditTextとSwitchを使って文字を連結して表示しよう
 
