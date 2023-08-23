@@ -9,8 +9,8 @@ toc:
   - title: プログラムをkotlinで学ぶ、前篇
     subfolderitems:
       - diff_to_js_intro.md
-      - what_is_type.md
       - string_intro.md
+      - what_is_type.md
       - simple_calc.md
   - title: プログラムをkotlinで学ぶ、中編
     subfolderitems:
