@@ -1,5 +1,5 @@
 ---
-title: "ここまで学んだkotlinとAndroidを組み合わせる"
+title: "ここまで学んだ事を組み合わせる"
 layout: page
 ---
 もうここまでやったら次の[簡単な電卓を作ってみよう](simple_calc.md)をやったらええんちゃうの？

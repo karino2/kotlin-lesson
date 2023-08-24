@@ -30,7 +30,7 @@ Androidの方には「Android側」と記述してあります。区別が曖昧
 - [「算数で挫折した人向けの、JavaScript入門」との差分](diff_to_js_intro.md)
 - [文字列入門](string_intro.md)
 - [型とは何か？](what_is_type.md)
-- [ここまで学んだkotlinとAndroidを組み合わせる](kotlin_and_android.md)
+- [ここまで学んだ事を組み合わせる](kotlin_and_android.md)
 
 **中ボス**
 
