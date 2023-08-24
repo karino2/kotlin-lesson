@@ -146,26 +146,6 @@ fun main() {
 
 いいんだけど、普通は`+=`で書くかな。
 
-## Raw string
-
-ダブルクオート三つでraw stringと呼ばれるもになります。
-
-{% capture rawstr_code1 %}
-fun main() {
-  val s = """
-複数行がこうやって書ける。
-ダブルクオートも使える。"文字列"みたいに。
-いろいろテキストをそのまま書けて便利。
-"""
-
-  println(s)
-}
-{% endcapture %}
-{% include kotlin_quote.html body=rawstr_code1 %}
-
-こういう風に複数行をバックスラッシュnとかいっぱい入れずに書けてちょっと便利という機能ですが、たまにしか使いません。
-
-
 ## String template
 
 文字列の中にドルと変数名でString templateです。
@@ -195,3 +175,24 @@ fun main() {
 {% include kotlin_quote.html body=strtemplate_code2 %}
 
 結構便利なので良く使います。
+
+## Raw string
+
+ダブルクオート三つでraw stringと呼ばれるもになります。
+
+{% capture rawstr_code1 %}
+fun main() {
+  val s = """
+複数行がこうやって書ける。
+ダブルクオートも使える。"文字列"みたいに。
+いろいろテキストをそのまま書けて便利。
+"""
+
+  println(s)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=rawstr_code1 %}
+
+こういう風に複数行をバックスラッシュnとかいっぱい入れずに書けてちょっと便利という機能ですが、
+後編の[テキスト処理入門](text_op_intro.md)まで使わないので、
+最初の時点では「こんな機能もあるらしい」くらいに薄っすらと覚えておけば十分です。
