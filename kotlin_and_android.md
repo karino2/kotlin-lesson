@@ -73,6 +73,31 @@ findViewById<TextView>(R.id.label1).text = s2
 - "下のスイッチだけオン"
 - "両方のスイッチがオン"
 
+### 論理和と論理積
+
+ここでは、ifを入れ子にして解決するのが意図した答えですが、`&&`を使ってもいいです。
+`&&`で「両方ともtrueだったら」という意味に、`||`で「どちらかがtrueだったら」という意味になります。
+
+これをそれぞれ論理和と論理積といいますが、難しい言葉なのであまり使われず、「あんどあんど」とか「おあおあ」とか言われている事が多い気がする。
+
+{% capture code_logicaland1 %}
+fun main() {
+  val flag1 = true
+  val flag2 = false
+
+  if(flag1 && flag2) {
+    println("どっちもtrue")
+  }
+
+  if(flag1 || flag2) {
+    println("どっちかがtrue")
+  }
+
+}
+{% endcapture %}
+{% include kotlin_quote.html body=code_logicaland1 %}
+
+
 ## 課題: EditTextを二つ置いて、足し合わせよう
 
 以下のように並べたレイアウトを作って、
