@@ -534,12 +534,20 @@ val s = findViewById<TextView>(R.id.label1).text.toString()
 たとえばlabel1の内容をIntにしたいなら、こうしないといけない。
 
 ```kotlin
+val s = findViewById<TextView>(R.id.label1).text.toString()
+val n = s.toInt()
+```
+
+慣れてくれば１行でこう書いてもいい。
+
+```kotlin
 val n = findViewById<TextView>(R.id.label1).text.toString().toInt()
 ```
 
 `.toString().toInt()` ってなんか間違ってそうですがこれで正解です。
 
-この辺の話はあとで「簡単な電卓を作ろう」のあたりまで行くと何言っているか分かると思います。
+この辺の話はあとで「簡単な電卓を作ろう」のあたりまで行くと何言っているか分かると思うので、
+この時点では「ふーん」と思って先に進んでしまってOKです。
 
 ## まとめ
 
