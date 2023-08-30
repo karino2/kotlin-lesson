@@ -197,10 +197,12 @@ fun main() {
 
 ```kotlin
 findViewById<Button>(R.id.buttonAdd).setOnClickListener { 
-  genzainoAtai = findViewById<TextView>(R.id.result).text.toInt()
+  genzainoAtai = findViewById<TextView>(R.id.result).text.toString().toInt()
   findViewById<TextView>(R.id.result).text = "0"
 }
 ```
+
+textのあとにtoString()が必要なのは、[ここまで学んだ事を組み合わせる](kotlin_and_android.md)の「課題: EditTextを二つ置いて、足し合わせよう」にこそっと書いてあります。
 
 これだと、「123+456+789」などのように二回以上連続で+を押された時が普通の電卓と挙動が違いますが、まずはそれでもいいでしょう（直したければ直してもいいです）
 
