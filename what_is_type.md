@@ -509,6 +509,38 @@ fun main() {
 {% include kotlin_quote.html body=int_add2 %}
 
 
+### TextViewなどのtextはほとんどStringだけど微妙に違う
+
+初期の頃にやっていた、以下のようなコードなどで、
+
+```kotlin
+findViewById<TextView>(R.id.label1).text = "Hello"
+```
+
+textはStringを入れる事は出来るのだけれど、微妙にString型と違う。
+だから、以下のsはString型では無い。
+
+```kotlin
+val s = findViewById<TextView>(R.id.label1).text
+```
+
+CharSequenceという型になるんですが、この名前は覚えなくていいです。
+それよりも、String型を作るにはtoString()しないといけない、というのが今後重要になります。
+
+```kotlin
+val s = findViewById<TextView>(R.id.label1).text.toString()
+```
+
+たとえばlabel1の内容をIntにしたいなら、こうしないといけない。
+
+```kotlin
+val n = findViewById<TextView>(R.id.label1).text.toString().toInt()
+```
+
+`.toString().toInt()` ってなんか間違ってそうですがこれで正解です。
+
+この辺の話はあとで「簡単な電卓を作ろう」のあたりまで行くと何言っているか分かると思います。
+
 ## まとめ
 
 型ってのがあって、コレクションのところで必要になるらしい。
