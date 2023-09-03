@@ -33,3 +33,7 @@ toc:
       - text_op_intro.md
       - list_edit_save.md
       - misc.md
+  - title: 実践編
+    subfolderitems:
+      - intermediate_intro.md
+      - textdeck_modoki_1.md
