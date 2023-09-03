@@ -293,4 +293,66 @@ findViewById<TextView>(R.id.label1).text = label
 違っているのが文字列だけだというのがひと目見て分かるので良いと思います。
 積極的に使っていって頑張って慣れていきましょう。
 
+## 2番目の区画は下でも良い
 
+以前、[コードの置き場所入門](code_location_intro.md)では、メンバ変数やメンバ関数を書く2番目の区画、
+というものを説明しました。
+
+復習のために簡単に見直すと、最初にAndroid StudioでNew Projectを作った時は、以下のようなコードになっています。
+
+```kotlin
+import ...
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    }
+}
+```
+
+このonCreateの上が2番目の区画なのでした。
+
+```kotlin
+import ...
+
+class MainActivity : AppCompatActivity() {
+    //
+    // 2番目の区画
+    //
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    }
+}
+```
+
+最初のうちはどこに書くかの間違いを減らすべく限定した場所にしか書かないようにしていましたが、
+そろそろ作っているものも複雑になってきたので、もう少し他の場所にも書き始めて良いと思います。
+
+という事で、もう一つ2番目の区画を紹介しましょう。それはonCreateの後です。
+
+```kotlin
+import ...
+
+class MainActivity : AppCompatActivity() {
+    //
+    //
+    //
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    }
+    //
+    // ここも2番目の区画（New！）
+    //
+}
+```
+
+この下側にもメンバ変数やメンバ関数を置いて良い。
+
+しかも、後ろに置いたものでもonCreateの中で使えます。
+これは通常の変数には無い、メンバ変数だけの特徴です。
+
+まだ出てきてないものを使うのは読みにくく感じる場合もあるので気をつけたい所ですが、
+kotlinプログラム言語としては下の区画に置いたものも使う事が出来ます。
