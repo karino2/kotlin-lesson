@@ -139,6 +139,20 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=code_noteq1 %}
 
+`!=`は`==`を反転したものなので、以下のように`==`を反転させても同じ事が書ける。
+
+{% capture code_noteq2 %}
+fun main() {
+
+  for(i in 0..<10) {
+    if(!((i%3) == 0))
+      println("${i}は3で割り切れない")
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=code_noteq2 %}
+
+けれどカッコが多くなってくると理解が難しくなってくるので、元の`!=`の方が良いでしょう。
 
 ### 課題： 31日ある月だったらtrueを、無い月ならfalseを返す関数を作れ
 
