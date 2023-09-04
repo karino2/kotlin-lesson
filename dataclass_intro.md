@@ -173,7 +173,7 @@ fun main() {
 
 fun main() {
   val chara1 = Character("メタルスライム", 10, 999)
-  val chara2 = Character("紙装甲", 999, 20)
+  val chara2 = Character("士翼号", 999, 20)
 
   for(chara in listOf(chara1, chara2)) {
     println("${chara.name} の攻撃力は${chara.attack}、防御力は${chara.defense}です")
