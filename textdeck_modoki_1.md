@@ -24,5 +24,18 @@ layout: page
 てきすとでっきもどきからは少し離れて、もっと単純に二つのActivityを行ったり来たりするアプリ、
 HelloTwoActivityを作ってみましょう。
 
-そしてまずはEditTextとButtonを画面に置きます。
+### いつも通り1つめのActivityを作る
+
+いつも通りNew ProjectでHelloTwoActivityというのを作り、
+いつも通りEditTextとButtonを画面に置きます。idは適当に決めてください。
+
+とりあえずボタンが押されたらEditTextの内容をshowMessageするようにしてみましょう。
+
+### 2つめのActivityを作る
+
+左側のappとかjavaを右クリックしてNewから、真ん中よりちょい下のActivityを選び、
+
+![New Activityのメニューのスクリーンショット](imgs/new_activity.png)
+
+その中の「Empty Views Activity」を選びます。（なんか聞いた事ある名前ですね）
 
