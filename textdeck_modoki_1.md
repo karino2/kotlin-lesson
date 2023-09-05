@@ -9,3 +9,20 @@ layout: page
 
 [てきすとでっき - Google Play のアプリ](https://play.google.com/store/apps/details?id=io.github.karino2.textdeck&hl=ja)
 
+ファイル選択の所はしばらくやらない予定なので、それ以外で現時点で作れ無さそうな部分はどこでしょうか？
+
+1. Newやアイテムをクリックすると別の画面に行く奴
+2. 上の所のメニュー
+
+この二つくらいでしょう。
+
+そこでまずは1の、複数画面を行ったり来たりする所をやります。
+この画面をActivityと呼びます。
+
+## 二つのアクティビティを行ったり来たりしてみる
+
+てきすとでっきもどきからは少し離れて、もっと単純に二つのActivityを行ったり来たりするアプリ、
+HelloTwoActivityを作ってみましょう。
+
+そしてまずはEditTextとButtonを画面に置きます。
+

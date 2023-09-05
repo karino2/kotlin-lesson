@@ -356,3 +356,73 @@ class MainActivity : AppCompatActivity() {
 
 まだ出てきてないものを使うのは読みにくく感じる場合もあるので気をつけたい所ですが、
 kotlinプログラム言語としては下の区画に置いたものも使う事が出来ます。
+
+## showMessageの中身を軽く見てみる
+
+これまで、ちょっとしたテストの為に、以下の関数をコピペしてもらっていました。
+
+```kotlin
+fun showMessage(msg: String) { Toast.makeText(this, msg, Toast.LENGTH_LONG).show() }
+```
+
+分からない部分もあるあろうけれど、分かる部分もあるので少し見てみます。
+
+まず、showMessageは関数です。そして仮引数はmsgでString型です。それは以下の部分だけを見れば分かります。
+
+```kotlin
+fun showMessage(msg: String) 
+```
+
+そして関数の中を見ると以下のように書いてあります。
+
+```kotlin
+Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+```
+
+このうち、msgが仮引数ですね。
+
+これは、Toastというものを作って表示するコードになります。
+Toastというのはトースト、つまり食パンの事ですが、Androidではふわっと一定時間表示されて消える奴の事をトーストといいます。
+
+これはトースター（ポップアップトースターという奴）で食パンを焼くと最後にぽん、と飛び出す感じに似てるからだと思います（そんな似てなくね？という気もするけれど）。
+
+`Toast.makeText` というので、テキスト、つまり文字列からトーストを作れます。makeは作るって意味です。
+なお、作ったトーストのshow()というのを呼ぶとトーストが実際に表示されます。
+
+だから、以下全体で、
+
+```kotlin
+Toast.makeText(...).show()
+```
+
+JS入門でやった`MessageBox.show()`と同じようなものになります。
+
+あとはmakeTextの引数になりますが、それは以下のようになっています。
+
+
+```kotlin
+(this, msg, Toast.LENGTH_LONG)
+```
+
+2番目は仮引数、つまりなんのメッセージを表示するか、という文字列になる。
+
+3番目はトーストをどのくらい表示するかを表します。LENGTH_SHORTだと少し表示してすぐ消える。LENGTH_LONGだとしばらく表示したあとに消える。
+
+1番目のthisは…これは現時点ではちゃんとは説明出来ないが、現在のActivityというものを表すものです。まぁこれはまだ良く分からない、と思っておいて良い。
+
+以上を踏まえると、以下は、
+
+```kotlin
+Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+```
+
+「msgという文字列でLONGの長さでトーストを表示する」みたいな意味になり、元の関数全体、以下は、
+
+```kotlin
+fun showMessage(msg: String) { Toast.makeText(this, msg, Toast.LENGTH_LONG).show() }
+```
+
+「引数をトーストとしてLONGの長さで表示する関数」という事になります。
+
+最初にthisを入れるのは[ListViewに挑む！表示編](listview_disp.md)のArrayAdapterなどにも登場しています。
+今後もたまに出てくるので、出てきたら「なんかたまにこれ出てくるな」くらいに思っておいてください。
