@@ -79,7 +79,7 @@ ListView目指して頑張る。
 
 - [実践編：はじめに](intermediate_intro.md)
 
-### てきすとでっきもどきに必要なもの
+### てきすとでっきもどきを作る
 
 - [複数アクティビティ](two_activities.md)
 
