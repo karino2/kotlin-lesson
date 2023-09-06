@@ -162,3 +162,18 @@ idをbuttonCancelにしたい場合、XMLでは以下のように書きます。
 
 慣れてくるとこっちの方が圧倒的に早く入力できるので、そろそろ慣れてしまいましょう。
 
+### widthとheightはその都度考える
+
+match_parentかwrap_contentのどちらかを選ぶと思いますが、どちらなのかは毎回ちょっと考えて打ちます。
+
+### 課題： XMLを直接編集して以下を作れ
+
+NewからHelloXml1を作り、レイアウトを以下にせよ。
+
+- LinearLayoutでorientation vertical
+  - TextView, idはlabel1, textは「はろー」
+  - LinearLayoutでorientationはHorizontal
+     - ButtonでidはbuttonCancel, textは「キャンセル」
+     - ButtonでidはbuttonOk, textは「おっけー」
+
+何度かやれば慣れると思います。
