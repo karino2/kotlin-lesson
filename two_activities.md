@@ -101,13 +101,31 @@ SecondActivityのキャンセルボタンが押されたら`finish()`を呼ん�
 
 ## 2つのアクティビティの間にデータをやりとりしてみる
 
-なんか書く
+これまではActivityを立ち上げて戻る、というだけですが、
+「てきすとでっき」などのようなアプリは、
+選んだアイテムを次のActivityに渡して、そこで変更して戻ってきてデータを更新する、という事が必要になります。
+
+このように二つのActivityの間でデータをやりとりする方法を以下で見ていきます。
+
+Intentは辞書のようにデータを追加していけて、それを使ってデータをやりとりします。
 
 ### データを送る
 
-Intentを作るところで、`intent.putExtra("TEXT_DATA", findViewById<EditText>(R.id.edit1).text.toString())` とかして、
+Intentを作るところで、intentにputExtraとしてデータを追加して送ります。
 
-SecondActivityのonCreateで、以下みたいな事をする
+```kotlin
+val str = findViewById<EditText>(R.id.edit1).text.toString()
+
+val intent = Intent(this, SecondActivity::class.java)
+intent.putExtra("TEXT_DATA", str)
+``` 
+
+とかします。
+putExtraの１つ目の引数はキー、２つ目の引数が値です。
+このキーを使って取り出す側では値を取り出します。
+
+取り出す側、つまりSecondActivity側では、
+onCreateで、以下みたいな事をする
 
 ```kotlin
 if (intent != null) {
@@ -116,9 +134,15 @@ if (intent != null) {
 }
 ```
 
-戻りはstartActivityForResultとかsetResultの説明をする。
+intentというのはメンバ変数としてシステムが定義しているもので、onCreateの中で使う事ができるものです。
+intent越しに作られている時はこれがnull以外の値になり、intent越し以外の手段で作られているとnullになります（後者については実践編の後半でActivityのライフサイクルの所で解説します）。
+
+とりあえずこうやるものだ、と繰り返し作って覚えてしまうのがいいでしょう。
 
 ### データを送り戻す
+
+データを送り戻すには、送り戻すだけではなくて、立ち上げる側も「値を返してもらうActivityを立ち上げます」とシステムに教えてやらないといけない仕組みになっています。
+具体的には`startActivity`ではなく、`startActivityForResult`というものを使う事でこれを行います。
 
 startActivityを`startActivityForResult(intent, 123)`に変えて、
 SecondActivityの方でbuttonModifyが押されたら
