@@ -67,8 +67,6 @@ HelloTwoActivityを作ってみましょう。
 
 ### MainActivityからSecondActivityに移動する
 
-今回の一番意味の分からない所はここだと思います。
-
 １つ目のActivityのshowMessageしていた所を以下のように変更する。
 
 ```kotlin
@@ -86,6 +84,14 @@ Intentの作り方は、とりあえずおまじないのthisと、行き先を�
 行き先は `SecondActivity::class.java` という変な表記の仕方で、これは覚えるしかありません。
 
 ただSecondActivityは２つ目のActivityとしてさきほど作ったActivityの名前な事は分かるでしょう。
+
+とにかく、以下でintentが出来て、
+
+```kotlin
+  val intent = Intent(this, SecondActivity::class.java)
+```
+
+このintentをstartActivityに渡す事で、新しいActivityを立ち上げる事が出来ます。
 
 これでボタンを押すと２つ目のActivityに移動できるようになりました。
 また、戻るのジェスチャー（古いAndroidだと戻るボタン）で前のActivityに戻る事もできるはずです。
@@ -190,6 +196,8 @@ setResultは引数が二つあり、１つ目が結果の種類、２つ目がin
 そこで次に１つ目のActivityで送り返されたデータを受け取る処理を書いてみましょう。
 
 ### 送り返されたデータを１つ目のActivityで受け取る
+
+今回の一番意味の分からない所はここだと思います。
 
 一つ目のActivityに戻ってきた時にデータを受け取る為には、onActivityResultというもので受け取ります。
 
