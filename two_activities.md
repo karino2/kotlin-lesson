@@ -28,7 +28,7 @@ HelloTwoActivityを作ってみましょう。
 ### いつも通り1つめのActivityを作る
 
 いつも通りNew ProjectでHelloTwoActivityというのを作り、
-いつも通りEditTextとButtonを画面に置きます。idは適当に決めてください。
+いつもと同じ感じでEditTextとButtonを画面に置きます。idは適当に決めてください。TextViewじゃなくてEditTextなのに注意。
 
 とりあえずボタンが押されたらEditTextの内容をshowMessageするようにしてみましょう。
 
@@ -40,5 +40,35 @@ HelloTwoActivityを作ってみましょう。
 
 その中の「Empty Views Activity」を選びます。（なんか聞いた事ある名前ですね）
 
-ここにはTextViewとボタンを二つ置きます。ボタンは「シンプル」と「装飾」というtextにしてください。
+そしてActivity Nameは「SecondActivity」にしてください。
+
+するとレイアウトに、これまでのactivity_main.xmlの隣に、activity_second.xmlというものができるはずです。
+このactivity_second.xmlもいつものようにLinearLayoutにした後に、以下のような感じにします。
+
+- LienarLayout vertical
+  - TextView
+  - LinearLayout horizontal
+    - 「キャンセル」ボタン
+    - 「修飾」ボタン
+
+{% capture comment1 %}
+**ボタンの指示**  
+そろそろボタンは「textをキャンセルに、idをbuttonCancelにしたボタン」と言わずに、「キャンセル」のボタン、とだけ言う事にします。
+
+「キャンセル」のボタン、とったらtextに「キャンセル」を、idにはそれと分かるもの、例えばこの場合ならbuttonCancelなどをつけてください。
+
+「修飾」のボタン、といったら、textに「修飾」を、idにはbuttonModifyとかがいいと思いますが、英語が難しいようならローマ字でbuttonSyuusyokuとかでもいいです。
+{% endcapture %}
+{% include myquote.html body=comment1 %}
+
+### MainActivityからSecondActivityに移動する
+
+今回の一番意味の分からない所はここだと思います。
+
+１つ目のActivityのshowMessageしていた所を以下のように変更する。
+
+```kotlin
+  val intent = Intent(this, SecondActivity::class.java)
+  startActivity(intent)
+```
 
