@@ -1,11 +1,12 @@
 ---
-title: "複数アクティビティで「てきすとでっき」もどき"
+title: "複数アクティビティ"
 layout: page
 ---
-ここからは実践編になります。
-実際にアプリを作りつつコードの書き溜めを始めます。
+ここではActivityというのものと、それを行ったり来たりする方法を学びます。
 
-まずはてきすとでっきのようなアプリを作ります。
+## てきすとでっきのようなアプリを作りたい
+
+まずは用途から。てきすとでっきのようなアプリを作りたい。
 
 [てきすとでっき - Google Play のアプリ](https://play.google.com/store/apps/details?id=io.github.karino2.textdeck&hl=ja)
 
@@ -21,7 +22,7 @@ layout: page
 
 ## 二つのアクティビティを行ったり来たりしてみる
 
-てきすとでっきもどきからは少し離れて、もっと単純に二つのActivityを行ったり来たりするアプリ、
+まずは二つのActivityを行ったり来たりするアプリ、
 HelloTwoActivityを作ってみましょう。
 
 ### いつも通り1つめのActivityを作る
@@ -38,4 +39,6 @@ HelloTwoActivityを作ってみましょう。
 ![New Activityのメニューのスクリーンショット](imgs/new_activity.png)
 
 その中の「Empty Views Activity」を選びます。（なんか聞いた事ある名前ですね）
+
+ここにはTextViewとボタンを二つ置きます。ボタンは「シンプル」と「装飾」というtextにしてください。
 
