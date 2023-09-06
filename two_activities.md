@@ -25,6 +25,10 @@ layout: page
 まずは二つのActivityを行ったり来たりするアプリ、
 HelloTwoActivityを作ってみましょう。
 
+なお、アクティビティとかインテントについて、簡単な解説動画を作りました。
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UP48_hd-Cpo?si=RT7shaNDSDIv4nKS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ### いつも通り1つめのActivityを作る
 
 いつも通りNew ProjectでHelloTwoActivityというのを作り、
