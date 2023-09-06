@@ -78,7 +78,10 @@ ListView目指して頑張る。
 ## 実践編
 
 - [実践編：はじめに](intermediate_intro.md)
-- [複数アクティビティで「てきすとでっき」もどき](textdeck_modoki_1.md)
+
+### てきすとでっきもどきに必要なもの
+
+- [複数アクティビティ](two_activities.md)
 
 ### 古くなったコンテンツ
 
