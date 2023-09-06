@@ -139,32 +139,96 @@ intent越しに作られている時はこれがnull以外の値になり、inte
 
 とりあえずこうやるものだ、と繰り返し作って覚えてしまうのがいいでしょう。
 
-### データを送り戻す
+### データを送り戻す前提の立ち上げ方
 
 データを送り戻すには、送り戻すだけではなくて、立ち上げる側も「値を返してもらうActivityを立ち上げます」とシステムに教えてやらないといけない仕組みになっています。
 具体的には`startActivity`ではなく、`startActivityForResult`というものを使う事でこれを行います。
 
-startActivityを`startActivityForResult(intent, 123)`に変えて、
-SecondActivityの方でbuttonModifyが押されたら
+startActivityForResultは１つ目の引数にintent、２つ目の引数に数字のIDを指定します。
+これは幾つでも良いのですが、後で受け取る時にその数字かどうかで自分の待っているActivityかをチェックするので、分かる数字にします。
+ここではとりあえず`123`にしましょう。（普通は1とか2とか連番にしていく）
+
+すると、`startActivityForResult(intent, 123)`のように呼び出す事になります。
+
+先ほどのintentにputExtraするのと合わせると以下のようになります。
 
 ```kotlin
+val str = findViewById<EditText>(R.id.edit1).text.toString()
+
+val intent = Intent(this, SecondActivity::class.java)
+intent.putExtra("TEXT_DATA", str)
+startActivityForResult(intent, 123)
+```
+
+### データを送り返す処理
+
+SecondActivityの方では、onCreateで先ほどと同様にこのintentからTEXT_DATAを取り出す所は同様です。
+違うのはfinishの所。
+buttonModifyの所でデータを送り返す事にしましょう。
+
+buttonModifyが押されたら、以下のようにintentを作りデータをセットして、それをsetResultというのでセットしてから終了します。
+
+```kotlin
+  val str = "修飾！ " + findViewById<TextView>(R.id.labelResult).text.toString()
+
   val intent = Intent()
-  intent.putExtra("RESULT_DATA", "修飾！ " + findViewById<TextView>(R.id.labelResult).text.toString())
+  intent.putExtra("RESULT_DATA", str)
   setResult(RESULT_OK, intent);
   finish()
 ```
 
-して、１つ目のActivityで、
+今回はthisとか行き先とか無しで単に`Intent()`で最初に作っている事に注目。一つ目のActivityでIntentを作っている所と比べてみてください。
+
+`"RESULT_DATA"`というのが、送り返された先で受け取る時に使うキーになります。
+
+このようにintentを用意したら、setResultというので送り返すintentとして設定します。
+
+setResultは引数が二つあり、１つ目が結果の種類、２つ目がintentになります。
+結果の種類はとりあえずRESULT_OKしか使わないので、毎回RESULT_OKするもの、とおぼえておきましょう。（キャンセルの時にRESULT_CANCELLEDというのを指定する事もできるが、そもそも何もsetResultしないでfinishすればキャンセルになるのでわざわざやらない）
+
+これで送り返せる訳ですが、現時点では送り返したデータを１つ目のActivityで受け取っていません。なので何も起こらない。
+そこで次に１つ目のActivityで送り返されたデータを受け取る処理を書いてみましょう。
+
+### 送り返されたデータを１つ目のActivityで受け取る
+
+一つ目のActivityに戻ってきた時にデータを受け取る為には、onActivityResultというもので受け取ります。
+
+メンバ変数などを定義する所で onA くらいまでタイプすると一覧が出てくると思うので、その中からonActivityResultというのを選ぶと、以下のようなコードが生成されるはずです。
+
+```kotlin
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+    }
+```
+
+これを、以下のように書き換えます。
 
 ```kotlin
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if(requestCode == 123 && resultCode == RESULT_OK && data != null) {
-            findViewById<EditText>(R.id.edit1).setText(data.getStringExtra("RESULT_DATA"))
+          val str = data.getStringExtra("RESULT_DATA")
+          findViewById<EditText>(R.id.edit1).setText(str)
         }
         super.onActivityResult(requestCode, resultCode, data)
     }
 ```
 
-する。なんかsetTextしないとダメだったが、TextViewにするべきかなぁ。まぁどっちでもいい。
+requestCodeは最初に`startActivityForResult`した時の数字です。何種類かのActivityをstartしなくてはいけない時は、戻ってきた時にこのrequestCodeで判定します。
+今回は一つしか使ってないのでいつも123のはずですが、一応確認してきます。
 
-そのうち説明を真面目に書く。
+次のresultCodeは成功したかキャンセルだったかを表します。一つ前の手順でsetResultの１つ目の引数にセットしたものです。
+単に戻るとかされた時と、ちゃんとデータが送り返されてきた時の区別をこれで行います。
+
+最後の `data != null` は、結果にintentが入っているかをチェックします。これはいつも正しいはずですが、念のためにチェックするようにしましょう。
+
+なお、EditTextは`findViewById<EditText>(R.id.edit1).text = str`と出来ないで、
+同じ意味となる、`findViewById<EditText>(R.id.edit1).setText(str)`と書かないといけないのですが、これまで説明してなかった気がする（EditTextに文字列セットした事無かったか…）。
+
+ここはなんだかよく分からないと思いますが、繰り返し作って覚えてください。
+
+以上で、データを送って、送り返してもらう、が出来ました。
+ここまでを3〜4回作ってみましょう。
+
+## 課題: HelloTwoActivityを3回くらい作れ
+
+以下実際に作業を行った動画を作っておきますので、これと同じような事を何回かやってみてください。
