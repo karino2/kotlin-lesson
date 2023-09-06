@@ -97,6 +97,10 @@ SecondActivityのキャンセルボタンが押されたら`finish()`を呼ん�
 
 ## 2つのアクティビティの間にデータをやりとりしてみる
 
+なんか書く
+
+### データを送る
+
 Intentを作るところで、`intent.putExtra("TEXT_DATA", findViewById<EditText>(R.id.edit1).text.toString())` とかして、
 
 SecondActivityのonCreateで、以下みたいな事をする
@@ -109,3 +113,30 @@ if (intent != null) {
 ```
 
 戻りはstartActivityForResultとかsetResultの説明をする。
+
+### データを送り戻す
+
+startActivityを`startActivityForResult(intent, 123)`に変えて、
+SecondActivityの方でbuttonModifyが押されたら
+
+```kotlin
+  val intent = Intent()
+  intent.putExtra("RESULT_DATA", "修飾！ " + findViewById<TextView>(R.id.labelResult).text.toString())
+  setResult(RESULT_OK, intent);
+  finish()
+```
+
+して、１つ目のActivityで、
+
+```kotlin
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if(requestCode == 123 && resultCode == RESULT_OK && data != null) {
+            findViewById<EditText>(R.id.edit1).setText(data.getStringExtra("RESULT_DATA"))
+        }
+        super.onActivityResult(requestCode, resultCode, data)
+    }
+```
+
+する。なんかsetTextしないとダメだったが、TextViewにするべきかなぁ。まぁどっちでもいい。
+
+そのうち説明を真面目に書く。
