@@ -72,3 +72,40 @@ HelloTwoActivityを作ってみましょう。
   startActivity(intent)
 ```
 
+新しいActivityを開始するのは`startAcitivity`で行いますが、このstartActivityに、「どんなActivityを始めたいか？」を指示するものをインテント、といいます。
+新しいActivityの始め方は、基本的には以下の2ステップになります。
+
+1. Intentを作る
+2. 作ったインテントでstartActivityする
+
+Intentの作り方は、とりあえずおまじないのthisと、行き先を渡して作ります。
+行き先は `SecondActivity::class.java` という変な表記の仕方で、これは覚えるしかありません。
+
+ただSecondActivityは２つ目のActivityとしてさきほど作ったActivityの名前な事は分かるでしょう。
+
+これでボタンを押すと２つ目のActivityに移動できるようになりました。
+また、戻るのジェスチャー（古いAndroidだと戻るボタン）で前のActivityに戻る事もできるはずです。
+
+### SecondActivityから元のアクティビティに戻る
+
+前の画面に戻るには、今のアクティビティを終了させる必要があります。
+
+とりあえず何もせずに終了するなら`finish()`を呼びます。
+
+SecondActivityのキャンセルボタンが押されたら`finish()`を呼んでみましょう。
+これでキャンセルボタンを押したら戻れるようになったと思います。
+
+## 2つのアクティビティの間にデータをやりとりしてみる
+
+Intentを作るところで、`intent.putExtra("TEXT_DATA", findViewById<EditText>(R.id.edit1).text.toString())` とかして、
+
+SecondActivityのonCreateで、以下みたいな事をする
+
+```kotlin
+if (intent != null) {
+  val str = intent.getStringExra("TEXT_DATA")
+  findViewById<TextView>(R.id.label1).text = str
+}
+```
+
+戻りはstartActivityForResultとかsetResultの説明をする。
