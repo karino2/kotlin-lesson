@@ -241,3 +241,5 @@ requestCodeは最初に`startActivityForResult`した時の数字です。何種
 ## 課題: HelloTwoActivityを3回くらい作れ
 
 以下実際に作業を行った動画を作っておきますので、これと同じような事を何回かやってみてください。
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DOMw3O_KfJU?si=GLW1bOy8r2mS6yuE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
