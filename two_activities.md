@@ -243,3 +243,34 @@ requestCodeは最初に`startActivityForResult`した時の数字です。何種
 以下実際に作業を行った動画を作っておきますので、これと同じような事を何回かやってみてください。
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/DOMw3O_KfJU?si=GLW1bOy8r2mS6yuE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+## てきすとでっきもどきを作る方法の概要
+
+ちょっと全部解説するのは大変なので方針だけ書いておく。
+
+1. 二つのActivityを作る。２つ目はEditActivityという名前にする。
+  -  一つ目のActivityにNewボタンとListViewを置き、ファイルから適当にsplitして作ったmutable listを表示する。
+  -  ２つ目のアクティビティはMultiLineのEditTextと保存ボタンを置く
+2. ListViewのアイテムがタップされた時の処理を書く
+  - 「TextViewの」setOnClickListenerでEditActivityに行く
+  - EditActivityにはListのindexと文字列をputExtraで詰める
+  - EditActivityではindexをメンバ変数に覚えて、保存ボタンのsetOnClickListenerでEditTextの内容とこのindexをintentに詰めてsetResultしてfinish
+  - 一つ目のActivityのonActivityResultでこのindexとテキストを取り出してmutable listを更新してadapterのnotifyDatasetChangedを呼ぶ、テキストファイルに保存もする
+3. Newボタンの処理を書く
+  - intentに、indexでは-1を詰める、テキストは現在のDateをtoStringしたものと改行くらいでいいかもしれない
+  - EditActivityの処理はアイテムの変更と一緒
+  - onActivityResultではmutable listにaddする（新規に追加なので）、保存したりnotifyDatasetChangedもする
+
+分からない所があったら聞いてくれ。
+
+なお、こういう風にリストで一覧を表示して、タップするとそのアイテムの詳細っぽい画面に行って編集したりするパターンのアプリを、
+Master/Detail型のアプリ（ますたーでぃているがたのあぷり、と読む）と言う。
+ビジネスアプリの一番良くあるパターン。
+
+## おまけ：公式の同じような課題
+
+いろいろとそのままでは使えないと思ったので自分で作り直したけれど、公式だと以下のようなチュートリアルがある。
+
+[アクティビティとインテント](https://developer.android.com/codelabs/basic-android-kotlin-training-activities-intents?hl=ja#0)
+
+こういうのを自分でやっていけるようになったらこの講座は卒業ですかね。
