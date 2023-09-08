@@ -38,7 +38,7 @@ fun main() {
   // TODO: 以下を変更
   // 解答
   for(i in 0..<youbi.size) {
-    if (i%2 == 0) {
+    if (i%3 == 0) {
       println("${i}番目の要素は「${youbi[i]}」")
     }
   }
@@ -60,7 +60,7 @@ fun main() {
     // 解答
     val revIndex = youbi.size - 1 - a
     if (revIndex %2 == 0) {
-      println(a)
+      println(youbi[revIndex])
     }
   }
 }
