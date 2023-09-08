@@ -240,6 +240,26 @@ requestCodeは最初に`startActivityForResult`した時の数字です。何種
 
 ## 課題: HelloTwoActivityを3回くらい作れ
 
+以上の作業の最終形を何度か作ってください。
+
+レイアウトは以下で、
+
+- １つ目のアクティビティ
+  - EditText
+  - Goボタン
+- ２つ目のアクティビティ(SecondActivity)
+  - TextView
+  - キャンセルボタン
+  - 修飾ボタン
+
+ボタンのアクションは以下
+
+- Goを押されたらEditTextの内容をintentに入れてSecondActivityへ（startActivityForResultで）
+- キャンセルボタンが押されたら単にfinish
+- 修飾ボタンが押されたらTextViewの内容に何か足して、それをintentに詰めてsetResultしてfinish
+
+そして１つ目のAcitivityのonActivityResultで結果を受け取ってEditTextに戻す。
+
 以下実際に作業を行った動画を作っておきますので、これと同じような事を何回かやってみてください。
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/DOMw3O_KfJU?si=GLW1bOy8r2mS6yuE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
