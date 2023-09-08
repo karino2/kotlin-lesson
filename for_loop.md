@@ -7,6 +7,8 @@ layout: page
 
 という事でここではforループを見ていきましょう。
 
+なお、今回の課題の解答はこちら＞[forループ入門の課題の解答](for_loop_a.md)
+
 Listの要素を一つずつ取り出したりするのがfor文です。
 
 {% capture for_basic1 %}
