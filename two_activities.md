@@ -135,7 +135,7 @@ onCreateで、以下みたいな事をする
 
 ```kotlin
 if (intent != null) {
-  val str = intent.getStringExra("TEXT_DATA")
+  val str = intent.getStringExtra("TEXT_DATA")
   findViewById<TextView>(R.id.label1).text = str
 }
 ```
