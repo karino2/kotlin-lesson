@@ -11,6 +11,10 @@ layout: page
 そこでここでは、その両者を組み合わせるとどういう感じか、というのをやってみたいと思います。
 新しい事は出てきません。
 
+解説動画も作ってみました。
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/00CFWoAiYxg?si=SoamLlVs0XnEUBx9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ## 課題： EditTextとチェックボックスの例をやりなおそう
 
 しばらくJSとkotlin触っていると、意外と忘れているものです。
@@ -40,6 +44,10 @@ val s = findViewById<TextView>(R.id.edit1).text.toString()
 val s2 = s+"ふがふが"
 findViewById<TextView>(R.id.label1).text = s2
 ```
+
+この課題と次の課題を実際にやってみた動画。
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/m5POdbjzf2Y?si=RXnR6BlhK9gjTP4y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## 課題: EditTextとSwitchを使って文字を連結して表示しよう
 
@@ -96,6 +104,10 @@ fun main() {
 }
 {% endcapture %}
 {% include kotlin_quote.html body=code_logicaland1 %}
+
+### やってみた動画
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CG5UVU7lmSY?si=EZsAvOiHTZL8vv9J" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 
 ## 課題: EditTextを二つ置いて、数字として足し合わせよう
