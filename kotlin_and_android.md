@@ -98,7 +98,7 @@ fun main() {
 {% include kotlin_quote.html body=code_logicaland1 %}
 
 
-## 課題: EditTextを二つ置いて、足し合わせよう
+## 課題: EditTextを二つ置いて、数字として足し合わせよう
 
 以下のように並べたレイアウトを作って、
 
