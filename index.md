@@ -78,10 +78,11 @@ ListView目指して頑張る。
 ## 実践編
 
 - [実践編：はじめに](intermediate_intro.md)
-
-### てきすとでっきもどきを作る
-
 - [複数アクティビティ](two_activities.md)
+- ActionBar
+- インテントを送る、受け取る
+- レイアウト応用とRelativeLayout
+
 
 ### 古くなったコンテンツ
 
