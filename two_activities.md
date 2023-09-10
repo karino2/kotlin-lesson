@@ -166,6 +166,12 @@ intent.putExtra("TEXT_DATA", str)
 startActivityForResult(intent, 123)
 ```
 
+なお、ここでstartAtivityForResultというのに打ち消し線がつくと思います。
+これはもっと新しいやり方があるのでこのやり方は変えましょう、という意味（deprecatedと言う）なのですが、
+新しいやり方は少しいまいちな所があるので、この講座では古い方のやり方を使います。
+
+これはAndroid開発では残念ながらよくある事で、推奨されているやり方が特定のシチュエーションではあまり良くないので古いやり方の方を使った方がいいケースという事になります。
+
 ### データを送り返す処理
 
 SecondActivityの方では、onCreateで先ほどと同様にこのintentからTEXT_DATAを取り出す所は同様です。
