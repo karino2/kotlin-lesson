@@ -79,6 +79,7 @@ ListView目指して頑張る。
 
 - [実践編：はじめに](intermediate_intro.md)
 - [複数アクティビティ](two_activities.md)
+- アセットと画像表示
 - ActionBarとメニュー
 - インテントを送る、受け取る
 - レイアウト応用とRelativeLayout
