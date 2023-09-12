@@ -6,7 +6,7 @@ layout: page
 
 ここで使う画像は以下に置いてあります。
 
-[imgs/for_image_resource/](imgs/for_image_resource/)
+[imgs/for_image_resource/](https://github.com/karino2/kotlin-lesson/imgs/for_image_resource/)
 
 とりあえずHelloImageResourceというプロジェクトで作業する前提で説明します。LinearLayoutにするまではいつも通り作業しておいてください。
 
@@ -37,11 +37,15 @@ mipmap-hdpi, mipmap-mdpi, mipmap-xhdpiなどのフォルダがそれにあたり
 ## 画像リソースを追加する手順
 
 まずお使いのPCのファイルマネージャーで `app/src/main/res` ディレクトリを開きます。
-その中にdrawableというディレクトリがあると思うので、そこに含めたい画像ファイル、とりあえず[imgs/for_image_resource/](imgs/for_image_resource/)にある、goo.png, choki.png, paa.pngをダウンロードしてここに置きます。
+
+その中にdrawableというディレクトリがあると思うので、これを開きます。
 
 （以下はMacでの画面なのでWindowsやChromeBookでは少し違うと思います）
 
 ![ファイルマネージャーのdrawable](imgs/finder_drawable1.png)
+
+ここに、含めたい画像ファイル、とりあえず[imgs/for_image_resource/](https://github.com/karino2/kotlin-lesson/imgs/for_image_resource/)
+にある、goo.png, choki.png, paa.pngをダウンロードしてここに置きます。
 
 ![ファイルマネージャーでdrawableにファイルをコピー](imgs/finder_drawable2.png)
 
