@@ -46,6 +46,7 @@ mipmap-hdpi, mipmap-mdpi, mipmap-xhdpiなどのフォルダがそれにあたり
 
 ここに、含めたい画像ファイル、とりあえず[imgs/for_image_resource/](https://github.com/karino2/kotlin-lesson/tree/master/imgs/for_image_resources)
 にある、goo.png, choki.png, paa.pngをダウンロードしてここに置きます。
+（画像を開いて画像の右上のダウンロードボタンでダウンロード出来る）
 
 ![ファイルマネージャーでdrawableにファイルをコピー](imgs/finder_drawable2.png)
 
