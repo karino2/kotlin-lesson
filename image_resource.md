@@ -67,7 +67,21 @@ mipmap-hdpi, mipmap-mdpi, mipmap-xhdpiなどのフォルダがそれにあたり
 
 idは一応これまで通りimageView1に変えておきましょう。
 
-これで実行をするとグーが表示されるようになりました。
+XML側を見るとこんなふうになっているはずです。
+
+```xml
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/goo" />
+```
+
+なお、srcCompatの `@drawable/goo` が赤く表示されていたら、一回デバイスでこのアプリを実行すると直るはずです。（画像リソースを加えた後に一回ビルドをすると以後は平気）
+
+drawableに置いたファイルはXML上では `@drawable/goo` などで参照出来ます。
+
+以上で、アプリを実行をするとグーが表示されるようになりました。
 
 ## ランダムでグー、チョキ、パーを表示する
 
