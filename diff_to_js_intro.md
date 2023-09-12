@@ -208,3 +208,25 @@ JSに比べるとかったるいね。
 
 Mapについては使う必要が出てきたら真面目に見ていくが、
 JSほどは使う機会は多く無い。
+
+### 乱数はRandom.nextInt
+
+ランダムは、kotlinでは`Random.nextInt(はじまり, 終わり)`で得られます。終わりは含みません。
+また、使う時には `import kotlin.random.*` というのを最初に足す必要があります。
+
+以下のようになります。
+
+{% capture random_code %}
+import kotlin.random.*
+
+fun main() {
+  for(i in 0..20) {
+    val v = Random.nextInt(0, 6)
+    println(v)
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=random_code %}
+
+AndroidStudioではRandom、と書いて赤くなったらいつものようにAlt+Enterを押してimpoortを追加しましょう。
+場合によっては二種類選択肢が出るかもしれませんが、その場合はkotlin.randomの方を選びます（java.utilの方ではありません）。
