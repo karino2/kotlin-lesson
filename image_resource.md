@@ -41,9 +41,9 @@ mipmap-hdpi, mipmap-mdpi, mipmap-xhdpiなどのフォルダがそれにあたり
 
 （以下はMacでの画面なのでWindowsやChromeBookでは少し違うと思います）
 
-![ファイルマネージャーのdrawable](imgs/finder_drwable1.png)
+![ファイルマネージャーのdrawable](imgs/finder_drawable1.png)
 
-![ファイルマネージャーでdrawableにファイルをコピー](imgs/finder_drwable2.png)
+![ファイルマネージャーでdrawableにファイルをコピー](imgs/finder_drawable2.png)
 
 次にAndroid Studioで、resを開いて中のdrawableの中に、今置いたファイルがある事を確認します。
 
