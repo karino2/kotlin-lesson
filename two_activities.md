@@ -157,7 +157,7 @@ val n = intent.getIntExtra("INT_DATA", -1)
 
 -1はINT_DATAがなかった時の値になりますが、今回のように自分で詰めて呼んでいるケースでは無いという事は無いので、このデフォルト値はなにを入れても使われる事はありません。
 
-{% capture comment1 %}
+{% capture comment_nullsafety %}
 **ビックリマークとString?**  
 getStringExtraのあとにつけるビックリマーク二つは、Null Safetyという機能に関わる所で、kotlin言語の上級編で説明しようと思っている内容となるので、しばらく説明はしませんが、
 簡単に概要だけここで述べておきます。
@@ -185,7 +185,7 @@ toInt()とかを使いたい場合はString型である必要があります。
 
 こんな背景をうっすら理解したら、あとはgetStringExtraにはビックリマークを二つつけるもの、とおぼえてしばらくはお茶を濁しましょう。
 {% endcapture %}
-{% include myquote.html body=comment1 %}
+{% include myquote.html body=comment_nullsafety %}
 
 ### データを送り戻す前提の立ち上げ方
 
