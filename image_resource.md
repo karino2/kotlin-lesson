@@ -68,6 +68,9 @@ mipmap-hdpi, mipmap-mdpi, mipmap-xhdpiなどのフォルダがそれにあたり
 
 ![ImageViewのダイアログ](imgs/imageview_dialog.png)
 
+なお、なんかたまにこのダイアログが出ない事もあるみたいです。その場合はsrcCompatを自分で設定してください。
+いつもlayout_widthとか指定している右側の所の下の方にあるはずです。そこを選ぶとドロップダウンで画像の一覧が出るはずなのでグーの画像を選んでください。
+
 idは一応これまで通りimageView1に変えておきましょう。
 
 XML側を見るとこんなふうになっているはずです。
