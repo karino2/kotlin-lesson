@@ -79,11 +79,12 @@ ListView目指して頑張る。
 
 - [実践編：はじめに](intermediate_intro.md)
 - [複数アクティビティ](two_activities.md)
-- [画像リソースと表示](image_resource.md) 乱数もついでにやっている
-- [じゃんけんゲームを作ろう](janken_game.md) ImageViewとImageButton
+- [画像リソースと表示](image_resource.md) ImageViewと乱数
+- [じゃんけんゲームを作ろう](janken_game.md) ImageButton
 - ActionBarとメニュー
 - インテントを送る、受け取る
 - レイアウト応用とRelativeLayout
+- Preferenceでアプリ固有の設定などのデータを覚える
 
 
 ### 古くなったコンテンツ
