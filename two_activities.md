@@ -135,15 +135,57 @@ onCreateで、以下みたいな事をする
 
 ```kotlin
 if (intent != null) {
-  val str = intent.getStringExtra("TEXT_DATA")
+  val str = intent.getStringExtra("TEXT_DATA")!!
   findViewById<TextView>(R.id.label1).text = str
 }
 ```
+
+getStringExtraのあとにはビックリマークを二つつけます。
 
 intentというのはメンバ変数としてシステムが定義しているもので、onCreateの中で使う事ができるものです。
 intent越しに作られている時はこれがnull以外の値になり、intent越し以外の手段で作られているとnullになります（後者については実践編の後半でActivityのライフサイクルの所で解説します）。
 
 とりあえずこうやるものだ、と繰り返し作って覚えてしまうのがいいでしょう。
+
+なお、Intを取るならgetIntExtra、Longを取るならgetLongExtraですが、こちらはビックリマークは入りません。
+その代わりに中身がなかった時に指定する値、デフォルト値を指定します。
+以下のように使います。
+
+```kotlin
+val n = intent.getIntExtra("INT_DATA", -1)
+```
+
+-1はINT_DATAがなかった時の値になりますが、今回のように自分で詰めて呼んでいるケースでは無いという事は無いので、このデフォルト値はなにを入れても使われる事はありません。
+
+{% capture comment1 %}
+**ビックリマークとString?**  
+getStringExtraのあとにつけるビックリマーク二つは、Null Safetyという機能に関わる所で、kotlin言語の上級編で説明しようと思っている内容となるので、しばらく説明はしませんが、
+簡単に概要だけここで述べておきます。
+
+getStringExtraの返す型はString?型でString型ではありません。
+String?型は、「Stringまたはnull」を入れる型です。nullというのは存在しない、を表す特別な値です。
+getStringExtraはそのキーの値が無い場合もあるので、なかった場合は存在しないを表すnullが返ってきます。
+
+String?型は、nullかどうかをif文でチェックするとその中だけString型になります。
+
+```kotlin
+val s = intent.getStringExtra("TEXT_DATA")
+// ここはsはString?型
+if(s != null) {
+  // この中のsはString型
+}
+```
+
+toInt()とかを使いたい場合はString型である必要があります。
+
+また、getStringExtraなど、「この場合はnullが返ってこない事を自分は知っている！」という場合は、最後にビックリマークを二つつけると強制的にString型に出来ます。
+なお、これでnullだった場合はその場でアプリが落ちます。
+
+なお、これまでも実はonActivityResultのdataなどはIntent?型だったりしていました。そこでもif文でnullかどうかをチェックしていたと思います。
+
+こんな背景をうっすら理解したら、あとはgetStringExtraにはビックリマークを二つつけるもの、とおぼえてしばらくはお茶を濁しましょう。
+{% endcapture %}
+{% include myquote.html body=comment1 %}
 
 ### データを送り戻す前提の立ち上げ方
 
@@ -220,7 +262,7 @@ setResultは引数が二つあり、１つ目が結果の種類、２つ目がin
 ```kotlin
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if(requestCode == 123 && resultCode == RESULT_OK && data != null) {
-          val str = data.getStringExtra("RESULT_DATA")
+          val str = data.getStringExtra("RESULT_DATA")!!
           findViewById<EditText>(R.id.edit1).setText(str)
         }
         super.onActivityResult(requestCode, resultCode, data)
