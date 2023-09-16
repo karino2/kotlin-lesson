@@ -69,7 +69,15 @@ mipmap-hdpi, mipmap-mdpi, mipmap-xhdpiなどのフォルダがそれにあたり
 ![ImageViewのダイアログ](imgs/imageview_dialog.png)
 
 なお、なんかたまにこのダイアログが出ない事もあるみたいです。その場合はsrcCompatを自分で設定してください。
-いつもlayout_widthとか指定している右側の所の下の方にあるはずです。そこを選ぶとドロップダウンで画像の一覧が出るはずなのでグーの画像を選んでください。
+いつもlayout_widthとか指定している右側の所の下の方にあるはずです。
+二つあるので、スパナのマークが無い方を選んでください。
+
+![スパナのマークのついてない方が正解](imgs/two_srcCompat.png)
+
+そこを選ぶとドロップダウンで画像の一覧が出るはずなのでグーの画像を選んでください。
+
+ちなみにXML上では`app:srcCompat` と`tools:srcCompat`があって、 `app:srcComapt` の方が正解です。
+また、たまに追加した時にsrcの方に値が入ってしまう事があるのでその場合はXMLで `androud:src=` ごと消してください。
 
 idは一応これまで通りimageView1に変えておきましょう。
 
@@ -77,7 +85,7 @@ XML側を見るとこんなふうになっているはずです。
 
 ```xml
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/goo" />
