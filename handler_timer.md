@@ -146,7 +146,7 @@ handler.postDelayed({
 
 ```
 val messages = listOf("いーち", "にー", "さーん")
-val index = 0
+var index = 0
 ```
 
 関数、次のラベルという事でtsuginoLabelという関数を作るとすると、だいたい以下みたいな感じ
