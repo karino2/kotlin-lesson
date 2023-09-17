@@ -82,7 +82,7 @@ ListView目指して頑張る。
 - [画像リソースと表示](image_resource.md) ImageViewと乱数
 - [じゃんけんゲームを作ろう](janken_game.md) ImageButton
 - [Handlerとタイマー](handler_timer.md)
-- ActionBarとメニュー
+- [メニュー](menu.md)
 - インテントを送る、受け取る
 - レイアウト応用とRelativeLayout
 - Preferenceでアプリ固有の設定などのデータを覚える
