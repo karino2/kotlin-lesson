@@ -9,6 +9,8 @@ layout: page
 
 なお、画面の上に出るタイトルバーをAndroidではActionBarと呼びます。
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/v09KfD041nw?si=NgwxAWIbqRhkkELA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ## 手順1: menuのxmlを作る
 
 - resの所で右クリックしてNewからAndroid Resource Fileを選ぶ
