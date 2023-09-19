@@ -86,6 +86,7 @@ ListView目指して頑張る。
 - インテントを送る、受け取る
 - レイアウト応用とRelativeLayout
 - Preferenceでアプリ固有の設定などのデータを覚える
+- logcat
 
 
 ### 古くなったコンテンツ
