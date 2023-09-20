@@ -84,4 +84,104 @@ intent.putExtra(AlarmClock.EXTRA_SKIP_UI, true)
 結局は適当にググって試してみるとか、他人がどういうインテントを送っているかをインテントを調べるアプリを入れて調べるとかして、
 泥臭いやり方でやっているのが実情です。
 
+## intentを受け取る
 
+intentは送るのは簡単ですが、受け取るのはちょっと大変です。
+
+とりあえず良く使うのはACTION_SENDを受け取るくらいだと思うので、その方法だけ書いておきます。
+
+intentを受け取るには以下の手順となります。
+
+1. AndroidManifests.xmlにintent filterというのを書く
+2. onCreateで受け取るコードを書く
+
+順番に見ていきましょう。
+
+### AndroidManifests.xmlにintent filterを書く
+
+最初にプロジェクトを作った状態でAndroidManifests.xmlを開くと、以下のような所があるはずです。
+
+```xml
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+```
+
+
+このintent-filterというので、このActivityの受け取るインテントが決まります。
+`action.MAIN` と `category.LAUNCHER` というのは、ホーム画面のアプリ一覧に並んで、アプリ一覧がタップされるとやってくるintentです。
+
+つまりホーム画面から起動したい場合はこのintent-filterを足す事になります。
+例えば二つめのActivityを作って、その中にこのintent-filterを足すと、ホーム画面から二つ目のActivityを直接起動出来るようになります。
+ホーム画面からはまるで二つのアプリがあるように見えます。
+
+これは後で試してみる事にして、ここでは新しいintent-filterとしてACTION_SENDを受け取るintent-filterを足します。
+
+```xml
+<intent-filter>
+  <action android:name="android.intent.action.SEND"/>
+  <category android:name="android.intent.category.DEFAULT"/>
+  <data android:mimeType="text/*"/> 
+</intent-filter>
+```
+
+つまり、activity全体としてはこうします。
+
+```xml
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+              <action android:name="android.intent.action.SEND"/>
+              <category android:name="android.intent.category.DEFAULT"/>
+              <data android:mimeType="text/*"/> 
+            </intent-filter>
+        </activity>
+```
+
+
+これでtextのSENDインテントに反応するようになります。
+
+例えばtwitterアプリなどで、共有をすると、このアプリが選べるようになります。
+一応手順のスクショを貼っておきます。
+
+ツイートの共有のアイコンを選んで、
+
+![Twitterの共有](imgs/twitter_share_screenshot.png)
+
+そこからまたShare viaというのを選んで、
+
+![Twitterの共有2](imgs/twitter_share_screenshot2.png)
+
+最後に出たこの画面を下にスワイプすると、
+
+![Twitterの共有3](imgs/twitter_share_screenshot3.png)
+
+このアプリの名前が出ているはずです。
+
+### onCreateで受け取るコードを書く
+
+onCreateでintent変数がnullでは無くて、intent.typeがnullでなかったら、先頭が"text/"で始まっているかをチェックして、
+始まっていたら待っているインテントなのでテキストを取得してTextViewに表示します。
+
+```kotlin
+  if (intent != null) {
+      val type = intent.type
+      if(type != null && type.startsWith("text/")) {
+          findViewById<TextView>(R.id.label1).text = intent.getStringExtra(Intent.EXTRA_TEXT)
+      }
+  }
+```
+
+これでSNSなどのアプリから共有、で共有出来るようになります。
