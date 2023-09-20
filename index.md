@@ -83,7 +83,7 @@ ListView目指して頑張る。
 - [じゃんけんゲームを作ろう](janken_game.md) ImageButton
 - [Handlerとタイマー](handler_timer.md)
 - [メニュー](menu.md)
-- インテントを送る、受け取る
+- [インテントを送る、受け取る](intent_send_recv.md)
 - レイアウト応用とRelativeLayout
 - Preferenceでアプリ固有の設定などのデータを覚える
 - logcat
