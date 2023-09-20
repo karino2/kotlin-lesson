@@ -76,7 +76,7 @@ intent.putExtra(AlarmClock.EXTRA_SKIP_UI, true)
 
 どういうintentを送ると何が起こるのかは、一応ドキュメントも無くは無い。
 
-[一般的なインテント  -  Android デベロッパー  |  Android Developers](https://developer.android.com/guide/components/intents-common?hl=ja)
+[一般的なインテント - Android Developers](https://developer.android.com/guide/components/intents-common?hl=ja)
 
 けれどここに無いインテントもあったり、説明の通りに動かなかったりするのもあるので、
 そこまで頼りになる感じでもなかったりします。
