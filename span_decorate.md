@@ -8,11 +8,11 @@ TextViewの一部だけ色を変えたり、下線を引いたり、打ち消し
 
 以下TextViewの文字を装飾してみますが、
 自分で試す時は結果がわかりやすいようにTextViewのtextSizeは40spくらいにしておくといいでしょう。
+プロジェクトの名前はHelloSpanとしましょうか。
 
 ## SpannableString入門
 
 とりあえず以下のようなコードをいつものようにonCreateで試してみてください。
-プロジェクトの名前はHelloSpanとしましょうか。
 
 ```kotlin
     val spannable = SpannableString("ほげほげいかいか")
