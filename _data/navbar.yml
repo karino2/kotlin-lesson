@@ -40,5 +40,7 @@ toc:
       - image_resource.md
       - janken_game.md
       - handler_timer.md
+      - string_format.md
+      - stopwatch.md
       - menu.md
       - intent_send_recv.md

@@ -82,6 +82,8 @@ ListView目指して頑張る。
 - [画像リソースと表示](image_resource.md) ImageViewと乱数
 - [じゃんけんゲームを作ろう](janken_game.md) ImageButton
 - [Handlerとタイマー](handler_timer.md)
+- [文字列のフォーマット](string_format.md)
+- [ストップウォッチを作ろう](stopwatch.md)
 - [メニュー](menu.md)
 - [インテントを送る、受け取る](intent_send_recv.md)
 - レイアウト応用とRelativeLayout
