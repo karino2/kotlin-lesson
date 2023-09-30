@@ -89,6 +89,7 @@ ListView目指して頑張る。
 - レイアウト応用とRelativeLayout
 - Preferenceでアプリ固有の設定などのデータを覚える
 - logcat
+- [Spanで文字を装飾](span_decorate.md)
 
 
 ### 古くなったコンテンツ

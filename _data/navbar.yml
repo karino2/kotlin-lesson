@@ -44,3 +44,4 @@ toc:
       - stopwatch.md
       - menu.md
       - intent_send_recv.md
+      - span_decorate.md
