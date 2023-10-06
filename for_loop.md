@@ -61,6 +61,7 @@ fun main() {
 {% endcapture %}
 {% include collapse_quote.html body=for_basic2-a title="解答例" %}
 
+  
 
 **課題: itemsを一つずつ取り出してprintlnするコードを書け**
 {% capture for_basic3 %}
@@ -183,6 +184,27 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=for_basic6 %}
 
+{% capture for_basic6-a %}
+```kotlin
+fun main() {
+  val items = listOf("これを", "全部", "つなげる")
+
+  var kotae = ""
+
+  // TODO:ここでfor文を書いてkotaeにitemsの中身を全部つなげる
+  // 答え
+  for(s in items) {
+    kotae += s
+  }
+
+  // 以下はいじらない
+  println(kotae)
+
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=for_basic6-a title="解答例" %}
+
 **課題: itemsの中身を全部つなげた文字列を作って出力せよ**
 
 今度は変数も自分で作って、それをprintlnするのも自分で書いてください。
@@ -197,6 +219,28 @@ fun main() {
 }
 {% endcapture %}
 {% include kotlin_quote.html body=for_basic7 %}
+
+{% capture for_basic7-a %}
+```kotlin
+fun main() {
+  val items = listOf("今度も", "全部", "つなげる")
+
+  // TODO:ここでfor文を書いてitemsの中身を全部つなげる
+  // 答え
+  var all = ""
+  for(s in items) {
+    all += s
+  }
+
+  // TODO:ここでつなげた文字の入った変数をprintlnする
+  // 答え2
+  println(all)
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=for_basic7-a title="解答例" %}
+
+
 
 ## Range入門
 
@@ -297,13 +341,26 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=for_range7 %}
 
+{% capture for_range7-a %}
+```kotlin
+fun main() {
+  // 答え
+  for(a in 1..10) {
+    println(a)
+  }
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=for_range7-a title="解答例" %}
+
+
 
 **課題: 1から10まで足した結果を求めよ**
 
 1から10まで足すといくつになるか、高校生で等差数列の和の公式というのを習いますが、
 プログラマは何も考えずにコンピュータに足させます。
 
-{% capture for_range7 %}
+{% capture for_range71 %}
 fun main() {
   var sum = 0
 
@@ -312,7 +369,25 @@ fun main() {
   println(sum)
 }
 {% endcapture %}
-{% include kotlin_quote.html body=for_range7 %}
+{% include kotlin_quote.html body=for_range71 %}
+
+{% capture for_range71-a %}
+```kotlin
+fun main() {
+  var sum = 0
+
+  // TODO: 以下で1から10まで足す
+  // 答え
+  for(i in 1..10) {
+    sum += i
+  }
+
+  println(sum)
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=for_range71-a title="解答例" %}
+
 
 **課題: 1から100まで足した結果を求めよ**
 
@@ -325,6 +400,22 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=for_range8 %}
 
+{% capture for_range8-a %}
+```kotlin
+fun main() {
+  // 答え
+  var sum = 0
+  for(i in 1..100) {
+    sum += i
+  }
+  println(sum)
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=for_range8-a title="解答例" %}
+
+
+
 **課題: itemsを逆順に取り出してprintlnせよ**
 
 {% capture for_range9 %}
@@ -333,6 +424,22 @@ fun main() {
 }
 {% endcapture %}
 {% include kotlin_quote.html body=for_range9 %}
+
+{% capture for_range9-a %}
+```kotlin
+fun main() {
+  val items = listOf("ころしてでもうばいとる", "そうかんけいないね", "ついにねんがんのアイスソードをてにいれたぞ")
+  // 答え
+  for(i in 0..2) {
+    val s = items[2-i]
+    println(s)
+  }
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=for_range9-a title="解答例" %}
+
+
 
 **課題: itemsを逆順につなげてprintlnせよ**
 
@@ -347,6 +454,22 @@ fun main() {
 }
 {% endcapture %}
 {% include kotlin_quote.html body=for_range10 %}
+
+{% capture for_range10-a %}
+fun main() {
+  val items = listOf("ころしてでもうばいとる", "そうかんけいないね", "ついにねんがんのアイスソードをてにいれたぞ")
+  var concatted = ""
+  // TODO: itemsの中を逆順にとりだしてつなげて、concattedに入れる
+  // 答え
+  for(i in 0..2) {
+    concatted += items[2-i]
+  }
+
+  println(concatted)
+
+}
+{% endcapture %}
+{% include collapse_quote.html body=for_range10-a title="解答例" %}
 
 ### 一つ飛ばしで辿るのはパーセント（%）を使う
 
