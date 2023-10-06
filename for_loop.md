@@ -7,8 +7,6 @@ layout: page
 
 という事でここではforループを見ていきましょう。
 
-なお、今回の課題の解答はこちら＞[forループ入門の課題の解答](for_loop_a.md)
-
 Listの要素を一つずつ取り出したりするのがfor文です。
 
 {% capture for_basic1 %}
@@ -61,7 +59,7 @@ fun main() {
 {% endcapture %}
 {% include collapse_quote.html body=for_basic2-a title="解答例" %}
 
-  
+<p>
 
 **課題: itemsを一つずつ取り出してprintlnするコードを書け**
 {% capture for_basic3 %}
