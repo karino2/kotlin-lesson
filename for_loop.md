@@ -59,7 +59,7 @@ fun main() {
 {% endcapture %}
 {% include collapse_quote.html body=for_basic2-a title="解答例" %}
 
-<p>
+<p></p>
 
 **課題: itemsを一つずつ取り出してprintlnするコードを書け**
 {% capture for_basic3 %}
