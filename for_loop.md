@@ -47,6 +47,21 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=for_basic2 %}
 
+{% capture for_basic2-a %}
+```kotlin
+fun main() {
+  val items = listOf("ひとつ!", "ふたーつ!", "みっつ！")
+
+  // 答え
+  for(a in items) {
+    println(a)
+  }
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=for_basic2-a %}
+
+
 **課題: itemsを一つずつ取り出してprintlnするコードを書け**
 {% capture for_basic3 %}
 fun main() {
@@ -55,6 +70,8 @@ fun main() {
 }
 {% endcapture %}
 {% include kotlin_quote.html body=for_basic3 %}
+
+
 
 **課題: itemsの中身を全部合計した値を求めよ**
 
