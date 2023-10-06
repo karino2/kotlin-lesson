@@ -4,8 +4,6 @@ layout: page
 ---
 for文が使えるといろいろと出来る事が増えるので、ここでListをもうちょっと詳しく見ていきます。
 
-なお課題の解答は以下：[List入門の課題の解答](list_intro_a.md)
-
 ここでは以下のメソッドなどを見ていきます。
 
 - list.size
@@ -157,6 +155,23 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=index_code3 %}
 
+{% capture index_code3-a %}
+```kotlin
+fun main() {
+  val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
+
+  // TODO: 以下を書け
+  // 解答
+  for(i in 0..<youbi.size) {
+    println("${i}番目の要素は「${youbi[i]}」")
+  }
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=index_code3-a title="解答例" %}
+
+<p></p>
+
 
 **課題: 以下のコードを変更し、曜日を2個飛ばしに出力せよ**
 
@@ -170,6 +185,23 @@ fun main() {
 }
 {% endcapture %}
 {% include kotlin_quote.html body=index_code6 %}
+
+{% capture index_code6-a %}
+```kotlin
+fun main() {
+  val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
+
+  // TODO: 以下を変更
+  // 解答
+  for(i in 0..<youbi.size) {
+    if (i%3 == 0) {
+      println("${i}番目の要素は「${youbi[i]}」")
+    }
+  }
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=index_code6-a title="解答例" %}
 
 ### 逆順にしてみる
 
@@ -237,6 +269,26 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=revindex_code4 %}
 
+
+{% capture revindex_code4-a %}
+```kotlin
+fun main() {
+  val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
+
+  for(a in  0..<youbi.size) {
+    // TODO: 以下を修正せよ
+    // 解答
+    val revIndex = youbi.size - 1 - a
+    if (revIndex %2 == 0) {
+      println(youbi[revIndex])
+    }
+  }
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=revindex_code4-a title="解答例" %}
+
+
 ## 添字と要素を同時に取る、withIndex()
 
 添字を取る時はだいたい要素も使うので、最初から両方渡ってくる方が便利な事が多い。
@@ -276,6 +328,23 @@ fun main() {
 }
 {% endcapture %}
 {% include kotlin_quote.html body=withindex_code2 %}
+
+{% capture withdindex_code2-a %}
+```kotlin
+fun main() {
+  val youbi = listOf("月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜")
+
+  // 解答
+  for((index, elem) in youbi.withIndex()) {
+    if(index%2 == 0) {
+      println(elem)
+    }
+  }
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=withdindex_code2-a title="解答例" %}
+
 
 ### 電卓の課題をfor文化出来ないか考えてみる
 
@@ -401,6 +470,29 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=mlist_100 %}
 
+
+{% capture mlist_100-a %}
+```kotlin
+fun main() {
+  // 以下を書き換える
+  // 解答
+  val mlist = mutableListOf<String>()
+
+  // ここでfor文を使って100個の文字列をmlistに入れる。
+  // 解答2
+  for(i in 0..<100) {
+    mlist.add("${i+1}番目")
+  }
+
+
+  // 以下はいじらない
+  println(mlist[99])
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=mlist_100-a title="解答例" %}
+
+
 ### removeAtで特定のアイテムを消す
 
 MutableListから特定のアイテムを削除するのはremoveAtを使います。
@@ -444,6 +536,31 @@ fun main() {
 }
 {% endcapture %}
 {% include kotlin_quote.html body=mlist_remove2 %}
+
+
+{% capture mlist_remove2-a %}
+```kotlin
+fun main() {
+  val mlist = mutableListOf<String>()
+  for(i in 0..5) {
+    mlist.add("${i}番目のアイテム")
+  }
+
+  // TODO: ここで1番目と3番目の要素を削除せよ
+  // 解答
+  // 先に1番目を消すと3番目が一つずれて2番目になるので、以下のように逆順にするか、removeAt(1), removeAt(2)とする。
+  mlist.removeAt(3)
+  mlist.removeAt(1)
+
+
+  // 以下はいじらない
+  for((index, elem) in mlist.withIndex()) {
+    println("${index}番目の要素は「${elem}」です");
+  }
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=mlist_remove2-a title="解答例" %}
 
 
 

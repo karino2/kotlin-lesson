@@ -84,6 +84,7 @@ fun main() {
 {% endcapture %}
 {% include collapse_quote.html body=for_basic3-a title="解答例" %}
 
+<p></p>
 
 **課題: itemsの中身を全部合計した値を求めよ**
 
@@ -125,6 +126,7 @@ fun main() {
 {% endcapture %}
 {% include collapse_quote.html body=for_basic4-a title="解答例" %}
 
+<p></p>
 
 **課題: itemsの中身を全部合計した値を出力せよ**
 
@@ -161,6 +163,7 @@ fun main() {
 {% endcapture %}
 {% include collapse_quote.html body=for_basic5-a title="解答例" %}
 
+<p></p>
 
 **課題: itemsの中身を全部つなげた文字列を作れ**
 
@@ -202,6 +205,8 @@ fun main() {
 ```
 {% endcapture %}
 {% include collapse_quote.html body=for_basic6-a title="解答例" %}
+
+<p></p>
 
 **課題: itemsの中身を全部つなげた文字列を作って出力せよ**
 
@@ -351,7 +356,7 @@ fun main() {
 {% endcapture %}
 {% include collapse_quote.html body=for_range7-a title="解答例" %}
 
-
+<p></p>
 
 **課題: 1から10まで足した結果を求めよ**
 
@@ -386,6 +391,8 @@ fun main() {
 {% endcapture %}
 {% include collapse_quote.html body=for_range71-a title="解答例" %}
 
+<p></p>
+
 
 **課題: 1から100まで足した結果を求めよ**
 
@@ -412,6 +419,7 @@ fun main() {
 {% endcapture %}
 {% include collapse_quote.html body=for_range8-a title="解答例" %}
 
+<p></p>
 
 
 **課題: itemsを逆順に取り出してprintlnせよ**
@@ -437,6 +445,7 @@ fun main() {
 {% endcapture %}
 {% include collapse_quote.html body=for_range9-a title="解答例" %}
 
+<p></p>
 
 
 **課題: itemsを逆順につなげてprintlnせよ**
