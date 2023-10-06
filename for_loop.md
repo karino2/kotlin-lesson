@@ -59,7 +59,7 @@ fun main() {
 }
 ```
 {% endcapture %}
-{% include collapse_quote.html body=for_basic2-a %}
+{% include collapse_quote.html body=for_basic2-a title="解答例" %}
 
 
 **課題: itemsを一つずつ取り出してprintlnするコードを書け**
@@ -71,6 +71,19 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=for_basic3 %}
 
+{% capture for_basic3-a %}
+```kotlin
+fun main() {
+  val items = listOf("なにぃっ？", "リュウがいない", "いったいどこへ…")
+
+  // 答え
+  for(a in items) {
+    println(a)
+  }
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=for_basic3-a title="解答例" %}
 
 
 **課題: itemsの中身を全部合計した値を求めよ**
@@ -92,6 +105,27 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=for_basic4 %}
 
+{% capture for_basic4-a %}
+```kotlin
+fun main() {
+  val items = listOf(1, 2, 3, 4, 5)
+  var sum = 0
+
+  // TODO: ここにfor文を書いて合計をsumに入れよ
+  // 答え
+  for(n in items) {
+    sum += n
+  }
+
+
+  // TODO: 以下はいじらない
+  println(sum)
+
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=for_basic4-a title="解答例" %}
+
 
 **課題: itemsの中身を全部合計した値を出力せよ**
 
@@ -107,6 +141,26 @@ fun main() {
 }
 {% endcapture %}
 {% include kotlin_quote.html body=for_basic5 %}
+
+{% capture for_basic5-a %}
+```kotlin
+fun main() {
+  val items = listOf(5, 6, 7, 8)
+
+  // TODO:ここでfor文を書いて合計を変数に入れ
+  // 答え
+  var sum = 0
+  for(n in items) {
+    sum += n
+  }
+
+  // TODO:ここでprintlnして
+  // 答え2
+  println(sum)
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=for_basic5-a title="解答例" %}
 
 
 **課題: itemsの中身を全部つなげた文字列を作れ**
