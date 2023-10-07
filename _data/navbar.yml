@@ -1,47 +1,78 @@
 toc:
-  - title: ホーム
-    subfolderitems:
-      - index.md    
   - title: AndroidStudioを触ってみる
-    subfolderitems:
-      - textview_button.md
-      - misc_view.md
+    items:
+      - url: /index.html
+        title: ホーム
+      - url: /textview_button.html
+        title: TextViewとButton
+      - url: /misc_view.html
+        title: EditTextとスイッチ
   - title: プログラムをkotlinで学ぶ、前篇
-    subfolderitems:
-      - diff_to_js_intro.md
-      - string_intro.md
-      - what_is_type.md
-      - kotlin_and_android.md
-      - simple_calc.md
+    items:
+      - url: /diff_to_js_intro.html
+        title: JS入門との差分
+      - url: /string_intro.html
+        title: 文字列入門
+      - url: /what_is_type.html
+        title: 型とは何か？
+      - url: /kotlin_and_android.html
+        title: ここまで学んだ事を組み合わせる
+      - url: /simple_calc.html
+        title: 簡単な電卓を作ってみよう
   - title: プログラムをkotlinで学ぶ、中編
-    subfolderitems:
-      - collection.md
-      - for_loop.md
-      - list_intro.md
-      - code_location_intro.md
+    items:
+      - url: /collection.html
+        title: コレクション概要
+      - url: /for_loop.html
+        title: forループ入門
+      - url: /list_intro.html
+        title: List入門
+      - url: /code_location_intro.html
+        title: コードの置き場所入門
   - title: ListViewに挑戦
-    subfolderitems:
-      - listview_disp.md
-      - listview_disp_second.md
-      - listview_edit.md
+    items:
+      - url: /listview_disp.html
+        title: ListViewに挑む！表示編
+      - url: /listview_disp_second.html
+        title: ListViewに挑む！表示編、二回目用
+      - url: /listview_edit.html
+        title: ListViewに挑む！編集編
+
   - title: プログラムをkotlinで学ぶ、後編
-    subfolderitems:
-      - function_intro.md
-      - date_intro.md
-      - dataclass_intro.md
-      - textfilelib_intro.md
-      - text_op_intro.md
-      - list_edit_save.md
-      - misc.md
+    items:
+      - url: /function_intro.html
+        title: 関数入門
+      - url: /date_intro.html
+        title: 日付を扱う、Date入門
+      - url: /dataclass_intro.html
+        title: data class入門
+      - url: /textfilelib_intro.html
+        title: ファイルをとりあえず使うだけの入門
+      - url: /text_op_intro.html
+        title: テキスト処理入門
+      - url: /list_edit_save.html
+        title: 課題： ListViewに日付に保存
+      - url: /misc.html
+        title: その他ほそぼそとした事
   - title: 実践編
-    subfolderitems:
-      - intermediate_intro.md
-      - two_activities.md
-      - image_resource.md
-      - janken_game.md
-      - handler_timer.md
-      - string_format.md
-      - stopwatch.md
-      - menu.md
-      - intent_send_recv.md
-      - span_decorate.md
+    items:
+      - url: /intermediate_intro.html
+        title: 実践編：はじめに
+      - url: /two_activities.html
+        title: 複数アクティビティ
+      - url: /image_resource.html
+        title: 画像リソースと表示
+      - url: /janken_game.html
+        title: じゃんけんゲームを作ろう
+      - url: /handler_timer.html
+        title: Handlerとタイマー
+      - url: /string_format.html
+        title: 文字列のフォーマット
+      - url: /stopwatch.html
+        title: ストップウォッチを作ろう
+      - url: /menu.html
+        title: メニュー
+      - url: /intent_send_recv.html
+        title: インテントを送る、受け取る
+      - url: /span_decorate.html
+        title: Spanで文字を装飾
