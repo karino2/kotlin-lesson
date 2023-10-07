@@ -32,32 +32,32 @@ toc:
   - title: ListViewに挑戦
     items:
       - url: /listview_disp.html
-        title: ListViewに挑む！表示編
+        title: 表示編
       - url: /listview_disp_second.html
-        title: ListViewに挑む！表示編、二回目用
+        title: 表示編、二回目用
       - url: /listview_edit.html
-        title: ListViewに挑む！編集編
+        title: 編集編
 
   - title: プログラムをkotlinで学ぶ、後編
     items:
       - url: /function_intro.html
         title: 関数入門
       - url: /date_intro.html
-        title: 日付を扱う、Date入門
+        title: 日付とDate
       - url: /dataclass_intro.html
-        title: data class入門
+        title: data class
       - url: /textfilelib_intro.html
         title: ファイルをとりあえず使うだけの入門
       - url: /text_op_intro.html
         title: テキスト処理入門
       - url: /list_edit_save.html
-        title: 課題： ListViewに日付に保存
+        title: 課題：ListViewに日付に保存
       - url: /misc.html
         title: その他ほそぼそとした事
   - title: 実践編
     items:
       - url: /intermediate_intro.html
-        title: 実践編：はじめに
+        title: はじめに
       - url: /two_activities.html
         title: 複数アクティビティ
       - url: /image_resource.html
