@@ -76,6 +76,7 @@ class Hoge {
 }
 
 fun main() {
+  // Hogeという関数を呼ぶ。これは自動で作られる関数で、コンストラクタと呼ばれる
   val a = Hoge()
   val b = Hoge()
 
