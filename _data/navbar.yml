@@ -76,3 +76,7 @@ toc:
         title: インテントを送る、受け取る
       - url: /span_decorate.html
         title: Spanで文字を装飾
+  - title: ツアー副読本
+    items:
+      - url: /tour_basic_types.html
+        title: 基本型

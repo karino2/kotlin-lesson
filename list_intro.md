@@ -170,7 +170,7 @@ fun main() {
 {% endcapture %}
 {% include collapse_quote.html body=index_code3-a title="解答例" %}
 
-<p></p>
+
 
 
 **課題: 以下のコードを変更し、曜日を2個飛ばしに出力せよ**
