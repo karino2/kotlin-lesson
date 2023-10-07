@@ -80,3 +80,5 @@ toc:
     items:
       - url: /tour_basic_types.html
         title: 基本型
+      - url: /tour_class_intro.html
+        title: クラス入門
