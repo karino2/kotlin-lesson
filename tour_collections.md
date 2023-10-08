@@ -237,6 +237,121 @@ extension関数というのは、なんかそういうのがあるらしいな�
 
 あと、解説には無いけれどセットもfor文で順番に要素を処理出来ます。
 
+使い方が難しいけれど、思いついた例題を一つやってみます。
+
+**課題0： 項目の一覧を作れ**
+
+以下のように、食事に使った場所と値段の書いたリストがあります。
+
+```kotlin
+val content = """
+松屋, 890
+日高屋, 570
+セブン, 1020
+松屋, 480
+サイゼリア, 580
+すた丼, 680
+ガスト, 530
+バーミヤン, 980
+松屋, 530
+日高屋, 570
+サイゼリア, 780
+"""
+```
+
+これから、食事に作った場所の一覧を作れ。
+ただし、例えば松屋に何度か行っているけれど、一覧の中には一回だけ出るようにする事。
+
+こういう時にセットを使います。
+
+なお、[テキスト処理入門](text_op_intro.md)のtrimなども使います。
+
+{% capture map-keys-q0 %}
+fun main() {
+
+val content = """
+松屋, 890
+日高屋, 570
+セブン, 1020
+松屋, 480
+サイゼリア, 580
+すた丼, 680
+ガスト, 530
+バーミヤン, 980
+松屋, 530
+日高屋, 570
+サイゼリア, 780
+"""
+
+  // TODO: 以下にfor文などを書いて、tableを求めよ
+  val table = setOf<String>()
+
+
+  // 以下は書き換えない
+  println("ちゃんとサイズは7つ？ ${table.size == 7}")
+  println("---")
+  
+  for(name in table) {
+    println(name)
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=map-keys-q0 %}
+
+{% capture map-keys-q0-hint %}
+何も考えずにセットにaddしていけば、同じものをaddしても無視されるので一覧が出来る。
+
+テキスト処理としては
+```kotlin
+  val trim = content.trim('\n')
+  val lines = trim.split("\n")
+```
+としてから、linesをfor文で回す。さらに中で","でsplitする。
+{% endcapture %}
+{% include collapse_quote.html body=map-keys-q0-hint title="ヒント" %}
+
+
+{% capture map-keys-q0-a %}
+```kotlin
+fun main() {
+
+val content = """
+松屋, 890
+日高屋, 570
+セブン, 1020
+松屋, 480
+サイゼリア, 580
+すた丼, 680
+ガスト, 530
+バーミヤン, 980
+松屋, 530
+日高屋, 570
+サイゼリア, 780
+"""
+
+  // TODO: 以下にfor文などを書いて、tableを求めよ
+  val table = mutableSetOf<String>()
+  val trim = content.trim('\n')
+  val lines = trim.split("\n")
+  for(line in lines) {
+      val arr = line.split(",")
+      table.add(arr[0])
+  }
+
+  // 以下は書き換えない
+  println("ちゃんとサイズは7つ？ ${table.size == 7}")
+  println("---")
+
+  for(name in table) {
+    println(name)
+  }
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=map-keys-q0-a title="解答例" %}
+
+
+
 ## マップ
 
 マップは良く使うのだけれど、ここまであまり出てこなかったのでこの辺でしっかりやっておきたい。
