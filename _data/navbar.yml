@@ -84,5 +84,7 @@ toc:
         title: 基本型
       - url: /tour_collections.html
         title: コレクション
+      - url: /tour_control_flow.html
+        title: 制御フロー
       - url: /tour_class_intro.html
         title: クラス入門
