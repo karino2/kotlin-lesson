@@ -427,3 +427,46 @@ fun main() {
 {% include kotlin_quote.html body=class-simplify %}
 
 これで[data class入門](dataclass_intro.md)で書いたのとほぼ同じ記法になりました。
+
+少し自分でもやってみましょう。
+
+**課題: 短縮記法を使わずに同じクラスを書け**
+
+`class TwoInt(val v1: Int, val v2: Int)` を、コンストラクタの中にvalを書く短縮記法無しで、
+中括弧の中にプロパティのv1とv2を書く書き方で書け。
+
+既に解説の中で全く同じ事をやりましたが、自分でも書いてみましょう。
+
+{% capture class-simplify-q1 %}
+// TODO: 以下と同じ内容のTwoIntを、短縮記法無しで書け
+// class TwoInt(val v1: Int, val v2: Int)
+
+fun main() {
+  val ti1 = TwoInt(1, 2)
+
+  println(ti1.v1)
+  println(ti1.v2)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=class-simplify-q1 %}
+
+{% capture class-simplify-q1-a %}
+```kotlin
+// TODO: 以下と同じ内容のTwoIntを、短縮記法無しで書け
+// class TwoInt(val v1: Int, val v2: Int)
+
+class TwoInt(tmp0: Int, tmp1: Int {
+  val v1 = tmp0
+  val v2 = tmp1
+})
+
+fun main() {
+  val ti1 = TwoInt(1, 2)
+
+  println(ti1.v1)
+  println(ti1.v2)
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=class-simplify-q1-a title="解答例" %}
+
