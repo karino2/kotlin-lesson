@@ -591,7 +591,7 @@ fun main() {
   val kosuu = mapOf("りんご" to 4, "みかん" to 10, "ジャイアントコーン" to 3)
 
   // TODO: 以下にfor文などを書いて、kaiwasureに買ってないものを入れよ
-  var kaiwasure = mutableListOf<String>()
+  val kaiwasure = mutableListOf<String>()
   for(hinmoku in nedan.keys) {
     if(!kosuu.containsKey(hinmoku)) {
       kaiwasure.add(hinmoku)
@@ -604,11 +604,23 @@ fun main() {
 {% endcapture %}
 {% include collapse_quote.html body=map-keys-q4-a title="解答例" %}
 
-**課題5: 月ごとの体重の平均を求めよ（難しいです！）**
+**課題5: 月ごとの体重のエントリの個数を求めよ**
 
-taijuuに入っているデータの、月ごとの体重の平均を入れたマップ、heikinマップを作れ。
-なお、この問題はnullableの代入で少し面倒な所があるので、
-値を入れる所はputを使うのがオススメ。
+taijuuに入っているデータの、月ごとの体重の平均を入れたマップ、heikinマップを作りたい。
+taijuuは以下。
+
+```kotlin
+  val taijuu = mapOf(
+    Date(1689122309473) to 62.1,
+    Date(1689622309473) to 62.7,
+    Date(1691622309473) to 63.1,
+    Date(1692122309473) to 63.8,
+    Date(1692622309473) to 62.4,
+    Date(1693122309473) to 64.2,
+    Date(1693622309473) to 65.3,
+    Date(1693822309473) to 64.8
+  )
+```
 
 ちなみにたぶん答えは以下みたいになる。
 
@@ -618,7 +630,13 @@ taijuuに入っているデータの、月ごとの体重の平均を入れた�
 9月の平均体順は65.05kgです
 ```
 
-{% capture map-keys-q5 %}
+ちょっと難しいので、小問に分けて進めます。
+
+一応最終的に解きたい問題をここに書いておきますが、まずは5-1, 5-2等を進めてみてください。
+いやいや、こんくらい余裕だが？というならここで解いてしまってもいいです。
+（答えは5-3にあります）
+
+{% capture map-keys-q5-0 %}
 import java.util.Date
 
 fun main() {
@@ -643,46 +661,218 @@ fun main() {
   }
 }
 {% endcapture %}
-{% include kotlin_quote.html body=map-keys-q5 %}
+{% include kotlin_quote.html body=map-keys-q5-0 %}
 
 
-{% capture map-keys-q5-hint %}
-その月のエントリの個数と体重の合計を別々のマップに入れる。キーは月のInt（dt.monthを使って0始まりのままでいいでしょう）。
+**課題5-1: 月ごとに幾つエントリがあるかを集計せよ**
 
-その後に個数のkeysで回してheikinを求める。
-型としては`mutableMapOf<Int, Double>()`などを使う。
+まずは、7月に幾つ体重の入力があるか、8月に幾つ、9月に幾つあるか、
+というのを集計しましょう。
 
-個数の方を例に取ると、kosuuというミュータブルなマップに入れるとして、
+月をキー(`month`の値そのままで、0始まりでいいです)、エントリの個数を値に持つ、kosuuマップを作りましょう。
+なお、nullableにまつわる面倒な事があるので、マップに要素を追加するのはputを使うのがおすすめです。
+
+{% capture map-keys-q5-1 %}
+import java.util.Date
+
+fun main() {
+  val taijuu = mapOf(
+    Date(1689122309473) to 62.1,
+    Date(1689622309473) to 62.7,
+    Date(1691622309473) to 63.1,
+    Date(1692122309473) to 63.8,
+    Date(1692622309473) to 62.4,
+    Date(1693122309473) to 64.2,
+    Date(1693622309473) to 65.3,
+    Date(1693822309473) to 64.8
+  )
+
+  // TODO: 以下にfor文などを書いて、kosuuを求めよ
+  val kosuu = mapOf(0 to 0)
+
+
+  // 以下は書き換えない
+  println(kosuu)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=map-keys-q5-1 %}
+
+{% capture map-keys-q5-1-hint %}
+taijuuのkeysで回す。
+型としては`mutableMapOf<Int, Int>()`などを使う。
 
 - kosuuに既にその月があれば、kosuuのその月の値を1増やしたものをput
 - 無ければ1をput
 
 という感じになる。月があるかどうかでcontainsKeyを使う。
-これで分からなければ次のヒントを見てみよう。
-{% endcapture %}
-{% include collapse_quote.html body=map-keys-q5-hint title="ヒント" %}
 
-{% capture map-keys-q5-hint2 %}
-kosuuの方はこんな感じになる。
-
+まずは以下みたいなコードを実行する事から始めるといいかも。
 ```kotlin
-val kosuu = mutableMapOf<Int, Int>()
 for(dt in taijuu.keys) {
-    if(goukei.containsKey(dt.month)) {
-        kosuu.put(dt.month, kosuu[dt.month]!! + 1)
-    } else {
-        kosuu.put(dt.month, 1)
-    }
+  println(dt)
+  println(dt.month)
+  println(taijuu[dt]!!)
+  println("---")
 }
 ```
-
-これと同じ感じでgoukeiも作り、この両方が出来た後に最後にもう一回別のfor文でheikinを求める。
-とりあえずgoukeiとkosuuが正しく出来ているかをprintlnで確認してみるのがいいかも。
 {% endcapture %}
-{% include collapse_quote.html body=map-keys-q5-hint2 title="もう少しヒント" %}
+{% include collapse_quote.html body=map-keys-q5-1-hint title="ヒント" %}
 
 
-{% capture map-keys-q5-a %}
+{% capture map-keys-q5-1-a %}
+```kotlin
+import java.util.Date
+
+fun main() {
+  val taijuu = mapOf(
+    Date(1689122309473) to 62.1,
+    Date(1689622309473) to 62.7,
+    Date(1691622309473) to 63.1,
+    Date(1692122309473) to 63.8,
+    Date(1692622309473) to 62.4,
+    Date(1693122309473) to 64.2,
+    Date(1693622309473) to 65.3,
+    Date(1693822309473) to 64.8
+  )
+
+  // TODO: 以下にfor文などを書いて、kosuuを求めよ
+  val kosuu = mutableMapOf<Int, Int>()
+  for(dt in taijuu.keys) {
+      if(kosuu.containsKey(dt.month)) {
+          kosuu.put(dt.month, kosuu[dt.month]!! + 1)
+      } else {
+          kosuu.put(dt.month, 1)
+      }
+  }
+  
+  // 以下は書き換えない
+  println(kosuu)
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=map-keys-q5-1-a title="解答例" %}
+
+
+**課題5-2: 月ごとの体重の合計を集計せよ**
+
+5-1と同じ感じで、今度はgoukei というマップで体重の合計を求めます。
+
+{% capture map-keys-q5-1 %}
+import java.util.Date
+
+fun main() {
+  val taijuu = mapOf(
+    Date(1689122309473) to 62.1,
+    Date(1689622309473) to 62.7,
+    Date(1691622309473) to 63.1,
+    Date(1692122309473) to 63.8,
+    Date(1692622309473) to 62.4,
+    Date(1693122309473) to 64.2,
+    Date(1693622309473) to 65.3,
+    Date(1693822309473) to 64.8
+  )
+
+  // TODO: 以下にfor文などを書いて、goukeiを求めよ
+  val goukei = mapOf(0 to 0.0)
+
+
+  // 以下は書き換えない
+  println(goukei)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=map-keys-q5-1 %}
+
+{% capture map-keys-q5-2-hint %}
+今回もtaijuuのkeysで回す。
+体重の値は、forの変数名をdtとすると`taijuu[dt]!!`で取れる。
+
+今回も、以下のコードを実行する事から始めるといいかも。
+```kotlin
+for(dt in taijuu.keys) {
+  println(dt)
+  println(dt.month)
+  println(taijuu[dt]!!)
+  println("---")
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=map-keys-q5-2-hint title="ヒント" %}
+
+
+{% capture map-keys-q5-2-a %}
+```kotlin
+import java.util.Date
+
+fun main() {
+  val taijuu = mapOf(
+    Date(1689122309473) to 62.1,
+    Date(1689622309473) to 62.7,
+    Date(1691622309473) to 63.1,
+    Date(1692122309473) to 63.8,
+    Date(1692622309473) to 62.4,
+    Date(1693122309473) to 64.2,
+    Date(1693622309473) to 65.3,
+    Date(1693822309473) to 64.8
+  )
+
+  // TODO: 以下にfor文などを書いて、kosuuを求めよ
+  val goukei = mutableMapOf<Int, Double>()
+  for(dt in taijuu.keys) {
+      if(goukei.containsKey(dt.month)) {
+          goukei.put(dt.month, goukei[dt.month]!! + taijuu[dt]!!)
+      } else {
+          goukei.put(dt.month,  taijuu[dt]!!)
+      }
+  }
+  
+  // 以下は書き換えない
+  println(goukei)
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=map-keys-q5-2-a title="解答例" %}
+
+**課題5-3: 月ごとの平均を求めよ**
+
+ここまで求めたkosuuとgoukeiを使って、月ごとの平均のマップ、heikinを作れ。
+
+{% capture map-keys-q5-3 %}
+import java.util.Date
+
+fun main() {
+  val taijuu = mapOf(
+    Date(1689122309473) to 62.1,
+    Date(1689622309473) to 62.7,
+    Date(1691622309473) to 63.1,
+    Date(1692122309473) to 63.8,
+    Date(1692622309473) to 62.4,
+    Date(1693122309473) to 64.2,
+    Date(1693622309473) to 65.3,
+    Date(1693822309473) to 64.8
+  )
+
+  // TODO: 以下にfor文などを書いて、heikinを求めよ
+  val heikin = mapOf(0 to 62.1)
+
+
+  // 以下は書き換えない
+  for(month in heikin.keys) {
+    println("${month+1}月の平均体順は${heikin[month]}kgです")
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=map-keys-q5-3 %}
+
+
+{% capture map-keys-q5-3-hint %}
+まずはkosuuとgoukeiのマップを求めて、printlnで正しく作れているか確認しよう。
+次にkosuuのkeysで回してheikinマップにputする。
+{% endcapture %}
+{% include collapse_quote.html body=map-keys-q5-3-hint title="ヒント" %}
+
+
+
+{% capture map-keys-q5-3-a %}
 ```kotlin
 import java.util.Date
 
@@ -723,4 +913,111 @@ fun main() {
 }
 ```
 {% endcapture %}
-{% include collapse_quote.html body=map-keys-q5-a title="解答例" %}
+{% include collapse_quote.html body=map-keys-q5-3-a title="解答例" %}
+
+**課題5-4: 以上をdataクラスを使ってもう一度解こう**
+
+5-3はgoukeiとkosuuのマップを２つ使うが、これは一つにまとめられそうだ。
+[data class入門](dataclass_intro.md)を使ってまとめてみる。
+
+以下のような合計エントリ、GoukeiEntryを持つマップを作って、
+
+```kotlin
+data class GoukeiEntry(val kosuu: Int, val goukei: Double)
+```
+
+これを使って平均を求めよう。
+
+{% capture map-keys-q5-4 %}
+import java.util.Date
+
+data class GoukeiEntry(val kosuu: Int, val goukei: Double)
+
+fun main() {
+  val taijuu = mapOf(
+    Date(1689122309473) to 62.1,
+    Date(1689622309473) to 62.7,
+    Date(1691622309473) to 63.1,
+    Date(1692122309473) to 63.8,
+    Date(1692622309473) to 62.4,
+    Date(1693122309473) to 64.2,
+    Date(1693622309473) to 65.3,
+    Date(1693822309473) to 64.8
+  )
+
+  // TODO: 以下にfor文などを書いて、goukeiを求めよ
+  val goukei = mapOf<Int, GoukeiEntry>()
+
+
+  // 動作確認の為printlnしておく。
+  println(goukei)
+
+  // TODO: 以下にfor文などを用いてheikinを求めよ
+  val heikin = mapOf<Int, Double>()
+
+  // 以下は書き換えない
+  for(month in heikin.keys) {
+    println("${month+1}月の平均体順は${heikin[month]}kgです")
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=map-keys-q5-4 %}
+
+{% capture map-keys-q5-4-hint %}
+既にあるエントリを更新する方は変数を使うと楽だろう。
+
+```kotlin
+  val oldGoukei = goukei[dt.month]!!
+  val newGoukei = GoukeiEntry(oldGoukei.kosuu+1, oldGoukei.goukei+taijuu[dt]!!)
+```
+
+のように作ってからputする。
+{% endcapture %}
+{% include collapse_quote.html body=map-keys-q5-4-hint title="ヒント" %}
+
+{% capture map-keys-q5-4-a %}
+```kotlin
+import java.util.Date
+
+fun main() {
+  val taijuu = mapOf(
+    Date(1689122309473) to 62.1,
+    Date(1689622309473) to 62.7,
+    Date(1691622309473) to 63.1,
+    Date(1692122309473) to 63.8,
+    Date(1692622309473) to 62.4,
+    Date(1693122309473) to 64.2,
+    Date(1693622309473) to 65.3,
+    Date(1693822309473) to 64.8
+  )
+
+  // TODO: 以下にfor文などを書いて、goukeiを求めよ
+  val goukei = mutableMapOf<Int, GoukeiEntry>()
+  for(dt in taijuu.keys) {
+      if(goukei.containsKey(dt.month)) {
+          val oldGoukei = goukei[dt.month]!!
+          val newGoukei = GoukeiEntry(oldGoukei.kosuu+1, oldGoukei.goukei+taijuu[dt]!!)
+          goukei.put(dt.month, newGoukei)
+      } else {
+          goukei.put(dt.month, GoukeiEntry(1, taijuu[dt]!!))          
+      }
+  }
+  
+  // 動作確認の為printlnしておく。
+  println(goukei)
+
+  // TODO: 以下にfor文などを用いてheikinを求めよ
+  val heikin = mutableMapOf<Int, Double>()
+  for(m in goukei.keys) {
+      val entry = goukei[m]!!
+      heikin.put(m, entry.goukei/entry.kosuu)
+  }
+
+  // 以下は書き換えない
+  for(month in heikin.keys) {
+    println("${month+1}月の平均体順は${heikin[month]}kgです")
+  }
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=map-keys-q5-4-a title="解答例" %}
