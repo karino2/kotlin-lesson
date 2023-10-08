@@ -245,3 +245,25 @@ fun main() {
 {% include kotlin_quote.html body=when-cond-2 %}
 
 条件式というのはwhenのカッコの中、つまり、`obj.length+3`になります。
+
+ちなみにwhileで以下みたいなコードがあったら、
+
+{% capture while-cond-1 %}
+
+fun main() {
+//sampleStart
+  var kurikaesi = 0
+
+  while(kurikaesi < 3) {
+    println("大事な事なので三回言います")
+    kurikaesi++
+  }
+//sampleEnd
+}
+{% endcapture %}
+{% include kotlin_quote.html body=while-cond-1 %}
+
+条件式というのは、ループの条件として使う式で、この場合は`kurikaesi < 3`になります。
+
+以上が条件式というものです。
+

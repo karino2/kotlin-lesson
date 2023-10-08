@@ -470,3 +470,61 @@ fun main() {
 {% endcapture %}
 {% include collapse_quote.html body=class-simplify-q1-a title="解答例" %}
 
+## プロパティとメソッドのアクセス方法
+
+オブジェクトはプロパティとメソッド（メンバ関数）を持つものだ、
+という話をしました。
+ここではその使い方の話をします。
+
+オブジェクトの後に`.`をつけて、その後にプロパティ名やメソッド名を書いて呼べば、使う事が出来ます。
+やってみましょう。
+
+{% capture method-property-call %}
+class TwoInt(tmp1: Int, tmp2: Int) {
+  val v1 = tmp1
+  val v2 = tmp2
+  fun sum() : Int {
+    return v1+v2
+  }
+}
+
+fun main() {
+  val ti1 = TwoInt(1, 2)
+  val ti2 = TwoInt(3, 4)
+
+  // プロパティは.の後にv1とかv2とかのプロパティ名を書く
+  println(ti1.v1)
+  println(ti2.v2)
+
+  // メソッドは.の後にメソッド名を書いて()で呼ぶ
+  println(ti1.sum())
+  println(ti2.sum())
+}
+{% endcapture %}
+{% include kotlin_quote.html body=method-property-call %}
+
+このように、オブジェクトに`.`をつけて、その後に`sum()`という風に普通の関数を呼ぶように呼べば呼ぶ事が出来ます。
+
+そしてこのsumという関数では、v1とv2というプロパティにアクセスしている事に注目してください。
+
+```kotlin
+  fun sum() : Int {
+    return v1+v2
+  }
+```
+
+このv1とv2は、一見するとTwoIntという、この関数の外側に定義されている変数にアクセスしているだけに見えますが、
+
+```kotlin
+class TwoInt(tmp1: Int, tmp2: Int) {
+  val v1 = tmp1
+  val v2 = tmp2
+  fun sum() : Int {
+    return v1+v2
+  }
+}
+```
+
+実際はti1とti2の結果が違う事から分かるように、
+オブジェクトのv1とv2に触っています。
+ti1というオブジェクトのv1とv2の値は、ti2というオブジェクトのv1とv2の値と違う訳です。
