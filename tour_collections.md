@@ -57,6 +57,10 @@ layout: page
 
 演算子は関数との境界がかなり曖昧なので、`+`とか`-`とか`&&`とか`==`とかそういう感じのを演算子と呼ぶ、
 とふんわり覚えておくのがいいでしょう。
+
+なお、演算子というのはほとんどの場合無くても全く同じ意味になります。
+例えば「`in`演算子は要素があるかをチェックします」と「`in`は要素があるかをチェックします」は全く同じ意味です。
+なので、良く分からない時は「演算子」という言葉を消してしまってもだいたいはOKです。
 {% endcapture %}
 {% include myquote.html body=comment1 %}
 
@@ -231,6 +235,8 @@ extension関数というのは、なんかそういうのがあるらしいな�
 - inで入っているかどうかを確認出来るらしい
 - なんでリストじゃダメなの？というのは良く分からん
 
+あと、解説には無いけれどセットもfor文で順番に要素を処理出来ます。
+
 ## マップ
 
 マップは良く使うのだけれど、ここまであまり出てこなかったのでこの辺でしっかりやっておきたい。
@@ -277,3 +283,444 @@ fun main() {
 {% endcapture %}
 {% include kotlin_quote.html body=map-access %}
 
+### keysとvaluesとfor文
+
+マップには`keys`というプロパティと`values`というプロパティがあります。
+プロパティは詳細は[クラス入門](tour_class_intro.md)でやりますが、
+とりあえずマップの中の変数の事です。
+
+- `keys`はそのマップに入っているキーをすべてセットとして返します。
+- `values`はそのマップに入っている値をすべてなんらかのコレクションとして返します（リストのようなものと思ってOKなんだけど実際はリストじゃないのでこんな変な言い方になる）
+
+これらは新たなコレクションだ、というのがポイントです。
+つまりfor文で回せます。
+
+{% capture map-keys %}
+fun main() {
+
+  val nedan = mapOf("りんご" to 120.0, "みかん" to 50.0, "ジャイアントコーン" to 140.0)
+
+  // キーで回す
+  for(hinmoku in nedan.keys) {
+    println("品目： $hinmoku")
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=map-keys %}
+
+値の方も同様に回せます。
+
+{% capture map-values %}
+fun main() {
+
+  val nedan = mapOf("りんご" to 120.0, "みかん" to 50.0, "ジャイアントコーン" to 140.0)
+
+  // 値で回す
+  for(kakaku in nedan.values) {
+    println("値段： $kakaku")
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=map-values %}
+
+値の方で回すと、それに対応するキーが分からないのであまり使いません。
+キーで回せば、そのキーに対応する値は`[]!!`で取れるので、だいたいはキーで回します。
+
+少し練習問題をやってみましょう。
+
+**課題1: 以下の買い物をした時の合計金額を求めよ**
+
+- りんご: 120円を4個
+- みかん: 50円を10個
+- ジャイアントコーン: 140円を3個
+
+それぞれマップに入れておくので、それを使って合計金額を計算してください。
+
+なお、値段のマップには豚バラが入っているが、これは購入してない（個数の方に入っていない）のに注目してください。
+実際はこのnedanの方のマップはそのスーパーの全品目が入っていたりするイメージです。
+
+{% capture map-keys-q1 %}
+fun main() {
+
+  val nedan = mapOf("りんご" to 120, "みかん" to 50, "ジャイアントコーン" to 140, "豚バラ" to 390)
+  val kosuu = mapOf("りんご" to 4, "みかん" to 10, "ジャイアントコーン" to 3)
+
+  // TODO: 以下にfor文などを書いて、goukeiを求めよ
+  val goukei = 0
+
+  println("全部で${goukei}円です")
+}
+{% endcapture %}
+{% include kotlin_quote.html body=map-keys-q1 %}
+
+{% capture map-keys-q1-hint %}
+買った物の方のキーでfor文を回す。要素へのアクセスは`kosuu[key]!!`のようにビックリマーク２つをつけるのを忘れないように。
+{% endcapture %}
+{% include collapse_quote.html body=map-keys-q1-hint title="ヒント" %}
+
+
+{% capture map-keys-q1-a %}
+```kotlin
+fun main() {
+
+  val nedan = mapOf("りんご" to 120, "みかん" to 50, "ジャイアントコーン" to 140, "豚バラ" to 390)
+  val kosuu = mapOf("りんご" to 4, "みかん" to 10, "ジャイアントコーン" to 3)
+
+  // TODO: 以下にfor文などを書いて、goukeiを求めよ  
+  var goukei = 0
+  for(hinmoku in kosuu.keys) {
+    goukei += nedan[hinmoku]!!*kosuu[hinmoku]!!
+  }
+
+  println("全部で${goukei}円です")
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=map-keys-q1-a title="解答例" %}
+
+
+**課題2: 8月の体重の平均を求めよ**
+
+日付は[日付を扱う、Date入門](date_intro.md)を見直しましょう。
+以下のtaijuuマップのうち、8月の体重の平均を求めてください。
+
+なお、答えは63.375kgになるはずです。
+
+まずはtaijuuのkeysでfor文を回し、その値と`.month`の値をprintlnする所から始めるといいでしょう。
+英語で出力される場合の月の名前を以下に書いておきます。
+
+- Jul: 7月
+- Aug: 8月
+- Sep: 9月
+
+{% capture map-keys-q2 %}
+import java.util.Date
+
+fun main() {
+  val taijuu = mapOf(
+    Date(1689622309473) to 62.7,
+    Date(1691622309473) to 63.1,
+    Date(1692122309473) to 63.8,
+    Date(1692622309473) to 62.4,
+    Date(1693122309473) to 64.2,
+    Date(1693622309473) to 65.3
+  )
+
+  // TODO: 以下にfor文などを書いて、heikinを求めよ
+  val heikin = 0.0
+
+  println("8月の体重の平均は${heikin}kgです")
+}
+{% endcapture %}
+{% include kotlin_quote.html body=map-keys-q2 %}
+
+{% capture map-keys-q2-hint %}
+まずは最初に出したヒントの通り
+```kotlin
+for(dt in taijuu.keys) {
+  println(dt)
+  println(dt.month)
+}
+```
+としてみる。
+月が0始まりなのに注意。（8月は7になる）
+
+次に平均を求めるためには、エントリの数と合計の２つが必要になる。
+とりあえずgoukeiとkosuuとかいう名前の変数にするといいでしょう。
+if文で8月だったらkosuuの方に1を足してgoukeiの方に体重を足す。
+{% endcapture %}
+{% include collapse_quote.html body=map-keys-q2-hint title="ヒント" %}
+
+
+{% capture map-keys-q2-a %}
+```kotlin
+import java.util.Date
+
+fun main() {
+  val taijuu = mapOf(
+    Date(1689622309473) to 62.7,
+    Date(1691622309473) to 63.1,
+    Date(1692122309473) to 63.8,
+    Date(1692622309473) to 62.4,
+    Date(1693122309473) to 64.2,
+    Date(1693622309473) to 65.3
+  )
+
+  // TODO: 以下にfor文などを書いて、heikinを求めよ
+  var kosuu = 0
+  var goukei = 0.0
+  for(dt in taijuu.keys) {
+    if(dt.month == 7) {
+      kosuu += 1
+      goukei += taijuu[dt]!!
+    }
+  }
+  val heikin = goukei/kosuu
+
+  println("8月の体重の平均は${heikin}kgです")
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=map-keys-q2-a title="解答例" %}
+
+**課題3: 課題1と同じ内容を、自分でマップを書く所から書け**
+
+自分で書いてみる方が覚えるので、自分で同じ内容を書いてみましょう。
+
+値段は以下です。
+
+- りんご: 120円
+- みかん: 50円
+- ジャイアントコーン: 140円
+- 豚バラ: 390円
+
+買った個数は以下です。
+
+- りんご: 4個
+- みかん: 10個
+- ジャイアントコーン: 3個
+
+値段をnedan、個数をkosuuというマップで作り、買った金額の合計を求めましょう。
+
+
+{% capture map-keys-q3 %}
+fun main() {
+
+  // TODO: ここでマップを作る
+
+  // TODO: 以下にfor文などを書いて、goukeiを求めよ
+  val goukei = 0
+
+  println("全部で${goukei}円です")
+}
+{% endcapture %}
+{% include kotlin_quote.html body=map-keys-q3 %}
+
+{% capture map-keys-q3-a %}
+```kotlin
+fun main() {
+
+  // TODO: ここでマップを作る
+  val nedan = mapOf("りんご" to 120, "みかん" to 50, "ジャイアントコーン" to 140, "豚バラ" to 390)
+  val kosuu = mapOf("りんご" to 4, "みかん" to 10, "ジャイアントコーン" to 3)
+
+  // TODO: 以下にfor文などを書いて、goukeiを求めよ  
+  var goukei = 0
+  for(hinmoku in kosuu.keys) {
+    goukei += nedan[hinmoku]!!*kosuu[hinmoku]!!
+  }
+
+  println("全部で${goukei}円です")
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=map-keys-q3-a title="解答例" %}
+
+### マップにあるキーが含まれているかのチェック
+
+マップにあるキーが含まれているかは、`containsKey()`でチェック出来ます。
+また、`keys`がセットを返すので、セットにあるかどうかを`in`でチェックしても同じ事が出来ます。
+
+つまり、「`containsKey()`」と「`keys`に`in`を使う」は、同じ動作となります。
+
+"豚バラ"を買ったかどうかを以下のようにチェック出来ます。
+
+{% capture map-containsKeys %}
+fun main() {
+
+  val kosuu = mapOf("りんご" to 4, "みかん" to 10, "ジャイアントコーン" to 3)
+
+  if(kosuu.containsKey("豚バラ")) {
+    println("豚バラを買いました。")
+  } else {
+    println("豚バラを買ってません。")
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=map-containsKeys %}
+
+同じ事を`keys`に`in`を使って書いてみます。
+
+{% capture map-keys-in %}
+fun main() {
+
+  val kosuu = mapOf("りんご" to 4, "みかん" to 10, "ジャイアントコーン" to 3)
+
+  if("豚バラ" in kosuu.keys) {
+    println("豚バラを買いました。")
+  } else {
+    println("豚バラを買ってません。")
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=map-keys-in %}
+
+少し練習問題をやってみましょう。
+
+**課題4: 買ってないものの一覧が入ったリストを作れ**
+
+kosuuに買ったものの個数が入っています。
+nedanにある品目のうち、買ってないものの一覧をkaiwasureリストにすべて入れよ。
+
+{% capture map-keys-q4 %}
+fun main() {
+
+  val nedan = mapOf("プロテインバー" to 178, "りんご" to 120, "みかん" to 50, "ジャイアントコーン" to 140, "豚バラ" to 390)
+  val kosuu = mapOf("りんご" to 4, "みかん" to 10, "ジャイアントコーン" to 3)
+
+  // TODO: 以下にfor文などを書いて、kaiwasureに買ってないものを入れよ。kaiwasureの型は変えてもOK
+  val kaiwasure = listOf<String>()
+
+  println(kaiwasure)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=map-keys-q4 %}
+
+{% capture map-keys-q4-hint %}
+nedanのkeysで回してcontainsKeyを使う。含まれていない、なので`!`を使う。
+要素を追加していくので、listOfではダメでmutableListOfに直さないといけない。
+{% endcapture %}
+{% include collapse_quote.html body=map-keys-q4-hint title="ヒント" %}
+
+
+{% capture map-keys-q4-a %}
+```kotlin
+fun main() {
+
+  val nedan = mapOf("プロテインバー" to 178, "りんご" to 120, "みかん" to 50, "ジャイアントコーン" to 140, "豚バラ" to 390)
+  val kosuu = mapOf("りんご" to 4, "みかん" to 10, "ジャイアントコーン" to 3)
+
+  // TODO: 以下にfor文などを書いて、kaiwasureに買ってないものを入れよ
+  var kaiwasure = mutableListOf<String>()
+  for(hinmoku in nedan.keys) {
+    if(!kosuu.containsKey(hinmoku)) {
+      kaiwasure.add(hinmoku)
+    }
+  }
+
+  println(kaiwasure)
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=map-keys-q4-a title="解答例" %}
+
+**課題5: 月ごとの体重の平均を求めよ（難しいです！）**
+
+taijuuに入っているデータの、月ごとの体重の平均を入れたマップ、heikinマップを作れ。
+なお、この問題はnullableの代入で少し面倒な所があるので、
+値を入れる所はputを使うのがオススメ。
+
+ちなみにたぶん答えは以下みたいになる。
+
+```
+7月の平均体順は62.400000000000006kgです
+8月の平均体順は63.375kgです
+9月の平均体順は65.05kgです
+```
+
+{% capture map-keys-q5 %}
+import java.util.Date
+
+fun main() {
+  val taijuu = mapOf(
+    Date(1689122309473) to 62.1,
+    Date(1689622309473) to 62.7,
+    Date(1691622309473) to 63.1,
+    Date(1692122309473) to 63.8,
+    Date(1692622309473) to 62.4,
+    Date(1693122309473) to 64.2,
+    Date(1693622309473) to 65.3,
+    Date(1693822309473) to 64.8
+  )
+
+  // TODO: 以下にfor文などを書いて、heikinを求めよ
+  val heikin = mapOf(0 to 62.1)
+
+
+  // 以下は書き換えない
+  for(month in heikin.keys) {
+    println("${month+1}月の平均体順は${heikin[month]}kgです")
+  }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=map-keys-q5 %}
+
+
+{% capture map-keys-q5-hint %}
+その月のエントリの個数と体重の合計を別々のマップに入れる。キーは月のInt（dt.monthを使って0始まりのままでいいでしょう）。
+
+その後に個数のkeysで回してheikinを求める。
+型としては`mutableMapOf<Int, Double>()`などを使う。
+
+個数の方を例に取ると、kosuuというミュータブルなマップに入れるとして、
+
+- kosuuに既にその月があれば、kosuuのその月の値を1増やしたものをput
+- 無ければ1をput
+
+という感じになる。月があるかどうかでcontainsKeyを使う。
+これで分からなければ次のヒントを見てみよう。
+{% endcapture %}
+{% include collapse_quote.html body=map-keys-q5-hint title="ヒント" %}
+
+{% capture map-keys-q5-hint2 %}
+kosuuの方はこんな感じになる。
+
+```kotlin
+val kosuu = mutableMapOf<Int, Int>()
+for(dt in taijuu.keys) {
+    if(goukei.containsKey(dt.month)) {
+        kosuu.put(dt.month, kosuu[dt.month]!! + 1)
+    } else {
+        kosuu.put(dt.month, 1)
+    }
+}
+```
+
+これと同じ感じでgoukeiも作り、この両方が出来た後に最後にもう一回別のfor文でheikinを求める。
+とりあえずgoukeiとkosuuが正しく出来ているかをprintlnで確認してみるのがいいかも。
+{% endcapture %}
+{% include collapse_quote.html body=map-keys-q5-hint2 title="もう少しヒント" %}
+
+
+{% capture map-keys-q5-a %}
+```kotlin
+import java.util.Date
+
+fun main() {
+  val taijuu = mapOf(
+    Date(1689122309473) to 62.1,
+    Date(1689622309473) to 62.7,
+    Date(1691622309473) to 63.1,
+    Date(1692122309473) to 63.8,
+    Date(1692622309473) to 62.4,
+    Date(1693122309473) to 64.2,
+    Date(1693622309473) to 65.3,
+    Date(1693822309473) to 64.8
+  )
+
+  // TODO: 以下にfor文などを書いて、heikinを求めよ
+  val goukei = mutableMapOf<Int, Double>()
+  val kosuu = mutableMapOf<Int, Int>()
+  val heikin = mutableMapOf<Int, Double>()
+  for(dt in taijuu.keys) {
+      if(goukei.containsKey(dt.month)) {
+          kosuu.put(dt.month, kosuu[dt.month]!! + 1)
+          goukei.put(dt.month, goukei[dt.month]!! + taijuu[dt]!!)
+      } else {
+          kosuu.put(dt.month, 1)
+          goukei.put(dt.month, taijuu[dt]!!)
+      }
+  }
+  
+  for(m in kosuu.keys) {
+      heikin.put(m, goukei[m]!!/kosuu[m]!!)
+  }
+
+  // 以下は書き換えない
+  for(month in heikin.keys) {
+    println("${month+1}月の平均体順は${heikin[month]}kgです")
+  }
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=map-keys-q5-a title="解答例" %}
