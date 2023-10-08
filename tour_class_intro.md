@@ -493,10 +493,12 @@ fun main() {
   val ti2 = TwoInt(3, 4)
 
   // プロパティは.の後にv1とかv2とかのプロパティ名を書く
+  println("プロパティ：")
   println(ti1.v1)
   println(ti2.v2)
 
   // メソッドは.の後にメソッド名を書いて()で呼ぶ
+  println("メソッド：")
   println(ti1.sum())
   println(ti2.sum())
 }
