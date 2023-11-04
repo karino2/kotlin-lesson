@@ -86,6 +86,8 @@ toc:
         title: コレクション
       - url: /tour_control_flow.html
         title: 制御フロー
+      - url: /tour_function.html
+        title: 関数
       - url: /tour_class_intro.html
         title: クラス入門
       - url: /tour_after.html
