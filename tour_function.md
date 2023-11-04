@@ -12,6 +12,8 @@ layout: page
 
 単一式関数までは特に補足無しで読むだけで分かるでしょう。
 
+以下は、クラスが終わってから戻ってきてください。
+
 ## ラムダ式
 
 ラムダ式の所は他の言語でラムダ式や関数オブジェクトを使った事が無い人には難解な説明かもしれません。
@@ -371,4 +373,75 @@ val positives = numbers.filter( { x -> x > 0 } )
 
 ここまでの説明だと、だいたいが「これ何に使うの？」という事ばかりだったと思う。
 という事で具体的に使う例をいろいろ書いてみよう。
+
+### リストの要素に対して順番に渡された関数を実行する、myForeachを書く
+
+リストの要素に対して、順番に処理をする、myForeachを考えよう。
+型はいろいろ決めてしまう。
+
+例えば以下のようなリストがあった時に、
+
+```kotlin
+val list = listOf("ほげ", "いか", "ふが")
+```
+
+これを順番にprintlnするには以下のようにすれば良い。
+
+```kotlin
+for(a in list) {
+  println(a)
+}
+```
+
+では、前に「むえぇ〜：」をつけてprintlnしたい場合はどうだろう？
+
+それは以下のように書けば良いだろう。
+
+```kotlin
+for(a in list) {
+  println("むえぇ〜：" + a)
+}
+```
+
+この両者は、prntlnの所以外は同じだ。
+同じ所は関数にして再利用したい、というのは良くある。
+
+だから、以下の部分を再利用したい
+
+```kotin
+for(a in list) {
+  // 「この中は使う人が決める」
+}
+```
+
+こういう時に、「この中は使う人が決める」の部分を関数として外から渡すようにするのが、
+良くあるやり方である。
+
+言葉でごちゃごちゃ言われてもわからん、という人も居ると思うので、
+先に答えを見てみよう。
+
+以下のようになる。
+
+```kotlin
+fun myForeach(list: List<String>, f: (String)->Unit) {
+  for(a in list) {
+    f(a)
+  }
+}
+```
+
+{% capture myforeach-1 %}
+fun myForeach(list: List<String>, f: (String)->Unit) {
+  for(a in list) {
+    f(a)
+  }
+}
+
+fun main() {
+  val list = listOf("ほげ", "いか", "ふが")
+  myForeach(list) { string->String: println(string) }
+  myForeach(list) { string->String: println("むえぇ〜：" + string) }
+}
+{% endcapture %}
+{% include kotlin_quote.html body=myforeach-1 %}
 
