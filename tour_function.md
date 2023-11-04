@@ -486,7 +486,7 @@ fun main() {
   // TODO: 以下でmyForeachとラムダ式で、sにlistの中身を連結せよ
 
   // 以下はいじらない
-  println(s)
+  println(s == "ほげいかふが")
 }
 {% endcapture %}
 {% include kotlin_quote.html body=myforeach-q1 %}
@@ -508,7 +508,7 @@ fun main() {
   myForeach(list) { s1: String-> s+=s1 }
 
   // 以下はいじらない
-  println(s)
+  println(s == "ほげいかふが")
 }
 ```
 {% endcapture %}
@@ -528,7 +528,7 @@ fun main() {
 fun main() {
   val list = listOf("ほげ", "いか", "ふが")
 
-  myForeach(list, { string->String: println("むえぇ〜：" + string) })
+  myForeach(list, { string: String-> println("むえぇ〜：" + string) })
 }
 {% endcapture %}
 {% include kotlin_quote.html body=myforeach-q2 %}
@@ -746,7 +746,8 @@ fun main() {
 {% include kotlin_quote.html body=myMap-q1 %}
 
 {% capture myMap-q1-hint %}
-やりたい事をとりあえずfor文で書いてみよう。
+やりたい事をとりあえずmainの中でfor文で書いてみよう。
+それを見ながら関数に抜き出す方法を考えよう。
 {% endcapture %}
 {% include collapse_quote.html body=myMap-q1-hint title="ヒント" %}
 
