@@ -454,8 +454,8 @@ fun myForeach(list: List<String>, f: (String)->Unit) {
 
 fun main() {
   val list = listOf("ほげ", "いか", "ふが")
-  myForeach(list) { string:String-> println(string) }
-  myForeach(list) { string:String-> println("むえぇ〜：" + string) }
+  myForeach(list) { s-> println(s) }
+  myForeach(list) { s-> println("むえぇ〜：" + s) }
 }
 {% endcapture %}
 {% include kotlin_quote.html body=myforeach-1 %}
@@ -464,8 +464,8 @@ fun main() {
 以下と同じ意味です。
 
 ```kotlin
-  myForeach(list, { string->String: println(string) })
-  myForeach(list, { string->String: println("むえぇ〜：" + string) })
+  myForeach(list, { s-> println(s) })
+  myForeach(list, { s-> println("むえぇ〜：" + s) })
 ```
 
 **課題1: myForeachを使って、文字列を全部つなげるコードを完成させよ**
@@ -505,7 +505,7 @@ fun main() {
 
   var s = ""
   // TODO: 以下でmyForeachとラムダ式で、sにlistの中身を連結せよ
-  myForeach(list) { s1: String-> s+=s1 }
+  myForeach(list) { s1-> s+=s1 }
 
   // 以下はいじらない
   println(s == "ほげいかふが")
@@ -528,7 +528,7 @@ fun main() {
 fun main() {
   val list = listOf("ほげ", "いか", "ふが")
 
-  myForeach(list, { string: String-> println("むえぇ〜：" + string) })
+  myForeach(list, { s-> println("むえぇ〜：" + s) })
 }
 {% endcapture %}
 {% include kotlin_quote.html body=myforeach-q2 %}
@@ -595,6 +595,8 @@ mainの関数を見て、何を作らなきゃいけないかを理解してく�
 
 なお、この課題はかなり難しいので一旦答えを見て理解したあとにもう一度やり直してもいいかもしれない。
 次のmyMapもほとんど同じような問題なので、ある程度理解できたら次のmyMapを解いてみるといいかもしれません。
+
+また、この課題を元に、myFilterを使って「偶数のリスト」とか「奇数のリスト」などを取り出す方法も考えてみてください。
 
 {% capture myfilter-q1 %}
 // TODO: ここにmyFilterを書く
@@ -713,7 +715,7 @@ fun main() {
   val kakugee = listOf("餓狼伝説スペシャル", "ストII", "ストIIダッシュ", "ヴァンパイアセイバー", "ヴァンパイア", "サムライスピリッツ", "ストIIX", "餓狼伝説2")
 
   // 以下をmyFilter2を使って書き直せ
-  val suto2 = myFilter2(kakugee) { str:String-> str.startsWith("ストII") }
+  val suto2 = myFilter2(kakugee) { str-> str.startsWith("ストII") }
 
   println(suto2)
 }
@@ -778,3 +780,29 @@ fun main() {
 ```
 {% endcapture %}
 {% include collapse_quote.html body=myMap-q1-a title="解答例" %}
+
+## setOnClickListenerを考え直す
+
+これまで、以下のようなコードを書いてきた。
+
+```kotlin
+findViewById<Button>(R.id.button1).setOnClickListener {
+  findViewById<TextView>(R.id.label1).text = "むぇ〜〜"
+}
+```
+
+これはラムダ式を渡していて、トレーリングラムダを使っています。
+トレーリングラムダを使わないコードにすると以下です。
+
+```kotlin
+findViewById<Button>(R.id.button1).setOnClickListener({ findViewById<TextView>(R.id.label1).text = "むぇ〜〜" })
+```
+
+変数にするともう少し分かりやすくなるかもしれない。
+
+```kotlin
+val f = { findViewById<TextView>(R.id.label1).text = "むぇ〜〜" }
+findViewById<Button>(R.id.button1).setOnClickListener(f)
+```
+
+fというラムダ式を作って、それをsetOnClickListenerに渡していたのでした。
