@@ -374,6 +374,8 @@ val positives = numbers.filter( { x -> x > 0 } )
 ここまでの説明だと、だいたいが「これ何に使うの？」という事ばかりだったと思う。
 という事で具体的に使う例をいろいろ書いてみよう。
 
+なお、この例はどれもかなり難しいので、出来なかったら出来なかったでもOK。
+
 ### リストの要素に対して順番に渡された関数を実行する、myForeachを書く
 
 リストの要素に対して、順番に処理をする、myForeachを考えよう。
@@ -430,6 +432,19 @@ fun myForeach(list: List<String>, f: (String)->Unit) {
 }
 ```
 
+このうち、以下の部分を見ると、
+
+```kotlin
+  for(a in list) {
+    f(a)
+  }
+```
+
+「この中は使う人が決める」の所が、`f(a)`になっている。
+
+以上を実際に使ってみよう。
+
+
 {% capture myforeach-1 %}
 fun myForeach(list: List<String>, f: (String)->Unit) {
   for(a in list) {
@@ -439,9 +454,326 @@ fun myForeach(list: List<String>, f: (String)->Unit) {
 
 fun main() {
   val list = listOf("ほげ", "いか", "ふが")
-  myForeach(list) { string->String: println(string) }
-  myForeach(list) { string->String: println("むえぇ〜：" + string) }
+  myForeach(list) { string:String-> println(string) }
+  myForeach(list) { string:String-> println("むえぇ〜：" + string) }
 }
 {% endcapture %}
 {% include kotlin_quote.html body=myforeach-1 %}
 
+なお、ラムダ式を外に出すトレーリングラムダを使っている。
+以下と同じ意味です。
+
+```kotlin
+  myForeach(list, { string->String: println(string) })
+  myForeach(list, { string->String: println("むえぇ〜：" + string) })
+```
+
+**課題1: myForeachを使って、文字列を全部つなげるコードを完成させよ**
+
+「ほげいかふが」と出力するように、連結するコードを書け。
+
+{% capture myforeach-q1 %}
+fun myForeach(list: List<String>, f: (String)->Unit) {
+  for(a in list) {
+    f(a)
+  }
+}
+
+fun main() {
+  val list = listOf("ほげ", "いか", "ふが")
+
+  var s = ""
+  // TODO: 以下でmyForeachとラムダ式で、sにlistの中身を連結せよ
+
+  // 以下はいじらない
+  println(s)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=myforeach-q1 %}
+
+
+{% capture myforeach-q1-a %}
+```kotlin
+fun myForeach(list: List<String>, f: (String)->Unit) {
+  for(a in list) {
+    f(a)
+  }
+}
+
+fun main() {
+  val list = listOf("ほげ", "いか", "ふが")
+
+  var s = ""
+  // TODO: 以下でmyForeachとラムダ式で、sにlistの中身を連結せよ
+  myForeach(list) { s1: String-> s+=s1 }
+
+  // 以下はいじらない
+  println(s)
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=myforeach-q1-a title="解答例" %}
+
+**課題2: myForeachを自分で書け**
+
+こういうのは、自分で書いてみないと分からないものなので、
+先程のmyForeachを自分で書いてみよう。
+
+先程の例に答えがあるので見ながら書いてもいいけれど、最終的には見ないで書けるように何度か書いてみよう。
+
+{% capture myforeach-q2 %}
+// TODO: ここにmyForeachを自分で書け
+
+// 以下はいじらない
+fun main() {
+  val list = listOf("ほげ", "いか", "ふが")
+
+  myForeach(list, { string->String: println("むえぇ〜：" + string) })
+}
+{% endcapture %}
+{% include kotlin_quote.html body=myforeach-q2 %}
+
+**課題3: 全部の要素を二倍して渡すmyTwiceForeachを作ろう**
+
+myForeachは文字列のリストを渡しましたが、今度はIntのリストを渡して、それを二倍して関数を呼び出すmyTwiceForeachを作りましょう。
+
+良く意味が分からない人はmainの中を見て使い道を予想してください。
+
+{% capture myforeach-q3 %}
+// TODO: ここにmyTwiceForeachを書く
+
+// 以下はいじらない
+fun main() {
+  val list = listOf(5, 4, 3)
+
+  myTwiceForeach(list) { i: Int -> println("要素は2倍すると「${i}」です")}
+}
+{% endcapture %}
+{% include kotlin_quote.html body=myforeach-q3 %}
+
+{% capture myforeach-q3-hint %}
+リストがIntなので、関数の型は`(Int)->Unit`となる。
+{% endcapture %}
+{% include collapse_quote.html body=myforeach-q3-hint title="ヒント" %}
+
+{% capture myforeach-q3-hint2 %}
+やりたい事をまずfor文で考えてみると、
+```kotlin
+for(a in list) {
+  val a2 = 2*a
+  // 「ここにa2を使った何かを実行する」
+}
+```
+のようになる。「ここにa2を使った何かを実行する」の所が関数になる。
+回答ではわざわざa2を作らなくてもいいが、作っても良い。
+{% endcapture %}
+{% include collapse_quote.html body=myforeach-q3-hint2 title="ヒント2" %}
+
+{% capture myforeach-q3-a %}
+```kotlin
+// TODO: ここにmyTwiceForeachを書く
+fun myTwiceForeach(list: List<Int>, f: (Int)->Unit) {
+  for(a in list) {
+    f(2*a)
+  }
+}
+
+// 以下はいじらない
+fun main() {
+  val list = listOf(5, 4, 3)
+
+  myTwiceForeach(list) { i: Int -> println("要素は2倍すると「${i}」です")}
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=myforeach-q3-a title="解答例" %}
+
+**課題4: 条件に合う要素だけを含んだリストを返す、myFilterを作ろう**
+
+条件にあった要素だけを含んだリストを返す、myFilterを作ろう。
+mainの関数を見て、何を作らなきゃいけないかを理解してください。
+
+なお、この課題はかなり難しいので一旦答えを見て理解したあとにもう一度やり直してもいいかもしれない。
+次のmyMapもほとんど同じような問題なので、ある程度理解できたら次のmyMapを解いてみるといいかもしれません。
+
+{% capture myfilter-q1 %}
+// TODO: ここにmyFilterを書く
+
+// 以下はいじらない
+fun main() {
+  val numbers = listOf(1, -2, 3, -4, 5, -6)
+  val positives = myFilter(numbers, { x -> x > 0 })
+  val negatives = myFilter(numbers) { x -> x < 0 } // トレーリングラムダ
+
+  println(positives)
+  // [1, 3, 5]
+  println(negatives)
+  // [-2, -4, -6]
+
+}
+{% endcapture %}
+{% include kotlin_quote.html body=myfilter-q1 %}
+
+{% capture myfilter-q1-hint %}
+引数の関数はIntを引数にとりBooleanを返す関数。
+
+また、このmyFilter自身はリストを返すので戻りの型は`List<Int>`。
+でもこの問題としては`MutableList<Int>`でもいいです。
+{% endcapture %}
+{% include collapse_quote.html body=myfilter-q1-hint title="ヒント" %}
+
+{% capture myfilter-q1-hint2 %}
+やりたい事をまずfor文で考えてみると、
+```kotlin
+val ret = mutableListOf<Int>()
+for(a in list) {
+  if (/* ここに何かを考える */ ) {
+    ret.add(a)
+  }
+}
+```
+みたいな事をやりたい。このretを返したい。
+{% endcapture %}
+{% include collapse_quote.html body=myfilter-q1-hint2 title="ヒント2" %}
+
+{% capture myfilter-q1-a %}
+```kotlin
+// TODO: ここにmyFilterを書く
+fun myFilter(list: List<Int>, f: (Int)->Boolean) : MutableList<Int> {
+  val ret = mutableListOf<Int>()
+  for(a in list) {
+    if(f(a)) {
+      ret.add(a)
+    }
+  }
+  return ret
+}
+
+// 以下はいじらない
+fun main() {
+  val numbers = listOf(1, -2, 3, -4, 5, -6)
+  val positives = myFilter(numbers, { x -> x > 0 })
+  val negatives = myFilter(numbers) { x -> x < 0 } // トレーリングラムダ
+
+  println(positives)
+  // [1, 3, 5]
+  println(negatives)
+  // [-2, -4, -6]
+
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=myfilter-q1-a title="解答例" %}
+
+**課題5: myFilter2を使って、先頭がストIIの要素だけ取り出せ**
+
+今度は使う側のコードです。
+ストIIXは本来はスパIIXですが、そこは気にしないということで。
+
+{% capture myfilter-q2 %}
+fun myFilter2(list: List<String>, pred: (String)->Boolean) : List<String> {
+  val ret = mutableListOf<String>()
+  for(s in list) {
+    if(pred(s))
+      ret.add(s)
+  }
+  return ret
+}
+
+fun main() {
+  val kakugee = listOf("餓狼伝説スペシャル", "ストII", "ストIIダッシュ", "ヴァンパイアセイバー", "ヴァンパイア", "サムライスピリッツ", "ストIIX")
+
+  // 以下をmyFilter2を使って書き直せ
+  val suto2 = listOf<String>()
+
+  println(suto2)
+}
+{% endcapture %}
+{% include kotlin_quote.html body=myfilter-q2 %}
+
+{% capture myfilter-q2-hint %}
+文字列の先頭が一致しているかは`s.startsWith("ほげ")`で判定するのだった。
+
+[テキスト処理入門](text_op_intro.md)参照。
+{% endcapture %}
+{% include collapse_quote.html body=myfilter-q2-hint title="ヒント" %}
+
+{% capture myfilter-q2-a %}
+```kotlin
+fun myFilter2(list: List<String>, pred: (String)->Boolean) : List<String> {
+  val ret = mutableListOf<String>()
+  for(s in list) {
+    if(pred(s))
+      ret.add(s)
+  }
+  return ret
+}
+
+fun main() {
+  val kakugee = listOf("餓狼伝説スペシャル", "ストII", "ストIIダッシュ", "ヴァンパイアセイバー", "ヴァンパイア", "サムライスピリッツ", "ストIIX", "餓狼伝説2")
+
+  // 以下をmyFilter2を使って書き直せ
+  val suto2 = myFilter2(kakugee) { str:String-> str.startsWith("ストII") }
+
+  println(suto2)
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=myfilter-q2-a title="解答例" %}
+
+
+**課題6: 各要素に渡された変形をほどこしてその結果をリストにしたものを返す、myMapを作ろう**
+
+要素を変形する関数を引数にとって、変形した結果をリストにするmyMapを作ろう。
+これも良く分からなければmain関数を見て必要なものを考えてください。
+
+
+{% capture myMap-q1 %}
+// TODO: ここにmyMapを書く
+
+// 以下はいじらない
+fun main() {
+  val numbers = listOf(1, -2, 3, -4, 5, -6)
+  val doubled = myMap(numbers) { x -> x * 2 }
+  val tripled = myMap(numbers) { x -> x * 3 }
+  println(doubled)
+  // [2, -4, 6, -8, 10, -12]
+  println(tripled)
+  // [3, -6, 9, -12, 15, -18]
+
+}
+{% endcapture %}
+{% include kotlin_quote.html body=myMap-q1 %}
+
+{% capture myMap-q1-hint %}
+やりたい事をとりあえずfor文で書いてみよう。
+{% endcapture %}
+{% include collapse_quote.html body=myMap-q1-hint title="ヒント" %}
+
+
+{% capture myMap-q1-a %}
+```kotlin
+// TODO: ここにmyMapを書く
+fun myMap(list: List<Int>, f: (Int)->Int) : MutableList<Int> {
+  val ret = mutableListOf<Int>()
+  for(a in list) {
+    val a2 = f(a)
+    ret.add(a2)
+  }
+  return ret
+}
+
+// 以下はいじらない
+fun main() {
+  val numbers = listOf(1, -2, 3, -4, 5, -6)
+  val doubled = myMap(numbers) { x -> x * 2 }
+  val tripled = myMap(numbers) { x -> x * 3 }
+  println(doubled)
+  // [2, -4, 6, -8, 10, -12]
+  println(tripled)
+  // [3, -6, 9, -12, 15, -18]
+
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=myMap-q1-a title="解答例" %}
