@@ -367,7 +367,7 @@ fun showMessage(msg: String) { Toast.makeText(this, msg, Toast.LENGTH_LONG).show
 
 分からない部分もあるあろうけれど、分かる部分もあるので少し見てみます。
 
-まず、showMessageは関数です。そして仮引数はmsgでString型です。それは以下の部分だけを見れば分かります。
+まず、showMessageは関数です。そしてパラメータはmsgでString型です。それは以下の部分だけを見れば分かります。
 
 ```kotlin
 fun showMessage(msg: String) 
@@ -379,7 +379,7 @@ fun showMessage(msg: String)
 Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
 ```
 
-このうち、msgが仮引数ですね。
+このうち、msgがパラメータですね。
 
 これは、Toastというものを作って表示するコードになります。
 Toastというのはトースト、つまり食パンの事ですが、Androidではふわっと一定時間表示されて消える奴の事をトーストといいます。
