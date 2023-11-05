@@ -12,6 +12,15 @@ layout: page
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/JWYWnsQ9Rko?si=0-3JVVZmmc640nen" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+動画では　`class B: A{}`と書いていましたが、Aのあとにはカッコが必要でした。
+以下が正解です。
+
+```kotlin
+class B : A() {
+  //...
+}
+```
+
 ### overrideの実例
 
 {% capture override-ex1 %}
@@ -28,7 +37,7 @@ open class A {
   }
 }
 
-class B : A {
+class B : A() {
   override fun hoge() {
     println("Bが横取りしたhogeだぜ")
   }
@@ -40,11 +49,13 @@ fun main() {
   a.ika()
 
   println("---")
+  println("")
   println("bのika: ")
   val b = B()
   b.ika()
 
   println("---")
+  println("")
   println("cのika: ")
   val c = A()
   c.ika()
