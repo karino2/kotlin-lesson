@@ -92,5 +92,5 @@ toc:
         title: クラス入門
       - url: /tour_after.html
         title: ツアーを終えた後は
-      - url: /inheritance.md
+      - url: /inheritance.html
         title: クラスの継承
