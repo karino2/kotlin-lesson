@@ -530,3 +530,75 @@ class TwoInt(tmp1: Int, tmp2: Int) {
 実際はti1とti2の結果が違う事から分かるように、
 オブジェクトのv1とv2に触っています。
 ti1というオブジェクトのv1とv2の値は、ti2というオブジェクトのv1とv2の値と違う訳です。
+
+## じゃんけんゲームにクラスを使ってみよう
+
+実際に使ってみないと分からない事も多いので、
+無理やりにでも何か使ってみるのが勉強には良いです。
+
+という事で以前に作った[じゃんけんゲーム](janken_game.md)で、
+以下のようなクラスを作ってみましょう。
+
+まず、クラスの名前はJankenとします。
+これはJanken.ktという別ファイルにします。
+
+作り方はActivityの追加と同じ感じで右クリックで New＞Kotlin Class/File を選び、Classを選んでNameの所にJankenと書きます。
+
+そして、以下のようなプロパティを持つとします。
+
+```kotlin
+val GOO = 0
+val CHOKI = 1
+val PAA = 2
+```
+
+そして、ランダムにどれかを返す、ponというメソッドを作るとします。
+
+```kotlin
+fun pon() : Int { ... }
+```
+
+さらにこれらの値から、対応する`R.drawable.goo`などを返す、toResIdというメソッドも作りましょう。
+グーチョキパーを頭文字をとってgcpと書くと、
+
+```kotlin
+fun toResId(gcp : Int) : Int {...}
+```
+
+これはgcpがGOOなら`R.drawable.goo`を、CHOKIなら`R.drawable.choki`を返す感じです。
+せっかくなのでwhenを使うといいかもしれません。
+
+以下解答例も書いておきますが、自力で頑張れる気もするので頑張ってみて欲しい所。
+なお以下の解答例はテストしてないので動かないかも（間違ってたら間違ってる場所教えて、直すから）
+
+{% capture janken-class %}
+```kotlin
+class Janken {
+  val GOO = 0
+  val CHOKI = 1
+  val PAA = 2
+
+  fun pon() : Int {
+    return Random.nextInt(0, 3)
+  }
+
+  fun toResId(gcp: Int) : Int {
+    return when(gcp) {
+      GOO -> R.drawable.goo
+      CHOKI -> R.drawable.choki
+      else -> R.drawable.paa
+    }
+  }
+}
+```
+{% endcapture %}
+{% include collapse_quote.html body=janken-class title="解答例" %}
+
+
+最後に、MainActivityでこのクラスのインスタンスを作り、それを使うようにします。
+
+```kotlin
+val janken = Janken()
+```
+
+このjankenの、`janken.pon()`とか、`janken.toResId(gcp)`とかを使ってじゃんけんゲームを書いてみてください。
