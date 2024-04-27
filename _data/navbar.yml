@@ -94,3 +94,9 @@ toc:
         title: ツアーを終えた後は
       - url: /inheritance.html
         title: クラスの継承
+  - title: カスタムビューで2Dグラフィックス
+    items:
+      - url: /customview_intro.html
+        title: はじめに
+      - url: /hello_customview.html
+        title: ハローCustomView
