@@ -100,3 +100,5 @@ toc:
         title: はじめに
       - url: /hello_customview.html
         title: ハローCustomView
+      - url: /invalidate_animation.html
+        title: invalidateで四角を動かそう
