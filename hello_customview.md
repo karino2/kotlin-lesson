@@ -73,6 +73,8 @@ class MyCustomView(context: Context?, attrs: AttributeSet?) : View(context, attr
 onDrawと打つと、一覧が出るので、`onDraw()`的な奴を選びEnterを押します。
 出なかったら何か間違ってます。
 
+![onDrawの生成](imgs/ondraw_intellisence.png)
+
 すると以下みたいになります。
 
 ```kotlin
