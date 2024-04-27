@@ -271,7 +271,11 @@ class MyCustomView(context: Context?, attrs: AttributeSet?) : View(context, attr
 これはとりあえず手順を丸暗記してください。Viewが赤くなった所でAlt+Enterを押してimportすると波線になるのでもう一回Alt+Enterを押し、これを探して選ぶ。
 中身は理解する必要はありません。
 
-一応説明をしておくと、ViewのコンストラクタのうちLayoutInflatorから呼ばれるのがこのコンストラクタなのでこのコンストラクタをオーバーライドする必要があります。
+一応説明をしておくと、
+[ツアー副読本: クラスの継承](inheritance.html)あたりの話題になります。
+ViewのコンストラクタのうちLayoutInflatorから呼ばれるのがこのコンストラクタなのでこのコンストラクタをオーバーライドする必要があります。
+
+ただカスタムビューに関しては毎回これなので、何も考えずに丸暗記でもOKです。
 
 ### onDrawとは何か（簡単に）
 
