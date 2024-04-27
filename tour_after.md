@@ -10,7 +10,7 @@ layout: page
 
 リファレンスとの間を埋める、という目的では、「やさしいKotlin入門」をオススメします。
 
-<iframe sandbox="allow-popups allow-scripts allow-modals allow-forms allow-same-origin" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=karino203-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4877834273&linkId=cf60a372a31ff7b85d5ed9751f6d6e72"></iframe>
+[amazon: やさしいKotlin入門](https://amzn.to/4djrTNe)
 
 電子版が無いですが、初学者が読んでいけるような内容にはなっていると思う。
 ただし後半の難度が上がる所から解説が減ってしまっているので、
@@ -70,7 +70,7 @@ Kotlin的にコードを書くにはコレクションのあたりは読みた�
 
 Androidの入門として、このサイトを復習しつつ無い知識を補うには、「Androidアプリ開発の教科書」は順番にやっていけると思う。
 
-<iframe sandbox="allow-popups allow-scripts allow-modals allow-forms allow-same-origin" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=karino203-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B0BN9VMS9M&linkId=c1fc30e8c4943203688beedac2d8c073"></iframe>
+[amazon: Androidアプリ開発の教科書 第3版 Kotlin対応 なんちゃって開発者にならないための実践ハンズオン](https://amzn.to/3QoJ32q)
 
 ただし後半は分からない所も残るとは思う。これは他の入門書もだいたいそういうものなので、サンプルを動かす程度で先に進むしかない。
 典型的なAndroidの入門書という感じで、一冊くらいはそういうのをやっておいても良いとは思うし、
@@ -78,7 +78,7 @@ Androidの入門として、このサイトを復習しつつ無い知識を補�
 
 より辞書的に、必要な所だけを調べたり学んだりするには「はじめてのAndroidアプリ開発 Kotlin編」が良いと思う。
 
-<iframe sandbox="allow-popups allow-scripts allow-modals allow-forms allow-same-origin" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=karino203-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B09MHF7F6N&linkId=98e05a5fd14b243fe2a1f9d356506903"></iframe>
+[amazon: TECHNICAL MASTER はじめてのAndroidアプリ開発 Kotlin編](https://amzn.to/3QnjHBN)
 
 こちらは順番にやっていくには分量が多いが、CustomViewなど割としっかり解説されていて、
 入門者が手元に置いておいて公式リファレンスの代わりに使うには良いと思う。
