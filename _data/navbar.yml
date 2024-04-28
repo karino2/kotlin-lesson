@@ -104,3 +104,5 @@ toc:
         title: invalidateで四角を動かそう
       - url: /ontouchevent.html
         title: onTouchEventでタッチを処理
+      - url: /canvas.html
+        title: Canvasで図形や画像を描く
