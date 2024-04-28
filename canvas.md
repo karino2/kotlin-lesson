@@ -38,7 +38,7 @@ CanvasのdrawRectには、以下の３つがあります。
 - RectFを指定する `drawRect(rf: RectF, p: Paint)`
 - Floatで座標を指定する `drawRect(left: Float, top: Float, right: Float, bottom:Float, p: Paint)`
 
-公式リファレンスはこちら＞[Canvas#drawRect](https://developer.android.com/reference/android/graphics/Canvas#drawRect(float,%20float,%20float,%20float,%20android.graphics.Paint))
+公式リファレンスはこちら（英語）＞[Canvas#drawRect](https://developer.android.com/reference/kotlin/android/graphics/Canvas#drawRect(float,%20float,%20float,%20float,%20android.graphics.Paint))
 
 ### FloatとRectF
 
@@ -60,10 +60,10 @@ Rectというのは上記のコードの以下の部分ですね。
 
 これは四角のうち
 
-- 左
-- 上
-- 右
-- 下
+1. 左
+2. 上
+3. 右
+4. 下
 
 の位置を指定しているのでした。
 
@@ -79,4 +79,88 @@ Rectというのは上記のコードの以下の部分ですね。
   canvas.drawRect(rf, p)
 ```
 
-続きはあとで書く
+## 円を描くdrawCircle
+
+円はdrawCircleで描きます。
+
+```kotlin
+    override fun onDraw(canvas: Canvas) {
+        val p = Paint()
+        p.color = Color.RED
+        p.style = Paint.Style.FILL
+
+        canvas.drawCircle(5.0F, 10,0F, 100.0F, p)
+    }
+```
+
+drawCircleの所を抜き出すと以下のようになります。
+
+```kotlin
+canvas.drawCircle(5.0F, 10,0F, 100.0F, p)
+```
+
+引数は
+
+1. 中心のx座標（この場合は5.0F）
+2. 中心のy座標
+3. 半径
+4. Paintオブジェクト
+
+となっています。
+これで、左から5.0Fピクセル、上から10.0Fピクセルの位置に、半径100.0Fピクセルの円を描きます。
+
+公式リファレンス（英語）はこちら＞[Canvas#drawCircle](https://developer.android.com/reference/kotlin/android/graphics/Canvas#drawcircle)
+
+## drawTextとテキスト関連のPaintの設定
+
+テキストを描くのはdrawTextです。
+ただdrawTextは位置と書く文字を指定するくらいで、サイズや色はPaintオブジェクトで設定します。
+
+例えば以下のような感じです。
+
+```kotlin
+    override fun onDraw(canvas: Canvas) {
+        val paint = Paint()
+        paint.color = Color.BLUE
+        paint.textSize = 100.0F
+
+        canvas.drawText("ほげほげ", 70.0F, 500.0F, paint)
+    }
+```
+
+まずはdrawTextの行を見てみましょう。
+
+```kotlin
+canvas.drawText("ほげほげ", 70.0F, 500.0F, paint)
+```
+
+drawTextの引数は順番に
+
+1. 文字列
+2. x座標（テキストを書き始める位置）
+3. y座標（テキストを書き始める位置）
+4. Paintオブジェクト
+
+となっています。2番目と3番目の引数で描き始めの位置を指定する訳ですね。
+文字のサイズや色は4番目のPaintオブジェクトで指定しています。
+
+### テキストの大きさと色はPaintで指定
+
+色と文字の大きさを指定しているのは以下の部分です。
+
+```kotlin
+    val paint = Paint()
+    paint.color = Color.BLUE
+    paint.textSize = 100.0F
+```
+
+色はdrawRectの時と一緒なので説明は省きます。
+大きさは`textSize`というもので指定しているのが分かります。
+
+Canvasのテキスト描画はそんなに高機能では無いので、簡単な事だけに留めておくのが無難です。
+
+公式リファレンス（英語）はこちら＞[Canvas#drawText](https://developer.android.com/reference/kotlin/android/graphics/Canvas#drawtext)
+
+## 画像を描くdrawBitmapとBitmapのロード
+
+あとで書く
