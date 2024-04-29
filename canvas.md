@@ -163,4 +163,51 @@ Canvasのテキスト描画はそんなに高機能では無いので、簡単�
 
 ## 画像を描くdrawBitmapとBitmapのロード
 
-あとで書く
+ゲームなどで一番使うのは画像を描く、という機能でしょう。これはdrawBitmapで良いのですが、
+このdrawBitmapにはBitmapオブジェクトを渡さないといけません。こちらの方がむしろ難しい。
+
+という事でまずはBitmapオブジェクトの作り方をやり、次にBitmapオブジェクトをdrawBitmapを使って描いていきます。
+
+### リソースからBitmapオブジェクトを作る
+
+リソースに関しては、以前の[画像リソースと表示](image_resource.html)の回も復習しておいてください。
+ここでは同様にgoo.pngをリソースに加えたとして解説します。
+
+リソースからBitmapオブジェクトを作るには、BitmapFactoryのdecodeResourceを使います。
+
+```kotlin
+    val bitmap = BitmapFactory.decodeResource(resources, R.drawable.goo, BitmapFactory.Options())
+```
+
+このdecodeResourceという関数の引数に注目してください。
+
+1番目の`resources`と三番目の`BitmapFactory.Options()`は、いつもこれを指定する、と思っておいてください。
+1番目の`resources`の方はViewかActivityの中でしか使えないので、外で使う場合はどうにかする必要がありますが、
+しばらくはカスタムビューかActivityでしかロードしないとしておけば良いでしょう。
+
+二番目の`R.drawable.goo`は目的の画像のリソースIDです。これは以前ImageViewに表示した時にも指定したものですね。
+
+以上をまとめます。リソースからBitmapオブジェクトを作るには以下がポイントになります。
+
+1. 画像リソースからBitmapオブジェクトを作るにはBitmapFactory.decodeResouceというのを使う
+2. 何も考えずに1番目はいつも`resources`、三番目は`BitmapFactory.Options()`を入れるもの
+3. 二番目の引数に表示したい画像のリソースIDを指定
+
+
+公式リファレンス（英語）はこちら＞[BitmapFactory#decodeResource](https://developer.android.com/reference/android/graphics/BitmapFactory#decodeResource(android.content.res.Resources,%20int,%20android.graphics.BitmapFactory.Options))
+
+### CanvasにBitmapを描くdrawBitmap
+
+Bitmapオブジェクトを作る事ができれば、それをCanvasに描くのは簡単です。
+描くのはこんな感じになります。
+
+```kotlin
+        canvas.drawBitmap(bitmap, 50.0F, 200.0F, null)
+```
+
+最初の引数はbitmapオブジェクト、二番目と三番目で画像を描く場所の左上の座標を指定します。
+最後のnullはPaintオブジェクトを指定するのですが、いつもnullでOK。
+
+drawBitmapには拡大縮小を指定するバージョンもありますが、ゲームなどで使う場合はリソースの方のサイズをあわせて拡大や縮小無しで描くようにした方がいいと思うのでこちらで十分でしょう。
+
+公式リファレンス（英語）はこちら＞[Canvas#drawBitmap](https://developer.android.com/reference/kotlin/android/graphics/Canvas#drawbitmap)
