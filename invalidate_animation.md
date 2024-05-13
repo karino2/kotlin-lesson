@@ -240,7 +240,7 @@ invalidateを呼ぶとonDrawが呼ばれる、という話をしましたが、�
 ```
 
 tsugiNoSyoriが終わった少し後で呼ばれます。
-そのくらい後になるかはわかりませんが、この時点で呼ばれない事だけは確実です。
+どのくらい後になるかはわかりませんが、この時点で呼ばれない事だけは確実です。
 {% endcapture %}
 {% include myquote.html body=comment1 %}
 
