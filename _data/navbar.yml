@@ -106,3 +106,7 @@ toc:
         title: onTouchEventでタッチを処理
       - url: /canvas.html
         title: Canvasで図形や画像を描く
+  - title: シューティングゲームを作ろうう
+    items:
+      - url: /shooting_intro.html
+        title: はじめに
